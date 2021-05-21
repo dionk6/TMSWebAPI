@@ -28,19 +28,6 @@ namespace TMSWebAPI.Controllers
             return await _context.Leagues.ToListAsync();
         }
 
-        [HttpGet("GetAllLeagues")]
-        public async Task<ActionResult<IEnumerable<League>>> GetAllLeagues()
-        {
-            return await _context.Leagues.ToListAsync();
-        }
-
-        [HttpGet("GetLeague")]
-        public async Task<ActionResult<League>> GetLeague()
-        {
-            var league = _context.Leagues.First();
-            return league;
-        }
-
         // GET: api/Leagues/5
         [HttpGet("{id}")]
         public async Task<ActionResult<League>> GetLeague(int id)
@@ -58,29 +45,29 @@ namespace TMSWebAPI.Controllers
         // PUT: api/Leagues/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLeague(int id, League league)
+        [HttpPut]
+        public async Task<IActionResult> PutLeague(LeaguesViewModel model)
         {
-            league.Id = id;
+            League league = new League();
+            league.Id = int.Parse(model.Id);
+            league.Name = model.Name;
+            league.Country = model.Country;
+            league.FoundedYear = int.Parse(model.FoundedYear);
+            league.MaxNrTeam = int.Parse(model.MaxNrTeam);
+            league.TvPartner = model.TvPartner;
+            league.Logo = model.Logo;
+            league.CurrentChampion = model.CurrentChampion;
 
-            try
+            if (!LeagueExists(league.Id))
             {
-                _context.Update(league);
+                return NotFound();
+            }
+            else
+            {
+                _context.Leagues.Update(league);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LeagueExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Leagues
@@ -90,6 +77,7 @@ namespace TMSWebAPI.Controllers
         public async Task<ActionResult<League>> PostLeague(LeaguesViewModel model)
         {
             League league = new League();
+            league.Id = int.Parse(model.Id);
             league.Name = model.Name;
             league.Country = model.Country;
             league.FoundedYear = int.Parse(model.FoundedYear);

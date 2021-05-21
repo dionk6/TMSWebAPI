@@ -75,12 +75,22 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Player>> PostPlayer(Player player)
+        public async Task<ActionResult<Player>> PostPlayer(PlayersViewModel model)
         {
+            Player player = new Player();
+            player.FirstName = model.FirstName;
+            player.LastName = model.LastName;
+            player.Age = int.Parse(model.Age);
+            player.PlayerNo = model.PlayerNo;
+            player.Position = model.Position;
+            player.Kit = model.Kit;
+            player.Price = decimal.Parse(model.Price);
+            player.TeamId = int.Parse(model.TeamId);
+
             _context.Players.Add(player);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
+            return Ok();
         }
 
         // DELETE: api/Players/5
@@ -96,7 +106,7 @@ namespace TMSWebAPI.Controllers
             _context.Players.Remove(player);
             await _context.SaveChangesAsync();
 
-            return player;
+            return Ok();
         }
 
         private bool PlayerExists(int id)

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TMSWebAPI.Models;
+using TMSWebAPI.ViewModels;
 
 namespace TMSWebAPI.Controllers
 {
@@ -44,10 +45,21 @@ namespace TMSWebAPI.Controllers
         // PUT: api/Teams/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTeam(int id, Team team)
+        [HttpPut]
+        public async Task<IActionResult> PutTeam(TeamsViewModel model)
         {
-            team.Id = id;
+            Team team = new Team();
+            team.Id = int.Parse(model.Id);
+            team.Name = model.Name;
+            team.City = model.City;
+            team.Logo = model.Logo;
+            team.FoundedYear = int.Parse(model.FoundedYear);
+            team.Manager = model.Manager;
+            team.Trophies = int.Parse(model.Trophies);
+            team.Owner = model.Owner;
+            team.Budget = model.Budget;
+            team.LeagueId = int.Parse(model.LeagueId);
+            team.StadiumId = int.Parse(model.StadiumId);
 
             if (!TeamExists(team.Id))
             {
@@ -65,8 +77,21 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Team>> PostTeam(Team team)
+        public async Task<ActionResult<Team>> PostTeam(TeamsViewModel model)
         {
+            Team team = new Team();
+            team.Id = int.Parse(model.Id);
+            team.Name = model.Name;
+            team.City = model.City;
+            team.Logo = model.Logo;
+            team.FoundedYear = int.Parse(model.FoundedYear);
+            team.Manager = model.Manager;
+            team.Trophies = int.Parse(model.Trophies);
+            team.Owner = model.Owner;
+            team.Budget = model.Budget;
+            team.LeagueId = int.Parse(model.LeagueId);
+            team.StadiumId = int.Parse(model.StadiumId);
+
             _context.Teams.Add(team);
             await _context.SaveChangesAsync();
 
