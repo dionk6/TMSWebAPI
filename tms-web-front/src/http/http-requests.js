@@ -1,31 +1,27 @@
 import axios from "./axios";
-import {SEND_RESERVATION,SEND_SUBSCRIPTION,SEND_KONTAKT} from './endpoints';
-import { POST } from "./methods";
+import {LEAGUES} from './endpoints';
+import {GET,POST,PUT,DELETE} from "./methods";
 
-const subscriptionHttpRequest = (data) => {  
+const LeaugesHttpRequest = () => {  
   return axios({
-    method: POST,
-    url: SEND_SUBSCRIPTION,
-    data: data,
+    method: GET,
+    url: LEAGUES
   });
 };
 
-const sendKontaktHttpRequest = (data) => {
+const LeaugesHttpRequestPost = (data) => {  
   return axios({
     method: POST,
-    url: SEND_KONTAKT,
-    data: data,
+    url: LEAGUES,
+    data:data
   });
 };
 
-const sendReservationHttpRequest = (data) => {
+const LeaugesHttpRequestDelete = (id) => {  
   return axios({
-    method: POST,
-    url: SEND_RESERVATION,
-    data: data,
+    method: DELETE,
+    url: LEAGUES+"/"+id
   });
 };
 
-
-
-export { subscriptionHttpRequest,sendKontaktHttpRequest,sendReservationHttpRequest };
+export { LeaugesHttpRequest,LeaugesHttpRequestPost,LeaugesHttpRequestDelete};

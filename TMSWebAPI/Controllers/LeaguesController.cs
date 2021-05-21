@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TMSWebAPI.Models;
+using TMSWebAPI.ViewModels;
 
 namespace TMSWebAPI.Controllers
 {
@@ -79,8 +80,18 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<League>> PostLeague(League league)
+        public async Task<ActionResult<League>> PostLeague(LeaguesViewModel model)
         {
+            League league = new League();
+            league.Name = model.Name;
+            league.Country = model.Country;
+            league.FoundedYear = int.Parse(model.FoundedYear);
+            league.MaxNrTeam = int.Parse(model.MaxNrTeam);
+            league.TvPartner = model.TvPartner;
+            league.Logo = model.Logo;
+            league.CurrentChampion = model.CurrentChampion;
+
+
             _context.Leagues.Add(league);
             await _context.SaveChangesAsync();
 

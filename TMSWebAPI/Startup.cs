@@ -31,6 +31,10 @@ namespace TMSWebAPI
 
             services.AddDbContext<TMSContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddCors(option => option.AddDefaultPolicy(
+                builder => builder.AllowAnyOrigin().AllowAnyHeader()
+            ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +48,8 @@ namespace TMSWebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
