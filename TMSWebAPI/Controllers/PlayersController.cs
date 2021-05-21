@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TMSWebAPI.Models;
+using TMSWebAPI.ViewModels;
 
 namespace TMSWebAPI.Controllers
 {
@@ -44,33 +45,30 @@ namespace TMSWebAPI.Controllers
         // PUT: api/Players/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlayer(int id, Player player)
+        [HttpPut]
+        public async Task<IActionResult> PutPlayer(PlayersViewModel model)
         {
-            if (id != player.Id)
+            Player player = new Player();
+            player.Id = int.Parse(model.Id);
+            player.FirstName = model.FirstName;
+            player.LastName = model.LastName;
+            player.Age = int.Parse(model.Age);
+            player.PlayerNo = model.PlayerNo;
+            player.Position = model.Position;
+            player.Kit = model.Kit;
+            player.Price = decimal.Parse(model.Price);
+            player.TeamId = int.Parse(model.TeamId);
+
+            if (!PlayerExists(player.Id))
             {
-                return BadRequest();
+                return NotFound();
             }
-
-            _context.Entry(player).State = EntityState.Modified;
-
-            try
+            else
             {
+                _context.Players.Update(player);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PlayerExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Players

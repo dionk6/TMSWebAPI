@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TMSWebAPI.Models;
+using TMSWebAPI.ViewModels;
 
 namespace TMSWebAPI.Controllers
 {
@@ -44,45 +45,44 @@ namespace TMSWebAPI.Controllers
         // PUT: api/Stadiums/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStadium(int id, Stadium stadium)
+        [HttpPut]
+        public async Task<IActionResult> PutStadium(StadiumsViewModel model)
         {
-            if (id != stadium.Id)
+            Stadium stadium = new Stadium();
+            stadium.Id = int.Parse(model.Id);
+            stadium.Name = model.Name;
+            stadium.Capacity = int.Parse(model.Capacity);
+            stadium.Image = model.Image;
+            stadium.Rank = int.Parse(model.Rank);
+
+            if (!StadiumExists(stadium.Id))
             {
-                return BadRequest();
+                return NotFound();
             }
-
-            _context.Entry(stadium).State = EntityState.Modified;
-
-            try
+            else
             {
+                _context.Stadiums.Update(stadium);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StadiumExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Stadiums
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Stadium>> PostStadium(Stadium stadium)
+        public async Task<ActionResult<Stadium>> PostStadium(StadiumsViewModel model)
         {
+            Stadium stadium = new Stadium();
+            stadium.Name = model.Name;
+            stadium.Capacity = int.Parse(model.Capacity);
+            stadium.Image = model.Image;
+            stadium.Rank = int.Parse(model.Rank);
+
             _context.Stadiums.Add(stadium);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetStadium", new { id = stadium.Id }, stadium);
+            return Ok();
         }
 
         // DELETE: api/Stadiums/5
