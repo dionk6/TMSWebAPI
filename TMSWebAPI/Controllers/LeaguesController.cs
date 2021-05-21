@@ -34,6 +34,13 @@ namespace TMSWebAPI.Controllers
             return await _context.Leagues.ToListAsync();
         }
 
+        [HttpGet("GetLeague")]
+        public async Task<ActionResult<League>> GetLeague()
+        {
+            var league = _context.Leagues.First();
+            return league;
+        }
+
         // GET: api/Leagues/5
         [HttpGet("{id}")]
         public async Task<ActionResult<League>> GetLeague(int id)
