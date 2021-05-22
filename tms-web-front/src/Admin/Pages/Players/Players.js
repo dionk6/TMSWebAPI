@@ -1,5 +1,6 @@
 import {useEffect,useState} from "react"
 import {playersHttpRequestTable} from "../../../http/http-requests"
+import ModalPlayer from '../../Components/ModalPlayer/ModalPlayer';
 const Players = () =>{
     const [players,setPlayers] = useState([]);
 
@@ -49,6 +50,7 @@ const Players = () =>{
                 </tbody>
             </table>
             </div>
+            <ModalPlayer />
         </div>
     );
 }

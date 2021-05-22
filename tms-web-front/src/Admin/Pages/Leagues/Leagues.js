@@ -1,5 +1,7 @@
 import {useEffect,useState} from "react";
-import {LeaguesTable} from '../../../http/http-requests'
+import {LeaguesTable} from '../../../http/http-requests';
+import ModalLeague from '../../Components/ModalLeague/ModalLeague';
+
 const Leagues = () =>{
     const [leagues,setLeaguesData] = useState([]);
     
@@ -45,6 +47,7 @@ const Leagues = () =>{
                 </tbody>
             </table>
             </div>
+            <ModalLeague />
         </div>
     );
 }
