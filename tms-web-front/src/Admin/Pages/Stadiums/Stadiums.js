@@ -16,7 +16,7 @@ const Stadiums = ()=>{
     return(
         <div className="stadiumsPage">
             <h1>Leagues</h1>
-            <div className="tableWrapper">
+            <div className="tableWrapper table-responsive">
             <table className="table table-striped">
                 <thead>
                     <tr>
