@@ -1,5 +1,5 @@
 import {useEffect,useState} from "react"
-import {playersHttpRequestTable,GetPlayer} from "../../../http/http-requests"
+import {playersHttpRequestTable,GetPlayer,playersHttpRequestDelete} from "../../../http/http-requests"
 import ModalPlayer from '../../Components/ModalPlayer/ModalPlayer';
 const Players = () =>{
     const [players,setPlayers] = useState([]);
@@ -20,6 +20,11 @@ const Players = () =>{
             setPlayer({});
             setOpenModal(true);
         }
+    }
+    
+    const DeletePlayer = async (id) =>{
+        await playersHttpRequestDelete(id);
+        window.location.reload();
     }
 
     const closeModalHeandler = () =>{
@@ -65,7 +70,7 @@ const Players = () =>{
                                         <td>{player.team}</td>
                                         <td>
                                             <button onClick={()=>{AddEdit(player.id)}}>Edit</button>  
-                                            <button>Delete</button>  
+                                            <button onClick={()=>{DeletePlayer(player.id)}}>Delete</button>  
                                         </td>
                                     </tr>
                                 );

@@ -97,6 +97,13 @@ const playersHttpRequestPost = (data) =>{
   });
 }
 
+const playersHttpRequestDelete = (id) => {  
+  return axios({
+    method: DELETE,
+    url: Player+"/"+id
+  });
+};
 
 
-export { LeaugesHttpRequest,LeaguesTable,playersHttpRequestTable,StadiumsTable,LeaugesHttpRequestPost,LeaugesHttpRequestPut,LeaugesHttpRequestDelete,TeamsTable,GetTeam,GetLeague,GetPlayer,playersHttpRequestPut,playersHttpRequestPost};
+
+export { LeaugesHttpRequest,LeaguesTable,playersHttpRequestTable,StadiumsTable,LeaugesHttpRequestPost,LeaugesHttpRequestPut,LeaugesHttpRequestDelete,playersHttpRequestDelete,TeamsTable,GetTeam,GetLeague,GetPlayer,playersHttpRequestPut,playersHttpRequestPost};

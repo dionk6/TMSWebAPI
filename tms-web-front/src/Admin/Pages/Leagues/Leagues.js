@@ -1,5 +1,5 @@
 import {useEffect,useState} from "react";
-import {LeaguesTable,GetLeague} from '../../../http/http-requests';
+import {LeaguesTable,GetLeague,LeaugesHttpRequestDelete} from '../../../http/http-requests';
 import ModalLeague from '../../Components/ModalLeague/ModalLeague';
 
 const Leagues = () =>{
@@ -21,6 +21,11 @@ const Leagues = () =>{
             setLeague({});
             setOpenModal(true);
         }
+    }
+
+    const DeleteLeague = async (id) => {
+        await LeaugesHttpRequestDelete(id);
+        window.location.reload();
     }
 
     const closeModalHeandler = () =>{
@@ -63,7 +68,7 @@ const Leagues = () =>{
                                     <td>{element.currentChampion}</td>
                                     <td>
                                         <button onClick={()=>{AddEdit(element.id)}}>Edit</button>  
-                                        <button>Delete</button>  
+                                        <button onClick={()=>{DeleteLeague(element.id)}}>Delete</button>  
                                     </td>
                                 </tr>
                             )
