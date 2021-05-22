@@ -8,6 +8,9 @@ aside {
   background-color: #000;
   transition: all .15s linear .15s;
   flex-shrink: 0;
+  box-shadow: 0px 2px 28px 6px rgba(0,0,0,0.33);
+  -webkit-box-shadow: 0px 2px 28px 6px rgba(0,0,0,0.33);
+  -moz-box-shadow: 0px 2px 28px 6px rgba(0,0,0,0.33);
 }
 .asideTranslate{
   transition: all .15s linear .15s;

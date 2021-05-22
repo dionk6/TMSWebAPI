@@ -5,6 +5,7 @@ import ModalLeague from '../../Components/ModalLeague/ModalLeague';
 const Leagues = () =>{
     const [leagues,setLeaguesData] = useState([]);
     const [league,setLeague] = useState({});
+    const [openModal,setOpenModal] = useState(false);
     
     const tableDataHeandler = async () =>{
         const allLeagues = await LeaguesTable();
@@ -13,11 +14,17 @@ const Leagues = () =>{
 
     const AddEdit = async (id) => {
         if(id !== "0"){
+            setOpenModal(true);
             let t = await GetLeague(id);
             setLeague(t.data);
         }else{
+            setOpenModal(true);
             setLeague({});
         }
+    }
+
+    const closeModalHeandler = () =>{
+        setOpenModal(false);
     }
 
     useEffect(()=>{
@@ -63,7 +70,7 @@ const Leagues = () =>{
                     </tbody>
                 </table>
             </div>
-            <ModalLeague />
+            <ModalLeague openModal={openModal} closeModalHeandler={closeModalHeandler}/>
         </div>
     );
 }
