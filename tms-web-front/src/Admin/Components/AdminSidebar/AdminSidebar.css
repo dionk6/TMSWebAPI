@@ -1,0 +1,125 @@
+aside {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 300px;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+  transition: all .15s linear .15s;
+  flex-shrink: 0;
+}
+.asideTranslate{
+  transition: all .15s linear .15s;
+}
+aside.active .asideTranslate{
+  transform: translateX(-20%);
+}
+aside.active{
+  width:75px;
+}
+aside.active .asideToggleButton{
+  left: 50%;
+}
+aside .asideToggleButton{
+  position: absolute;
+  top: 50vh;
+  left: 90%;
+  transform: translate(-50%,-50%);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: all .15s linear .15s;
+}
+aside .asideToggleButton svg{
+  display: block;
+  fill: #45b4b4;
+  transform: rotate(-180deg);
+  transition: .15s ease-in-out .15s;
+}
+aside .asideToggleButton.active svg{
+  transform: rotate(0deg);
+}
+aside .asideToggleButton svg:hover{
+  fill: #fff;
+}
+aside .asideLogo {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+}
+aside .asideLogo a {
+  display: inline-block;
+  cursor: pointer;
+}
+aside .asideLogo a img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+aside nav {
+  width: 100%;
+}
+aside nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 60px 0 20px;
+}
+aside nav ul li {
+  padding: 20px 0;
+}
+aside nav ul li .statsDropdownMenu,
+aside nav ul li a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+  font-size: 22px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .15s ease-in-out .15s;
+}
+aside nav ul li .statsDropdownMenu:hover,
+aside nav ul li a:hover {
+    color: #45b4b4;
+}
+aside nav ul li .statsDropdownMenu span:first-child {
+  float: left;
+  width: 90%;
+}
+aside nav ul li .statsDropdownMenu span:last-child {
+  float: left;
+  width: 10%;
+  display: inline-block;
+  text-align: center;
+}
+aside nav ul li.active a {
+  color: #45b4b4;
+}
+aside nav ul li .statsDropdownMenu span svg {
+  width: 20px;
+  height: 20px;
+  fill: #45b4b4;
+  transform: rotate(90deg);
+  transition: 0.3s linear;
+}
+aside nav ul li .statsDropdownMenu.active span svg {
+  transform: rotate(0deg);
+}
+aside nav ul li .statsDropdownMenu ul#statsDropdownMenuList {
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0px;
+  transition: max-height .3s ease-in-out;
+}
+aside nav ul li .statsDropdownMenu.active ul#statsDropdownMenuList {
+  visibility: visible;
+  opacity: 1;
+  max-height:1000px;
+  padding-top: 20px;
+}
+@media (max-width: 767px) { 
+  aside{
+    width: 100%;
+  }
+}

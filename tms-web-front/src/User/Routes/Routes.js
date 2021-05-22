@@ -1,35 +1,23 @@
 import React, { lazy, Suspense } from 'react'
 import {Switch, Route } from 'react-router-dom';
-import PreLoader from '../PreLoader';
 
-
-const User = lazy(() => import('../User/User'));
-const Admin = lazy(() => import('../Admin/Admin'));
-const NotFound = lazy(() => import('../NotFound'));
+const Home = lazy(() => import('../Pages/Home/Home'));
 
 
 const routes = [
     {
         path: "/",
-        component:User
-    },
-    {
-        path: "/Admin",
-        component: Admin,
-    },
-    {
-        path: false,
-        component: NotFound,
+        component: Home,
     },
 ];
 
 const Routes = (props) =>{
     return(
-        <div className="routerWrapper">
-            <Suspense fallback={<PreLoader/>}>
+        <div className="routerWrapperUser">
+            <Suspense fallback={"Loading..."}>
                 <Switch>
                 {routes.map(({ path, component }, index) => {
-                    if(path){
+                    if (path) {
                         return (
                             <Route key={index} path={path} component={component} exact />
                         );

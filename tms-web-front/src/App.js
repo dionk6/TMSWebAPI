@@ -1,9 +1,8 @@
-import {useState,useEffect} from "react"
-import './App.css';
+import Routes from './Routes/Routes';
 const  App = () => {
   return (
     <div className="App">
-      <h1>TMS Front</h1>
+        <Routes/>
     </div>
   );
 }
