@@ -113,9 +113,9 @@ namespace TMSWebAPI.Controllers
 
         // DELETE: api/Players/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Player>> DeletePlayer(int id)
+        public async Task<ActionResult<Player>> DeletePlayer(string id)
         {
-            var player = await _context.Players.FindAsync(id);
+            var player = await _context.Players.FindAsync(int.Parse(id));
             if (player == null)
             {
                 return NotFound();

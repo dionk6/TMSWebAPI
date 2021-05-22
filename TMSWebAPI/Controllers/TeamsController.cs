@@ -119,9 +119,9 @@ namespace TMSWebAPI.Controllers
 
         // DELETE: api/Teams/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Team>> DeleteTeam(int id)
+        public async Task<ActionResult<Team>> DeleteTeam(string id)
         {
-            var team = await _context.Teams.FindAsync(id);
+            var team = await _context.Teams.FindAsync(int.Parse(id));
             if (team == null)
             {
                 return NotFound();
