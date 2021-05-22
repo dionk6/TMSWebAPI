@@ -26,6 +26,10 @@ const routes = [
         component:Admin
     },
     {
+        path: "/Admin/Teams",
+        component:Admin
+    },
+    {
         path: false,
         component: NotFound,
     },
