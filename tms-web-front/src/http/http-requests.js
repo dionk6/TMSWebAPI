@@ -1,9 +1,5 @@
 import axios from "./axios";
-<<<<<<< Updated upstream
-import {LEAGUES,LEAGUESTable,STADIUMSTable} from './endpoints';
-=======
-import {LEAGUES,LEAGUESTable,PLAYERSTable} from './endpoints';
->>>>>>> Stashed changes
+import {LEAGUES,LEAGUESTable,PLAYERSTable,STADIUMSTable} from './endpoints';
 import {GET,POST,DELETE} from "./methods";
 
 const LeaugesHttpRequest = () => {  
