@@ -2,12 +2,17 @@ import React, { lazy, Suspense } from 'react'
 import {Switch, Route } from 'react-router-dom';
 
 const Leagues = lazy(() => import('../Pages/Leagues/Leagues'));
+const Stadiums = lazy(() => import('../Pages/Stadiums/Stadiums'));
 
 
 const routes = [
     {
         path: "/Admin",
         component: Leagues,
+    },
+    {
+        path: "/Admin/Stadiums",
+        component: Stadiums,
     },
 ];
 

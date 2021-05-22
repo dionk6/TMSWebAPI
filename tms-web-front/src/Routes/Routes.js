@@ -18,6 +18,10 @@ const routes = [
         component: Admin,
     },
     {
+        path: "/Admin/Stadiums",
+        component: Admin,
+    },
+    {
         path: false,
         component: NotFound,
     },
