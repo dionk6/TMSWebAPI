@@ -28,6 +28,26 @@ namespace TMSWebAPI.Controllers
             return await _context.Teams.ToListAsync();
         }
 
+        [HttpGet("TeamsTable")]
+        public IEnumerable<TeamsTable> TeamsTable()
+        {
+            IEnumerable<TeamsTable> model = _context.Teams.Include(t => t.League).Include(t => t.Stadium).Select(t => new TeamsTable
+            {
+                Id = t.Id.ToString(),
+                Name = t.Name,
+                City = t.City,
+                Logo = t.Logo,
+                FoundedYear = t.FoundedYear.ToString(),
+                Manager = t.Manager,
+                Trophies = t.Trophies.ToString(),
+                Owner = t.Owner,
+                Budget = t.Budget,
+                League = t.League.Name,
+                Stadium = t.Stadium.Name
+            });
+            return model;
+        }
+
         // GET: api/Teams/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Team>> GetTeam(int id)

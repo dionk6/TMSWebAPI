@@ -28,6 +28,24 @@ namespace TMSWebAPI.Controllers
             return await _context.Players.ToListAsync();
         }
 
+        [HttpGet("PlayersTable")]
+        public IEnumerable<PlayersTable> PlayersTable()
+        {
+            IEnumerable<PlayersTable> model = _context.Players.Include(t => t.Team).Select(t => new PlayersTable
+            {
+                Id = t.Id.ToString(),
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+                Age = t.Age.ToString(),
+                PlayerNo = t.PlayerNo,
+                Position = t.Position,
+                Kit = t.Kit,
+                Price = t.Price.ToString(),
+                Team = t.Team.Name
+            });
+            return model;
+        }
+
         // GET: api/Players/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(int id)

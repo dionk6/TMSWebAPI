@@ -17,9 +17,6 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\Leagues\" />
-    <Folder Include="ViewModels\Stadiums\" />
-    <Folder Include="ViewModels\Players\" />
-    <Folder Include="ViewModels\Teams\" />
   </ItemGroup>
 
 
