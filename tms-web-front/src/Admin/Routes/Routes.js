@@ -4,6 +4,7 @@ import {Switch, Route } from 'react-router-dom';
 const Leagues = lazy(() => import('../Pages/Leagues/Leagues'));
 const Stadiums = lazy(() => import('../Pages/Stadiums/Stadiums'));
 const Players = lazy(() => import('../Pages/Players/Players'));
+const Teams = lazy(() => import('../Pages/Teams/Teams'));
 
 
 const routes = [
@@ -18,6 +19,10 @@ const routes = [
     {
         path: "/Admin/Players",
         component: Players,
+    },
+    {
+        path: "/Admin/Teams",
+        component: Teams,
     }
 ];
 

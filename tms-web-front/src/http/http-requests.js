@@ -1,5 +1,5 @@
 import axios from "./axios";
-import {LEAGUES,LEAGUESTable,PLAYERSTable,STADIUMSTable} from './endpoints';
+import {LEAGUES,LEAGUESTable,PLAYERSTable,STADIUMSTable,TEAMSTable} from './endpoints';
 import {GET,POST,DELETE} from "./methods";
 
 const LeaugesHttpRequest = () => {  
@@ -38,6 +38,13 @@ const StadiumsTable = () => {
   });
 };
 
+const TeamsTable = () =>{
+  return axios({
+    method: GET,
+    url: TEAMSTable
+  });
+}
+
 const playersHttpRequestTable = () =>{
   return axios({
     method: GET,
@@ -45,4 +52,5 @@ const playersHttpRequestTable = () =>{
   });
 }
 
-export { LeaugesHttpRequest,LeaguesTable,playersHttpRequestTable,StadiumsTable,LeaugesHttpRequestPost,LeaugesHttpRequestDelete};
+
+export { LeaugesHttpRequest,LeaguesTable,playersHttpRequestTable,StadiumsTable,LeaugesHttpRequestPost,LeaugesHttpRequestDelete,TeamsTable};
