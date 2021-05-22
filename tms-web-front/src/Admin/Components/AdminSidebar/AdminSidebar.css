@@ -3,7 +3,7 @@ aside {
   top: 0;
   left: 0;
   width: 300px;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
   background-color: #000;
   transition: all .15s linear .15s;
@@ -23,7 +23,7 @@ aside.active .asideToggleButton{
 }
 aside .asideToggleButton{
   position: absolute;
-  top: 50vh;
+  top: 50%;
   left: 90%;
   transform: translate(-50%,-50%);
   width: 30px;
