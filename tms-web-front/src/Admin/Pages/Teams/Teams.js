@@ -1,5 +1,6 @@
 import {useEffect,useState} from "react";
 import {TeamsTable} from '../../../http/http-requests'
+import ModalTeams from '../../Components/ModalTeams/ModalTeams'
 
 const Stadiums = ()=>{
     const [teams,setTeamsData] = useState([]);
@@ -53,6 +54,7 @@ const Stadiums = ()=>{
                 </tbody>
             </table>
             </div>
+            <ModalTeams/>
         </div>
     );
 }
