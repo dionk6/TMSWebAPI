@@ -14,12 +14,12 @@ const Leagues = () =>{
 
     const AddEdit = async (id) => {
         if(id !== "0"){
-            setOpenModal(true);
             let t = await GetLeague(id);
             setLeague(t.data);
-        }else{
             setOpenModal(true);
+        }else{
             setLeague({});
+            setOpenModal(true);
         }
     }
 
@@ -70,7 +70,7 @@ const Leagues = () =>{
                     </tbody>
                 </table>
             </div>
-            <ModalLeague openModal={openModal} closeModalHeandler={closeModalHeandler}/>
+            <ModalLeague openModal={openModal} league={league} closeModalHeandler={closeModalHeandler}/>
         </div>
     );
 }

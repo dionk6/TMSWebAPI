@@ -15,37 +15,36 @@ const ModalLeague = (props) =>{
                     </svg>
                 </div>
                 <div className="modalBodyCustom">
-                    <form>
+                    <form style={{width: "300px"}}>
                         <div className="mb-3">
-                            <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" />
-                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputEmail1" className="form-label">Country</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" />
-                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                            <label className="form-label">Name</label>
+                            <input type="text" name="name" className="form-control" />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="exampleInputPassword1" className="form-label">FoundedYear</label>
-                            <input type="password" className="form-control" id="exampleInputPassword1"/>
+                            <label className="form-label">Country</label>
+                            <input type="text" className="form-control" name="country" />
                         </div>
-                        <div className="mb-3 form-check">
-                            <label htmlFor="exampleInputPassword1" className="form-label">Tv Partner</label>
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                            <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                        <div className="mb-3">
+                            <label className="form-label">Founded Year</label>
+                            <input type="number" className="form-control" name="foundedYear" />
                         </div>
-                        <div className="mb-3 form-check">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Logo</label>
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                            <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                        <div className="mb-3">
+                            <label className="form-label">Max Nr Team</label>
+                            <input type="number" className="form-control" name="maxNrTeam" />
                         </div>
-                        <div className="mb-3 form-check">
-                            <label htmlFor="exampleInputPassword1" className="form-label">Current Campion</label>
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                            <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                        <div className="mb-3">
+                            <label className="form-label">Tv Partner</label>
+                            <input type="text" className="form-control" name="tvPartner" />
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <div className="mb-3">
+                            <label className="form-label">Logo</label>
+                            <input type="text" className="form-control" name="logo" />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Current Champion</label>
+                            <input type="text" className="form-control" name="currentChampion" />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>
