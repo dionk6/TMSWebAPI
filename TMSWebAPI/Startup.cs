@@ -32,8 +32,9 @@ namespace TMSWebAPI
             services.AddDbContext<TMSContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            
             services.AddCors(option => option.AddDefaultPolicy(
-                builder => builder.AllowAnyOrigin().AllowAnyHeader()
+                builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
             ));
         }
 

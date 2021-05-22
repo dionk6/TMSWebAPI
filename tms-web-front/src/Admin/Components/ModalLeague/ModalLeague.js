@@ -16,6 +16,7 @@ const ModalLeague = (props) =>{
         const value = evt.target.value;
         var inputName = evt.target.name;
         setState({
+            id: (inputName === "id" ? value : state.id),
             name: (inputName === "name" ? value : state.name),
             country: (inputName === "country" ? value : state.country),
             foundedYear: (inputName === "foundedYear" ? value : state.foundedYear),

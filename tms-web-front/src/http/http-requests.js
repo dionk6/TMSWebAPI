@@ -1,5 +1,5 @@
 import axios from "./axios";
-import {LEAGUES,LEAGUESTable,PLAYERSTable,STADIUMSTable,TEAMSTable,Team} from './endpoints';
+import {LEAGUES,LEAGUESTable,PLAYERSTable,STADIUMSTable,TEAMSTable,Team,Player} from './endpoints';
 import {GET,POST,PUT,DELETE} from "./methods";
 
 const LeaugesHttpRequest = () => {  
@@ -66,6 +66,13 @@ const GetLeague = (id) =>{
   });
 }
 
+const GetPlayer = (id) =>{
+  return axios({
+    method: GET,
+    url: Player+"/"+id
+  });
+}
+
 
 const playersHttpRequestTable = () =>{
   return axios({
@@ -74,5 +81,22 @@ const playersHttpRequestTable = () =>{
   });
 }
 
+const playersHttpRequestPut = (data) =>{
+  return axios({
+    method: PUT,
+    url: Player,
+    data: data
+  });
+}
 
-export { LeaugesHttpRequest,LeaguesTable,playersHttpRequestTable,StadiumsTable,LeaugesHttpRequestPost,LeaugesHttpRequestPut,LeaugesHttpRequestDelete,TeamsTable,GetTeam,GetLeague};
+const playersHttpRequestPost = (data) =>{
+  return axios({
+    method: POST,
+    url: Player,
+    data: data
+  });
+}
+
+
+
+export { LeaugesHttpRequest,LeaguesTable,playersHttpRequestTable,StadiumsTable,LeaugesHttpRequestPost,LeaugesHttpRequestPut,LeaugesHttpRequestDelete,TeamsTable,GetTeam,GetLeague,GetPlayer,playersHttpRequestPut,playersHttpRequestPost};

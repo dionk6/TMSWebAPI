@@ -1,6 +1,47 @@
+import {useEffect,useState} from 'react';
+import {useForm} from "react-hook-form";
+import {playersHttpRequestPut,playersHttpRequestPost} from '../../../http/http-requests';
 import './ModalPlayer.css'
 
 const ModalPlayer = (props) =>{
+    const [state, setState] = useState({})
+
+    const { register , handleSubmit } = useForm();
+    
+    function handleChange(evt) {
+        const value = evt.target.value;
+        let inputName = evt.target.name;
+        setState({
+            id: (inputName === "id" ? value : state.id),
+            firstName: (inputName === "firstName" ? value : state.firstName),
+            lastName: (inputName === "lastName" ? value : state.lastName),
+            age: (inputName === "age" ? value : state.age),
+            playerNo: (inputName === "playerNo" ? value : state.playerNo),
+            position: (inputName === "position" ? value : state.position),
+            kit: (inputName === "kit" ? value : state.kit),
+            price: (inputName === "price" ? value : state.price),
+            teamId: (inputName === "teamId" ? value : state.teamId),
+        });
+    }
+
+    const onSubmitLeague = async (data) =>{
+        try{
+            if(data.id !== ""){
+                await playersHttpRequestPut(data);
+            }else{
+                await playersHttpRequestPost(data);
+            }
+        }catch(err){
+            console.log(err);
+        }finally{
+            window.location.reload();
+        }
+    }
+
+    useEffect(()=>{
+        setState(props.player);
+    },[props.player]);
+
     return(
        <div className={`modalCustom ${props.openModal ? "active" : ""}`}>
            <div className="modalContent">
@@ -15,38 +56,39 @@ const ModalPlayer = (props) =>{
                     </svg>
                 </div>
                 <div className="modalBodyCustom">
-                    <form style={{width: "300px"}}>
+                    <form style={{width: "300px"}} onSubmit={handleSubmit(onSubmitLeague)} >
+                    <input type="hidden" value={state.id != null ? state.id : ""} name="id" ref={register({required: false})} />
                         <div className="mb-3">
                             <label className="form-label">First Name</label>
-                            <input type="text" className="form-control" name="firstName" />
+                            <input type="text" className="form-control" name="firstName" value={state.firstName != null ? state.firstName : ""} onChange={handleChange} ref={register({required: true})} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Last Name</label>
-                            <input type="text" className="form-control" name="lastName" />
+                            <input type="text" className="form-control" name="lastName" value={state.lastName != null ? state.lastName : ""} onChange={handleChange} ref={register({required: true})} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Age</label>
-                            <input type="number" className="form-control" name="age" />
+                            <input type="number" className="form-control" name="age" value={state.age != null ? state.age : ""} onChange={handleChange} ref={register({required: true})} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Player No</label>
-                            <input type="number" className="form-control" name="playerNo" />
+                            <input type="number" className="form-control" name="playerNo" value={state.playerNo != null ? state.playerNo : ""} onChange={handleChange} ref={register({required: true})} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Position</label>
-                            <input type="text" className="form-control" name="position" />
+                            <input type="text" className="form-control" name="position" value={state.position != null ? state.position : ""} onChange={handleChange} ref={register({required: true})} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Kit</label>
-                            <input type="text" className="form-control" name="kit" />
+                            <input type="text" className="form-control" name="kit" value={state.kit != null ? state.kit : ""} onChange={handleChange} ref={register({required: true})} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Price</label>
-                            <input type="number" className="form-control" name="price" />
+                            <input type="number" className="form-control" name="price" value={state.price != null ? state.price : ""} onChange={handleChange} ref={register({required: true})} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Team</label>
-                            <input type="text" className="form-control" name="team" />
+                            <input type="text" className="form-control" name="teamId" value={state.teamId != null ? state.teamId : ""} onChange={handleChange} ref={register({required: true})} />
                         </div>
                         <button type="submit" className="btn btn-primary">Save</button>
                     </form>
