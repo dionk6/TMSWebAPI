@@ -1,6 +1,26 @@
+import {useEffect,useState} from 'react';
 import './ModalLeague.css'
 
 const ModalLeague = (props) =>{
+    const [state, setState] = useState({})
+
+    useEffect(()=>{
+        setState(props.league);
+    },[props.league]);
+
+    function handleChange(evt) {
+        const value = evt.target.value;
+        var inputName = evt.target.name;
+        setState({
+            name: (inputName === "name" ? value : state.name),
+            country: (inputName === "country" ? value : state.country),
+            foundedYear: (inputName === "foundedYear" ? value : state.foundedYear),
+            maxNrTeam: (inputName === "maxNrTeam" ? value : state.maxNrTeam),
+            tvPartner: (inputName === "tvPartner" ? value : state.tvPartner),
+            logo: (inputName === "logo" ? value : state.logo),
+            currentChampion: (inputName === "currentChampion" ? value : state.currentChampion)
+        });
+    }
     return(
        <div className={`modalCustom ${props.openModal ? "active" : ""}`}>
            <div className="modalContent">
@@ -18,33 +38,34 @@ const ModalLeague = (props) =>{
                     <form style={{width: "300px"}}>
                         <div className="mb-3">
                             <label className="form-label">Name</label>
-                            <input type="text" name="name" className="form-control" />
+                            <input type="text" value={state.name != null ? state.name : ""} name="name" onChange={handleChange} className="form-control" />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Country</label>
-                            <input type="text" className="form-control" name="country" />
+                            <input type="text" value={state.country != null ? state.country : ""} onChange={handleChange} className="form-control" name="country" />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Founded Year</label>
-                            <input type="number" className="form-control" name="foundedYear" />
+                            <input type="number" value={state.foundedYear != null ? state.foundedYear : ""} onChange={handleChange} className="form-control" name="foundedYear" />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Max Nr Team</label>
-                            <input type="number" className="form-control" name="maxNrTeam" />
+                            <input type="number" value={state.maxNrTeam != null ? state.maxNrTeam : ""} onChange={handleChange} className="form-control" name="maxNrTeam" />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Tv Partner</label>
-                            <input type="text" className="form-control" name="tvPartner" />
+                            <input type="text" value={state.tvPartner != null ? state.tvPartner : ""} onChange={handleChange} className="form-control" name="tvPartner" />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Logo</label>
-                            <input type="text" className="form-control" name="logo" />
+                            <input type="text" value={state.logo != null ? state.logo : ""} onChange={handleChange} className="form-control" name="logo" />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Current Champion</label>
-                            <input type="text" className="form-control" name="currentChampion" />
+                            <input type="text" value={state.currentChampion != null ? state.currentChampion : ""} onChange={handleChange} className="form-control" name="currentChampion" />
                         </div>
-                        <button type="submit" className="btn btn-primary">Save</button>
+                        {props.league.id != null ? <button type="submit" className="btn btn-primary">Update</button> : <button type="submit" className="btn btn-primary">Save</button> }
+                        
                     </form>
                 </div>
             </div>

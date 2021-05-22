@@ -24,6 +24,7 @@ const Leagues = () =>{
     }
 
     const closeModalHeandler = () =>{
+        setLeague({});
         setOpenModal(false);
     }
 
