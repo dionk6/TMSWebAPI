@@ -102,9 +102,9 @@ namespace TMSWebAPI.Controllers
 
         // DELETE: api/Stadiums/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Stadium>> DeleteStadium(int id)
+        public async Task<ActionResult<Stadium>> DeleteStadium(string id)
         {
-            var stadium = await _context.Stadiums.FindAsync(id);
+            var stadium = await _context.Stadiums.FindAsync(int.Parse(id));
             if (stadium == null)
             {
                 return NotFound();
@@ -113,7 +113,7 @@ namespace TMSWebAPI.Controllers
             _context.Stadiums.Remove(stadium);
             await _context.SaveChangesAsync();
 
-            return stadium;
+            return Ok();
         }
 
         private bool StadiumExists(int id)
