@@ -1,6 +1,6 @@
 const LEAGUES = '/api/leagues';
-const PLAYERS = '/api/players';
 const LEAGUESTable = '/api/leagues/LeaguesTable';
 const STADIUMSTable = '/api/stadiums/StadiumsTable';
+const PLAYERSTable = '/api/players/playerstable';
 
-export {LEAGUES,PLAYERS,LEAGUESTable,STADIUMSTable};
+export {LEAGUES,PLAYERSTable,STADIUMSTable,LEAGUESTable};

@@ -1,5 +1,9 @@
 import axios from "./axios";
+<<<<<<< Updated upstream
 import {LEAGUES,LEAGUESTable,STADIUMSTable} from './endpoints';
+=======
+import {LEAGUES,LEAGUESTable,PLAYERSTable} from './endpoints';
+>>>>>>> Stashed changes
 import {GET,POST,DELETE} from "./methods";
 
 const LeaugesHttpRequest = () => {  
@@ -38,4 +42,11 @@ const StadiumsTable = () => {
   });
 };
 
-export { LeaugesHttpRequest,LeaguesTable,LeaugesHttpRequestPost,LeaugesHttpRequestDelete,StadiumsTable};
+const playersHttpRequestTable = () =>{
+  return axios({
+    method: GET,
+    url: PLAYERSTable
+  });
+}
+
+export { LeaugesHttpRequest,LeaguesTable,playersHttpRequestTable,StadiumsTable,LeaugesHttpRequestPost,LeaugesHttpRequestDelete};
