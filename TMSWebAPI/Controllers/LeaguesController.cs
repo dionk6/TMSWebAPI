@@ -77,7 +77,6 @@ namespace TMSWebAPI.Controllers
         public async Task<ActionResult<League>> PostLeague(LeaguesViewModel model)
         {
             League league = new League();
-            league.Id = int.Parse(model.Id);
             league.Name = model.Name;
             league.Country = model.Country;
             league.FoundedYear = int.Parse(model.FoundedYear);
@@ -90,7 +89,7 @@ namespace TMSWebAPI.Controllers
             _context.Leagues.Add(league);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLeague", new { id = league.Id }, league);
+            return Ok();
         }
 
         // DELETE: api/Leagues/5
