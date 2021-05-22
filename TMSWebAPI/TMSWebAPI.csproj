@@ -15,5 +15,12 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Leagues\" />
+    <Folder Include="ViewModels\Stadiums\" />
+    <Folder Include="ViewModels\Players\" />
+    <Folder Include="ViewModels\Teams\" />
+  </ItemGroup>
+
 
 </Project>

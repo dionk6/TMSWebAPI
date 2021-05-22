@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TMSWebAPI.Models;
-using TMSWebAPI.ViewModels;
+using TMSWebAPI.ViewModels.Leagues;
 
 namespace TMSWebAPI.Controllers
 {

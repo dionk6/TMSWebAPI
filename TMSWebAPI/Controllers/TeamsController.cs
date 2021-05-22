@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TMSWebAPI.Models;
-using TMSWebAPI.ViewModels;
+using TMSWebAPI.ViewModels.Teams;
 
 namespace TMSWebAPI.Controllers
 {
@@ -80,7 +80,6 @@ namespace TMSWebAPI.Controllers
         public async Task<ActionResult<Team>> PostTeam(TeamsViewModel model)
         {
             Team team = new Team();
-            team.Id = int.Parse(model.Id);
             team.Name = model.Name;
             team.City = model.City;
             team.Logo = model.Logo;

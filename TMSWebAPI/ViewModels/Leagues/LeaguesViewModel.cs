@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TMSWebAPI.ViewModels
+namespace TMSWebAPI.ViewModels.Leagues
 {
     public class LeaguesViewModel
     {
