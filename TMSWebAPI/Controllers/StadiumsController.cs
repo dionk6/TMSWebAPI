@@ -28,6 +28,21 @@ namespace TMSWebAPI.Controllers
             return await _context.Stadiums.ToListAsync();
         }
 
+        [HttpGet("StadiumsTable")]
+        public IEnumerable<StadiumsViewModel> StadiumsTable()
+        {
+            var model = _context.Stadiums.Select(t => new StadiumsViewModel
+            {
+                Id = t.Id.ToString(),
+                Name = t.Name,
+                Capacity = t.Capacity.ToString(),
+                Image = t.Image,
+                Rank = t.Rank.ToString()
+            });
+
+            return model;
+        }
+
         // GET: api/Stadiums/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Stadium>> GetStadium(int id)

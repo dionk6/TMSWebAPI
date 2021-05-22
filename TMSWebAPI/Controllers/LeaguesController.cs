@@ -28,6 +28,23 @@ namespace TMSWebAPI.Controllers
             return await _context.Leagues.ToListAsync();
         }
 
+        [HttpGet("LeaguesTable")]
+        public IEnumerable<LeaguesViewModel> LeaguesTable()
+        {
+            var model = _context.Leagues.Select(t => new LeaguesViewModel
+            {
+                Id = t.Id.ToString(),
+                Name = t.Name,
+                Country = t.Country,
+                FoundedYear = t.FoundedYear.ToString(),
+                MaxNrTeam = t.MaxNrTeam.ToString(),
+                TvPartner = t.TvPartner,
+                Logo = t.Logo,
+                CurrentChampion = t.CurrentChampion
+            });
+            return model;
+        }
+
         // GET: api/Leagues/5
         [HttpGet("{id}")]
         public async Task<ActionResult<League>> GetLeague(int id)
