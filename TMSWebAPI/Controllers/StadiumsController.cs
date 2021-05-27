@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TMSWebAPI.Models;
+using TMSWebAPI.ViewModels;
 using TMSWebAPI.ViewModels.Stadiums;
 
 namespace TMSWebAPI.Controllers
@@ -80,6 +81,17 @@ namespace TMSWebAPI.Controllers
                 await _context.SaveChangesAsync();
             }
             return Ok();
+        }
+
+        [HttpGet("SelectStadiums")]
+        public IEnumerable<SelectViewModel> SelectStadiums()
+        {
+            var model = _context.Stadiums.Select(t => new SelectViewModel
+            {
+                value = t.Id.ToString(),
+                label = t.Name
+            });
+            return model;
         }
 
         // POST: api/Stadiums
