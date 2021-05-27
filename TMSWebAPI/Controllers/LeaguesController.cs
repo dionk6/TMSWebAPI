@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TMSWebAPI.Models;
+using TMSWebAPI.ViewModels;
 using TMSWebAPI.ViewModels.Leagues;
 
 namespace TMSWebAPI.Controllers
@@ -41,6 +42,17 @@ namespace TMSWebAPI.Controllers
                 TvPartner = t.TvPartner,
                 Logo = t.Logo,
                 CurrentChampion = t.CurrentChampion
+            });
+            return model;
+        }
+
+        [HttpGet("SelectLeague")]
+        public IEnumerable<SelectViewModel> SelectLeague()
+        {
+            var model = _context.Leagues.Select(t => new SelectViewModel
+            {
+                value = t.Id.ToString(),
+                label = t.Name
             });
             return model;
         }

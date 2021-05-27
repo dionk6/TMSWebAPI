@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TMSWebAPI.Models;
+using TMSWebAPI.ViewModels;
 using TMSWebAPI.ViewModels.Teams;
 
 namespace TMSWebAPI.Controllers
@@ -91,6 +92,17 @@ namespace TMSWebAPI.Controllers
                 await _context.SaveChangesAsync();
             }
             return Ok();
+        }
+
+        [HttpGet("SelectTeams")]
+        public IEnumerable<SelectViewModel> SelectTeams()
+        {
+            var model = _context.Teams.Select(t => new SelectViewModel
+            {
+                value = t.Id.ToString(),
+                label = t.Name
+            });
+            return model;
         }
 
         // POST: api/Teams
