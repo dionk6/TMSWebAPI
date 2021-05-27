@@ -1,10 +1,22 @@
 import {useEffect,useState} from 'react';
 import {useForm} from "react-hook-form";
 import {playersHttpRequestPut,playersHttpRequestPost} from '../../../http/http-requests';
+import Select from 'react-select'
 import './ModalPlayer.css'
 
 const ModalPlayer = (props) =>{
+    // const options = [
+    //     { value: '2', label: 'Seria A' },
+    // ]
+    const options = props.options;
+    
+
     const [state, setState] = useState({})
+    const [select, setSelect] = useState({})
+
+    function handleChangeSelect(selectedOption){
+        setSelect({selectedOption});
+    }
 
     const { register , handleSubmit } = useForm();
     
@@ -19,12 +31,13 @@ const ModalPlayer = (props) =>{
             playerNo: (inputName === "playerNo" ? value : state.playerNo),
             position: (inputName === "position" ? value : state.position),
             kit: (inputName === "kit" ? value : state.kit),
-            price: (inputName === "price" ? value : state.price),
-            teamId: (inputName === "teamId" ? value : state.teamId),
+            price: (inputName === "price" ? value : state.price)
         });
     }
 
     const onSubmitLeague = async (data) =>{
+        data.teamId = select.selectedOption.value;
+        //console.log(data);
         try{
             if(data.id !== ""){
                 await playersHttpRequestPut(data);
@@ -88,7 +101,7 @@ const ModalPlayer = (props) =>{
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Team</label>
-                            <input type="text" className="form-control" name="teamId" value={state.teamId != null ? state.teamId : ""} onChange={handleChange} ref={register({required: true})} />
+                            <Select onChange={handleChangeSelect} options={options} />
                         </div>
                         <button type="submit" className="btn btn-primary">Save</button>
                     </form>

@@ -1,14 +1,20 @@
 import {useEffect,useState} from "react"
-import {playersHttpRequestTable,GetPlayer,playersHttpRequestDelete} from "../../../http/http-requests"
+import {playersHttpRequestTable,GetPlayer,playersHttpRequestDelete,SelectAllTeams} from "../../../http/http-requests"
 import ModalPlayer from '../../Components/ModalPlayer/ModalPlayer';
 const Players = () =>{
     const [players,setPlayers] = useState([]);
     const [player,setPlayer] = useState({});
+    const [options,setOptions] = useState({});
     const [openModal,setOpenModal] = useState(false);
 
     const playersTable = async () =>{
         const playersTableData = await playersHttpRequestTable();
         setPlayers(playersTableData.data);
+    }
+
+    const teamOptions = async () =>{
+        const allTeams = await SelectAllTeams();
+        setOptions(allTeams.data);
     }
 
     const AddEdit = async (id) => {
@@ -34,6 +40,7 @@ const Players = () =>{
 
     useEffect(()=>{
         playersTable();
+        teamOptions();
     },[]);
 
     return(
@@ -79,7 +86,7 @@ const Players = () =>{
                     </tbody>
                 </table>
             </div>
-            <ModalPlayer openModal={openModal} player={player} closeModalHeandler={closeModalHeandler} />
+            <ModalPlayer openModal={openModal} player={player} options={options} closeModalHeandler={closeModalHeandler} />
         </div>
     );
 }
