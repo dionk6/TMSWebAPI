@@ -6,18 +6,18 @@ const Footer = (props) =>{
         <footer className="footer">
             <div className="container">
                 <div className="row">
-                    <div className="footerLogo col-md-4">
+                    <div className="footerLogo col-md-4 col-sm-12">
                         <h1>Footer</h1>
                     </div>
-                    <div className="footerLinks col-md-4">
+                    <div className="footerLinks col-md-4 col-sm-12">
                         <ul>    
                             <l1>L</l1>
                             <l1>A</l1>
                             <l1>L</l1>
                         </ul>
                     </div>
-                    <div className=" col-md-4">
-
+                    <div className=" col-md-4 col-sm-12">
+                        <h1>hello</h1>
                     </div>
                 </div>
             </div>
