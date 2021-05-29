@@ -8,35 +8,59 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: 0.3s linear;
+  background-color:rgba(0, 0, 0, 0.5);
+  transition: all .15s linear .15s;
   opacity: 0;
   visibility: hidden;
 }
-.modalCustom.active {
+.modalCustom.active{
   visibility: visible;
   opacity: 1;
 }
-.modalCustom .modalRemove {
+.modalCustom .modalRemove{
   position: absolute;
   top: 20px;
   right: 20px;
   width: 20px;
   height: 20px;
 }
-.modalCustom .modalRemove svg {
+.modalCustom .modalRemove svg{
   width: 20px;
   height: 20px;
   cursor: pointer;
+  fill: #45b4b4;
 }
-.modalCustom .modalContent {
+.modalCustom .modalContent{
   position: relative;
-  background-color: #ffffff;
-  max-width: 500px;
-  padding: 50px;
+  background-color: #000000;
+  color: #ffffff;
+  max-width:800px;
+  padding: 60px 50px;
   border-radius: 20px;
-  transform: scale(0);
+  transition: all .15s linear .15s;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-100%);
 }
-.modalCustom.active .modalContent {
-  transform: scale(1);
+.modalCustom.active .modalContent{
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0%);
 }
+.modalCustom .modalContent form{
+  width: 100%;
+}
+.modalCustom .modalContent form .modalButton{
+  margin-top: 30px;
+  padding: 10px 50px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #000000;
+  color: #ffffff;
+  transition: all .15s linear .15s;
+}
+.modalCustom .modalContent form .modalButton:hover{
+  border: 1px solid #45b4b4;
+  color: #45b4b4;
+}
+

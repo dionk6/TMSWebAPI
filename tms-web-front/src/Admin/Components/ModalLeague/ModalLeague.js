@@ -55,37 +55,43 @@ const ModalLeague = (props) =>{
                     </svg>
                 </div>
                 <div className="modalBodyCustom">
-                    <form style={{width: "300px"}} onSubmit={handleSubmit(onSubmitLeague)}>
+                    <form onSubmit={handleSubmit(onSubmitLeague)}>
                         <input type="hidden" value={state.id != null ? state.id : ""} name="id" ref={register({required: false})} />
-                        <div className="mb-3">
-                            <label className="form-label">Name</label>
-                            <input type="text" value={state.name != null ? state.name : ""} name="name" onChange={handleChange} className="form-control" ref={register({required: true})} />
+
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Name</label>
+                                    <input type="text" value={state.name != null ? state.name : ""} name="name" onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Country</label>
+                                    <input type="text" value={state.country != null ? state.country : ""} onChange={handleChange} className="form-control" name="country" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Founded Year</label>
+                                    <input type="number" value={state.foundedYear != null ? state.foundedYear : ""} onChange={handleChange} className="form-control" name="foundedYear" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Max Nr Team</label>
+                                    <input type="number" value={state.maxNrTeam != null ? state.maxNrTeam : ""} onChange={handleChange} className="form-control" name="maxNrTeam" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Tv Partner</label>
+                                    <input type="text" value={state.tvPartner != null ? state.tvPartner : ""} onChange={handleChange} className="form-control" name="tvPartner" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Logo</label>
+                                    <input type="text" value={state.logo != null ? state.logo : ""} onChange={handleChange} className="form-control" name="logo" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Current Champion</label>
+                                    <input type="text" value={state.currentChampion != null ? state.currentChampion : ""} onChange={handleChange} className="form-control" name="currentChampion" ref={register({required: true})} />
+                                </div>
+                            </div>
+                                {props.league.id != null ? <button type="submit" className="modalButton">Update</button> : <button type="submit" className="modalButton">Save</button> }
                         </div>
-                        <div className="mb-3">
-                            <label className="form-label">Country</label>
-                            <input type="text" value={state.country != null ? state.country : ""} onChange={handleChange} className="form-control" name="country" ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Founded Year</label>
-                            <input type="number" value={state.foundedYear != null ? state.foundedYear : ""} onChange={handleChange} className="form-control" name="foundedYear" ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Max Nr Team</label>
-                            <input type="number" value={state.maxNrTeam != null ? state.maxNrTeam : ""} onChange={handleChange} className="form-control" name="maxNrTeam" ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Tv Partner</label>
-                            <input type="text" value={state.tvPartner != null ? state.tvPartner : ""} onChange={handleChange} className="form-control" name="tvPartner" ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Logo</label>
-                            <input type="text" value={state.logo != null ? state.logo : ""} onChange={handleChange} className="form-control" name="logo" ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Current Champion</label>
-                            <input type="text" value={state.currentChampion != null ? state.currentChampion : ""} onChange={handleChange} className="form-control" name="currentChampion" ref={register({required: true})} />
-                        </div>
-                        {props.league.id != null ? <button type="submit" className="btn btn-primary">Update</button> : <button type="submit" className="btn btn-primary">Save</button> }
+                        
                         
                     </form>
                 </div>

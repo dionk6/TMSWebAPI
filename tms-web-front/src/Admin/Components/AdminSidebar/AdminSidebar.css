@@ -8,26 +8,21 @@ aside {
   background-color: #000;
   transition: all .15s linear .15s;
   flex-shrink: 0;
-  box-shadow: 0px 2px 28px 6px rgba(0,0,0,0.33);
-  -webkit-box-shadow: 0px 2px 28px 6px rgba(0,0,0,0.33);
-  -moz-box-shadow: 0px 2px 28px 6px rgba(0,0,0,0.33);
 }
 .asideTranslate{
   transition: all .15s linear .15s;
 }
-aside.active .asideTranslate{
-  transform: translateX(-20%);
-}
+
 aside.active{
-  width:75px;
+  width:80px;
 }
 aside.active .asideToggleButton{
   left: 50%;
 }
 aside .asideToggleButton{
   position: absolute;
-  top: 50%;
-  left: 90%;
+  top: 90%;
+  left: 50%;
   transform: translate(-50%,-50%);
   width: 30px;
   height: 30px;
@@ -46,6 +41,7 @@ aside .asideToggleButton.active svg{
 aside .asideToggleButton svg:hover{
   fill: #fff;
 }
+
 aside .asideLogo {
   width: 100%;
   text-align: center;
@@ -59,6 +55,11 @@ aside .asideLogo a img {
   width: 100px;
   height: 100px;
   object-fit: cover;
+  transition: all .15s linear .15s;
+}
+aside.active .asideLogo a img{
+  width: 80px;
+  height: 80px;
 }
 aside nav {
   width: 100%;
@@ -95,7 +96,7 @@ aside nav ul li .statsDropdownMenu span:last-child {
   display: inline-block;
   text-align: center;
 }
-aside nav ul li.active a {
+aside nav ul li a.active {
   color: #45b4b4;
 }
 aside nav ul li .statsDropdownMenu span svg {

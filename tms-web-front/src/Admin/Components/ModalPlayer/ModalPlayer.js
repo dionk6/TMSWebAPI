@@ -56,7 +56,7 @@ const ModalPlayer = (props) =>{
     },[props.player]);
 
     return(
-       <div className={`modalCustom ${props.openModal ? "active" : ""}`}>
+        <div className={`modalCustom ${props.openModal ? "active" : ""}`}>
            <div className="modalContent">
                 <div className="modalRemove" onClick={()=>{props.closeModalHeandler()}}>
                     <svg
@@ -107,7 +107,7 @@ const ModalPlayer = (props) =>{
                     </form>
                 </div>
             </div>
-       </div>
+        </div>
     );
 }
 

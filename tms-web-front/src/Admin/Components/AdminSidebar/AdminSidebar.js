@@ -20,7 +20,7 @@ const AdminSidebar = (props) =>{
                 </div>
                 <nav>
                     <ul>
-                        <li className="active"><NavLink to="/Admin">Leauges</NavLink></li>
+                        <li><NavLink exact to="/Admin">Leauges</NavLink></li>
                         <li><NavLink to="/Admin/Players">Players</NavLink></li>
                         <li><NavLink to="/Admin/Stadiums">Stadiums</NavLink></li>
                         <li><NavLink to="/Admin/Teams">Teams</NavLink></li>
