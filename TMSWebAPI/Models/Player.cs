@@ -13,6 +13,7 @@ namespace TMSWebAPI.Models
         public int Age { get; set; }
         public string PlayerNo { get; set; }
         public string Position { get; set; }
+        public string Photo { get; set; }
         public string Kit { get; set; }
         public decimal Price { get; set; }
         public int TeamId { get; set; }
