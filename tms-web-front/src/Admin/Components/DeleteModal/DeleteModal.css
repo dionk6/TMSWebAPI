@@ -1,0 +1,71 @@
+.deleteModalWraper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .15s linear .15s;
+}
+.deleteModalWraper.active{
+    visibility: visible;
+    opacity: 1;
+}
+.deleteModalWraper .deleteModal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    padding: 50px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 1);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-100%);
+}
+.deleteModalWraper.active .deleteModal{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+.deleteModalWraper .deleteModal svg{
+    width: 100px;
+    height: 100px;
+    fill: #45b4b4;
+    margin-bottom: 30px;
+}
+.deleteModalWraper .deleteModal h1{
+    margin-bottom: 30px;
+}
+.deleteModalWraper .deleteModal .deleteModalActionButtons button{
+    border-radius: 10px;
+    padding: 10px 50px;
+    margin: 0 30px;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all .15s linear;
+}
+.deleteModalWraper .deleteModal .deleteModalActionButtons button:first-child{
+    border: 1px solid #f55c47;
+    color: #f55c47;
+}
+.deleteModalWraper .deleteModal .deleteModalActionButtons button:first-child:hover{
+    background-color: #f55c47 ;
+    color: #ffffff;
+}
+.deleteModalWraper .deleteModal .deleteModalActionButtons button:last-child{
+    border: 1px solid #2976bb;
+    color: #2976bb;
+}
+.deleteModalWraper .deleteModal .deleteModalActionButtons button:last-child:hover{
+    background-color: #2976bb;
+    color: #ffffff;
+}

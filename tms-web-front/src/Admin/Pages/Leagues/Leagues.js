@@ -27,7 +27,6 @@ const Leagues = () =>{
 
     const DeleteLeague = async (id) => {
         await LeaugesHttpRequestDelete(id);
-        window.location.reload();
     }
 
     const closeModalHeandler = () =>{
@@ -37,7 +36,7 @@ const Leagues = () =>{
 
     useEffect(()=>{
         tableDataHeandler();
-    },[]);
+    },[openModal,DeleteLeague,AddEdit]);
 
     return(
         <div className="leaugesPage">

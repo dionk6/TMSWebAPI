@@ -9,7 +9,6 @@ const ModalLeague = (props) =>{
 
     useEffect(()=>{
         setState(props.league);
-        console.log()
     },[props.league]);
 
     function handleChange(evt) {
@@ -37,7 +36,7 @@ const ModalLeague = (props) =>{
         }catch(err){
             console.log(err);
         }finally{
-            window.location.reload();
+            props.closeModalHeandler();
         }
     }
 
