@@ -84,7 +84,7 @@ namespace TMSWebAPI.Controllers
             player.TeamId = int.Parse(model.TeamId);
             if (model.Photo != null)
             {
-                var filePath = Path.Combine(_env.WebRootPath, "Upload", "Players"); ;
+                var filePath = Path.Combine(_env.WebRootPath, "Upload", "Players");
 
                 if (!Directory.Exists(filePath))
                 {

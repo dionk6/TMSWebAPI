@@ -37,12 +37,24 @@ const ModalPlayer = (props) =>{
 
     const onSubmitLeague = async (data) =>{
         data.teamId = select.selectedOption.value;
+        data.logo=data.logo[0];
+        let formData = new FormData();
+        formData.append('id',data.id);
+        formData.append('firstName',data.firstName);
+        formData.append('lastName',data.lastName);
+        formData.append('age',data.age);
+        formData.append('playerNo',data.playerNo);
+        formData.append('position',data.position);
+        formData.append('photo',data.logo);
+        formData.append('kit',data.kit);
+        formData.append('price',data.price);
+        formData.append('teamId',data.teamId);
         //console.log(data);
         try{
             if(data.id !== ""){
-                await playersHttpRequestPut(data);
+                await playersHttpRequestPut(formData);
             }else{
-                await playersHttpRequestPost(data);
+                await playersHttpRequestPost(formData);
             }
         }catch(err){
             console.log(err);
@@ -73,6 +85,9 @@ const ModalPlayer = (props) =>{
                         <input type="hidden" value={state.id != null ? state.id : ""} name="id" ref={register({required: false})} />
                         <div className="container-fluid">
                             <div className="row">
+                                <div className="col-12 d-flex justify-content-center mb-3">
+                                    <img src={state.photo} style={{width: "150px",padding: "10px",background: "white",borderRadius: "20px"}} />
+                                </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">First Name</label>
                                     <input type="text" className="form-control" name="firstName" value={state.firstName != null ? state.firstName : ""} onChange={handleChange} ref={register({required: true})} />
@@ -104,6 +119,10 @@ const ModalPlayer = (props) =>{
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Team</label>
                                     <Select onChange={handleChangeSelect} options={options} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Logo</label>
+                                    <input type="file" className="form-control" name="logo" ref={register({required: true})} />
                                 </div>
                             </div>
                         </div>

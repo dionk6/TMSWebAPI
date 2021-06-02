@@ -3,6 +3,8 @@ import {playersHttpRequestTable,GetPlayer,playersHttpRequestDelete,SelectAllTeam
 import ModalPlayer from '../../Components/ModalPlayer/ModalPlayer';
 import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 
+import './Players.css'
+
 const Players = () =>{
     const [players,setPlayers] = useState([]);
     const [player,setPlayer] = useState({});
@@ -53,45 +55,51 @@ const Players = () =>{
     return(
         <div>
             <h1>Players</h1>
-            <div className="tableWrapper table-responsive">
-            <button onClick={()=>{AddEdit("0")}}>Add</button>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">Player No</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Kit</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Team</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            players.map((player,index)=>{
-                                return(
-                                    <tr key={index}>
-                                        <td>{player.firstName}</td>
-                                        <td>{player.lastName}</td>
-                                        <td>{player.age}</td>
-                                        <td>{player.playerNo}</td>
-                                        <td>{player.position}</td>
-                                        <td>{player.kit}</td>
-                                        <td>{player.price}</td>
-                                        <td>{player.team}</td>
-                                        <td>
-                                            <button onClick={()=>{AddEdit(player.id)}}>Edit</button>  
-                                            <button onClick={()=>{DeletePlayer(0,player.id)}}>Delete</button>  
-                                        </td>
-                                    </tr>
-                                );
-                            })
-                        }
-                    </tbody>
-                </table>
+            <div className="tableWrapper">
+                <button onClick={()=>{AddEdit("0")}} className="addButton">Add</button>
+                <div className="tableWrapper table-responsive">
+                    <table className="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Photo</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Player No</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Kit</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Team</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                players.map((player,index)=>{
+                                    return(
+                                        <tr key={index}>
+                                            <td>
+                                                <img src={player.photo} style={{width: "50px"}} alt="Logo" />
+                                            </td>
+                                            <td>{player.firstName}</td>
+                                            <td>{player.lastName}</td>
+                                            <td>{player.age}</td>
+                                            <td>{player.playerNo}</td>
+                                            <td>{player.position}</td>
+                                            <td>{player.kit}</td>
+                                            <td>{player.price}</td>
+                                            <td>{player.team}</td>
+                                            <td>
+                                                <button onClick={()=>{AddEdit(player.id)}} className="editButton">Edit</button>  
+                                                <button onClick={()=>{DeletePlayer(0,player.id)}} className="deleteButton">Delete</button>  
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div> 
             </div>
             <ModalPlayer openModal={openModal} player={player} options={options} closeModalHeandler={closeModalHeandler} />
             <DeleteModal openDeleteModal={openDeleteModal} delteId={deleteId}  Delete={DeletePlayer} />
