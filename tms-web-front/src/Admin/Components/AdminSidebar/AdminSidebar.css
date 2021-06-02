@@ -5,7 +5,8 @@ aside {
   width: 300px;
   height: 100vh;
   overflow: hidden;
-  background-color: #000;
+  background: url("../../../assets/img/soccer-field.jpg") no-repeat left;
+  background-size: cover;
   transition: all .15s linear .15s;
   flex-shrink: 0;
 }
