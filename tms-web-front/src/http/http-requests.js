@@ -1,116 +1,170 @@
 import axios from "./axios";
-import {LEAGUES,LEAGUESTable,PLAYERSTable,STADIUMSTable,TEAMSTable,Team,Player,SelectTeams} from './endpoints';
-import {GET,POST,PUT,DELETE} from "./methods";
+import {
+  LEAGUES,
+  STADIUM,
+  LEAGUESTable,
+  PLAYERSTable,
+  STADIUMSTable,
+  TEAMSTable,
+  Team,
+  Player,
+  SelectTeams,
+} from "./endpoints";
+import { GET, POST, PUT, DELETE } from "./methods";
 
-const LeaugesHttpRequest = () => {  
+const LeaugesHttpRequest = () => {
   return axios({
     method: GET,
-    url: LEAGUES
+    url: LEAGUES,
   });
 };
 
-const LeaguesTable = () => {  
+const LeaguesTable = () => {
   return axios({
     method: GET,
-    url: LEAGUESTable
+    url: LEAGUESTable,
   });
 };
 
-const LeaugesHttpRequestPost = (data) => {  
+const LeaugesHttpRequestPost = (data) => {
   return axios({
     method: POST,
     url: LEAGUES,
-    data:data
+    data: data,
   });
 };
-const LeaugesHttpRequestPut = (data) => {  
+const LeaugesHttpRequestPut = (data) => {
   return axios({
     method: PUT,
     url: LEAGUES,
+    data: data,
+  });
+};
+
+const LeaugesHttpRequestDelete = (id) => {
+  return axios({
+    method: DELETE,
+    url: LEAGUES + "/" + id,
+  });
+};
+
+const StadiumsTable = () => {
+  return axios({
+    method: GET,
+    url: STADIUMSTable,
+  });
+};
+
+const AddStadium = (data) => {
+  return axios({
+    method: POST,
+    url: STADIUM,
     data:data
   });
 };
-
-const LeaugesHttpRequestDelete = (id) => {  
+const GetStadium = (id) => {
+  return axios({
+    method: GET,
+    url: STADIUM + "/" + id,
+  });
+};
+const SetStadium = (data) => {
+  return axios({
+    method: PUT,
+    url: STADIUM,
+    data:data
+  });
+};
+const DeleteStadium = (id) => {
   return axios({
     method: DELETE,
-    url: LEAGUES+"/"+id
+    url: STADIUM + "/" + id,
   });
 };
 
-const StadiumsTable = () => {  
+const TeamsTable = () => {
   return axios({
     method: GET,
-    url: STADIUMSTable
+    url: TEAMSTable,
   });
 };
 
-const TeamsTable = () =>{
+const GetTeam = (id) => {
   return axios({
     method: GET,
-    url: TEAMSTable
+    url: Team + "/" + id,
   });
-}
+};
 
-const GetTeam = (id) =>{
+const GetLeague = (id) => {
   return axios({
     method: GET,
-    url: Team+"/"+id
+    url: LEAGUES + "/" + id,
   });
-}
+};
 
-const GetLeague = (id) =>{
+const GetPlayer = (id) => {
   return axios({
     method: GET,
-    url: LEAGUES+"/"+id
+    url: Player + "/" + id,
   });
-}
+};
 
-const GetPlayer = (id) =>{
+const playersHttpRequestTable = () => {
   return axios({
     method: GET,
-    url: Player+"/"+id
+    url: PLAYERSTable,
   });
-}
+};
 
-
-const playersHttpRequestTable = () =>{
-  return axios({
-    method: GET,
-    url: PLAYERSTable
-  });
-}
-
-const playersHttpRequestPut = (data) =>{
+const playersHttpRequestPut = (data) => {
   return axios({
     method: PUT,
     url: Player,
-    data: data
+    data: data,
   });
-}
+};
 
-const playersHttpRequestPost = (data) =>{
+const playersHttpRequestPost = (data) => {
   return axios({
     method: POST,
     url: Player,
-    data: data
+    data: data,
   });
-}
+};
 
-const playersHttpRequestDelete = (id) => {  
+const playersHttpRequestDelete = (id) => {
   return axios({
     method: DELETE,
-    url: Player+"/"+id
+    url: Player + "/" + id,
   });
 };
 
-const SelectAllTeams = () => {  
+const SelectAllTeams = () => {
   return axios({
     method: GET,
-    url: SelectTeams
+    url: SelectTeams,
   });
 };
 
-
-
-export { LeaugesHttpRequest,LeaguesTable,playersHttpRequestTable,StadiumsTable,LeaugesHttpRequestPost,LeaugesHttpRequestPut,LeaugesHttpRequestDelete,playersHttpRequestDelete,TeamsTable,GetTeam,GetLeague,GetPlayer,playersHttpRequestPut,playersHttpRequestPost,SelectAllTeams};
+export {
+  LeaugesHttpRequest,
+  AddStadium,
+  GetStadium,
+  SetStadium,
+  DeleteStadium,
+  LeaguesTable,
+  playersHttpRequestTable,
+  StadiumsTable,
+  LeaugesHttpRequestPost,
+  LeaugesHttpRequestPut,
+  LeaugesHttpRequestDelete,
+  playersHttpRequestDelete,
+  TeamsTable,
+  GetTeam,
+  GetLeague,
+  GetPlayer,
+  playersHttpRequestPut,
+  playersHttpRequestPost,
+  SelectAllTeams,
+};
