@@ -1,6 +1,66 @@
+import {useEffect,useState} from 'react';
+import {useForm} from "react-hook-form";
+import {LeaugesHttpRequestPost,LeaugesHttpRequestPut,SetTeam,AddTeam} from '../../../http/http-requests';
+
 import './ModalTeams.css'
 
 const ModalTeams = (props) =>{
+    const [team, setTeam] = useState({});
+
+    const { register , handleSubmit } = useForm();
+
+    useEffect(()=>{
+        setTeam(props.team);
+    },[props.team]);
+
+    function handleChange(evt) {
+        const value = evt.target.value;
+        let inputName = evt.target.name;
+        setTeam({
+            id: (inputName === "id" ? value : team.id),
+            name: (inputName === "name" ? value : team.name),
+            city: (inputName === "city" ? value : team.city),
+            foundedYear: (inputName === "foundedYear" ? value : team.foundedYear),
+            manager: (inputName === "manager" ? value : team.manager),
+            trophies: (inputName === "trophies" ? value : team.trophies),
+            owner: (inputName === "owner" ? value : team.owner),
+            logo: team.logo,
+            budget: (inputName === "budget" ? value : team.budget),
+            leagueId: (inputName === "leagueId" ? value : team.leagueId),
+            stadiumId: (inputName === "stadiumId" ? value : team.stadiumId)
+        });
+    }
+
+    const onSubmitTeam = async (data) =>{
+        data.logo=data.logo[0];
+
+        console.log(data);
+
+        let formData = new FormData();
+        formData.append('id',data.id);
+        formData.append('name',data.name);
+        formData.append('city',data.city);
+        formData.append('foundedYear',data.foundedYear);
+        formData.append('trophies',data.trophies);
+        formData.append('manager',data.manager);
+        formData.append('owner',data.owner);
+        formData.append('logo',data.logo);
+        formData.append('budget',data.budget);
+        formData.append('leagueId',data.leagueId);
+        formData.append('stadiumId',data.stadiumId);
+        try{
+            if(data.id !== ""){
+                await SetTeam(formData);
+            }else{
+                await AddTeam(formData);
+            }
+        }catch(err){
+            console.log(err);
+        }finally{
+            props.closeModalHeandler();
+        }
+    }
+
     return(
        <div className={`modalCustom ${props.openModal ? "active" : ""}`}>
            <div className="modalContent">
@@ -15,48 +75,56 @@ const ModalTeams = (props) =>{
                     </svg>
                 </div>
                 <div className="modalBodyCustom">
-                    <form style={{width: "300px"}}>
-                        <div className="mb-3">
-                            <label className="form-label">Name</label>
-                            <input type="text" name="name" className="form-control" />
+                    <form onSubmit={handleSubmit(onSubmitTeam)}>
+                        <input type="hidden" value={team.id != null ? team.id : ""} name="id" ref={register({required: false})} />
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-12 d-flex justify-content-center mb-3">
+                                    <img src={team.logo} style={{width: "150px",padding: "10px",background: "white",borderRadius: "20px"}} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Name</label>
+                                    <input type="text" name="name" className="form-control" value={team.name != null ? team.name : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">City</label>
+                                    <input type="text" className="form-control" name="city" value={team.city != null ? team.city : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Logo</label>
+                                    <input type="file" className="form-control" name="logo" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Founded Year</label>
+                                    <input type="number" className="form-control" name="foundedYear" value={team.foundedYear != null ? team.foundedYear : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Manager</label>
+                                    <input type="text" className="form-control" name="manager" value={team.manager != null ? team.manager : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Trophies</label>
+                                    <input type="number" className="form-control" name="trophies" value={team.trophies != null ? team.trophies : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Owner</label>
+                                    <input type="text" className="form-control" name="owner" value={team.owner != null ? team.owner : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Budget</label>
+                                    <input type="number" className="form-control" name="budget" value={team.budget != null ? team.budget : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">League</label>
+                                    <input type="text" className="form-control" name="leagueId" value={team.leagueId != null ? team.leagueId : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Stadium</label>
+                                    <input type="text" className="form-control" name="stadiumId" value={team.stadiumId != null ? team.stadiumId : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                </div>
+                            </div>
                         </div>
-                        <div className="mb-3">
-                            <label className="form-label">City</label>
-                            <input type="text" className="form-control" name="city" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Logo</label>
-                            <input type="number" className="form-control" name="logo" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Founded Year</label>
-                            <input type="number" className="form-control" name="foundedYear" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Manager</label>
-                            <input type="text" className="form-control" name="manager" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Trophies</label>
-                            <input type="number" className="form-control" name="trophies" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Owner</label>
-                            <input type="text" className="form-control" name="owner" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Budget</label>
-                            <input type="number" className="form-control" name="budget" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">League</label>
-                            <input type="text" className="form-control" name="league" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Stadium</label>
-                            <input type="text" className="form-control" name="stadium" />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Save</button>
+                        {props.team.id != null ? <button type="submit" className="modalButton">Update</button> : <button type="submit" className="modalButton">Save</button> }
                     </form>
                 </div>
             </div>

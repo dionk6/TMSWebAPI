@@ -30,6 +30,7 @@ const ModalPlayer = (props) =>{
             age: (inputName === "age" ? value : state.age),
             playerNo: (inputName === "playerNo" ? value : state.playerNo),
             position: (inputName === "position" ? value : state.position),
+            photo: state.photo,
             kit: (inputName === "kit" ? value : state.kit),
             price: (inputName === "price" ? value : state.price)
         });

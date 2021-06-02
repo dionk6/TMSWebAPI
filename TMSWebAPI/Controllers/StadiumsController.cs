@@ -90,10 +90,6 @@ namespace TMSWebAPI.Controllers
 
                 stadium.Image = "https://localhost:5001/Upload/Stadiums/" + model.Image.FileName;
             }
-            else
-            {
-                stadium.Image = "Empty";
-            }
 
             if (!StadiumExists(stadium.Id))
             {

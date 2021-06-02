@@ -106,10 +106,6 @@ namespace TMSWebAPI.Controllers
 
                 league.Logo = "https://localhost:5001/Upload/Leagues/" + model.Logo.FileName;
             }
-            else
-            {
-                league.Logo = "Empty";
-            }
 
             if (!LeagueExists(league.Id))
             {

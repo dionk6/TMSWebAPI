@@ -1,12 +1,16 @@
 import {useEffect,useState} from "react";
 import ModalTeams from '../../Components/ModalTeams/ModalTeams'
-import {TeamsTable,GetTeam} from '../../../http/http-requests'
+import {TeamsTable,GetTeam,DeleteTeam} from '../../../http/http-requests'
+import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 
 import './Teams.css'
 
 const Stadiums = ()=>{
     const [teams,setTeamsData] = useState([]);
     const [team,setTeam] = useState({});
+    const [openModal,setOpenModal] = useState(false);
+    const [openDeleteModal,setOpenDeleteModal] = useState(false);
+    const [deleteId,setDeleteId] = useState(null);
     
     const tableDataHeandler = async () =>{
         const allTeams = await TeamsTable();
@@ -17,19 +21,30 @@ const Stadiums = ()=>{
         if(id !== "0"){
             let t = await GetTeam(id);
             setTeam(t.data);
+            setOpenModal(true);
         }else{
             setTeam({});
+            setOpenModal(true);
         }
-        OpenModal();
     }
 
-    const OpenModal = () => {
-        
+    const DeleteLeague = async (state,id) => {
+        setDeleteId(id);
+        if(state===1){
+            await DeleteTeam(deleteId);
+        }
+        setOpenDeleteModal(!openDeleteModal);
+    }
+
+
+    const closeModalHeandler = () =>{
+        setTeam({});
+        setOpenModal(false);
     }
 
     useEffect(()=>{
         tableDataHeandler();
-    },[]);
+    },[openModal,openDeleteModal]);
 
     return(
         <div className="stadiumsPage">
@@ -40,9 +55,9 @@ const Stadiums = ()=>{
                     <table className="table table-striped">
                         <thead>
                             <tr>
+                                <th scope="col">Logo</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">City</th>
-                                <th scope="col">Logo</th>
                                 <th scope="col">Founded Year</th>
                                 <th scope="col">Manager</th>
                                 <th scope="col">Trophies</th>
@@ -57,9 +72,11 @@ const Stadiums = ()=>{
                             {teams.map((element,index) => {
                                 return (
                                     <tr key={index}>
+                                        <td>
+                                            <img src={element.logo} style={{width: "50px"}} alt="Logo" />
+                                        </td>
                                         <td>{element.name}</td>
                                         <td>{element.city}</td>
-                                        <td>{element.logo}</td>
                                         <td>{element.foundedYear}</td>
                                         <td>{element.manager}</td>
                                         <td>{element.trophies}</td>
@@ -69,7 +86,7 @@ const Stadiums = ()=>{
                                         <td>{element.stadium}</td>
                                         <td>
                                             <button onClick={()=>{AddEdit(element.id)}} className="editButton">Edit</button>  
-                                            <button className="deleteButton">Delete</button>  
+                                            <button onClick={()=>{DeleteLeague(0,element.id)}} className="deleteButton">Delete</button>  
                                         </td>
                                     </tr>
                                 )
@@ -78,7 +95,8 @@ const Stadiums = ()=>{
                     </table>
                 </div>
             </div>
-            <ModalTeams/>
+            <ModalTeams openModal={openModal} team={team} closeModalHeandler={closeModalHeandler}/>
+            <DeleteModal openDeleteModal={openDeleteModal} deleteId={deleteId} Delete={DeleteLeague}/>
         </div>
     );
 }

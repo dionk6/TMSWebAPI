@@ -96,6 +96,29 @@ const GetTeam = (id) => {
   });
 };
 
+const SetTeam = (data) => {
+  return axios({
+    method: PUT,
+    url: Team,
+    data:data
+  });
+};
+
+const AddTeam = (data) => {
+  return axios({
+    method: POST,
+    url: Team,
+    data:data
+  });
+};
+
+const DeleteTeam = (id) => {
+  return axios({
+    method: DELETE,
+    url: Team+"/"+id
+  });
+};
+
 const GetLeague = (id) => {
   return axios({
     method: GET,
@@ -167,4 +190,7 @@ export {
   playersHttpRequestPut,
   playersHttpRequestPost,
   SelectAllTeams,
+  SetTeam,
+  AddTeam,
+  DeleteTeam
 };

@@ -98,10 +98,6 @@ namespace TMSWebAPI.Controllers
 
                 player.Photo = "https://localhost:5001/Upload/Players/" + model.Photo.FileName;
             }
-            else
-            {
-                player.Photo = "Empty";
-            }
 
             if (!PlayerExists(player.Id))
             {

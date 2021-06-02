@@ -20,6 +20,7 @@ const ModalLeague = (props) =>{
             country: (inputName === "country" ? value : league.country),
             foundedYear: (inputName === "foundedYear" ? value : league.foundedYear),
             maxNrTeam: (inputName === "maxNrTeam" ? value : league.maxNrTeam),
+            logo: league.logo,
             tvPartner: (inputName === "tvPartner" ? value : league.tvPartner),
             currentChampion: (inputName === "currentChampion" ? value : league.currentChampion)
         });
