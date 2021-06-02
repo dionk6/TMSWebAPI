@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,10 +18,13 @@ namespace TMSWebAPI.Controllers
     public class LeaguesController : ControllerBase
     {
         private readonly TMSContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public LeaguesController(TMSContext context)
+        public LeaguesController(TMSContext context,
+                                 IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         // GET: api/Leagues
@@ -113,17 +117,29 @@ namespace TMSWebAPI.Controllers
                 league.FoundedYear = int.Parse(model.FoundedYear);
                 league.MaxNrTeam = int.Parse(model.MaxNrTeam);
                 league.TvPartner = model.TvPartner;
-                IFormFile logo = model.Logo;
-                league.Logo = logo.FileName;
-
-
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", logo.FileName);
-                using (Stream stream = new FileStream(path, FileMode.Create))
-                {
-                    logo.CopyTo(stream);
-                }
-
+                /*IFormFile logo = model.Logo;
+                league.Logo = logo.FileName;*/
                 league.CurrentChampion = model.CurrentChampion;
+                if (model.Logo != null)
+                {
+                    var filePath = Path.Combine(_env.WebRootPath, "Upload", "Leagues"); ;
+
+                    if (!Directory.Exists(filePath))
+                    {
+                        Directory.CreateDirectory(filePath);
+                    }
+                    var fullPath = Path.Combine(_env.WebRootPath, "Upload", "Leagues", model.Logo.FileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        model.Logo.CopyTo(stream);
+                    }
+
+                    league.Logo = "https://localhost:5001/Upload/Leagues/" + model.Logo.FileName;
+                }
+                else
+                {
+                    league.Logo = "Empty";
+                }
 
 
                 _context.Leagues.Add(league);
