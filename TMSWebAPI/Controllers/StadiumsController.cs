@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +18,13 @@ namespace TMSWebAPI.Controllers
     public class StadiumsController : ControllerBase
     {
         private readonly TMSContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public StadiumsController(TMSContext context)
+        public StadiumsController(TMSContext context,
+                                    IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         // GET: api/Stadiums
@@ -62,14 +67,33 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut]
-        public async Task<IActionResult> PutStadium(StadiumsViewModel model)
+        public async Task<IActionResult> PutStadium([FromForm] StadiumsAddModel model)
         {
             Stadium stadium = new Stadium();
             stadium.Id = int.Parse(model.Id);
             stadium.Name = model.Name;
             stadium.Capacity = int.Parse(model.Capacity);
-            stadium.Image = model.Image;
             stadium.Rank = int.Parse(model.Rank);
+            if (model.Image != null)
+            {
+                var filePath = Path.Combine(_env.WebRootPath, "Upload", "Stadiums"); ;
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                var fullPath = Path.Combine(_env.WebRootPath, "Upload", "Stadiums", model.Image.FileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    model.Image.CopyTo(stream);
+                }
+
+                stadium.Image = "https://localhost:5001/Upload/Stadiums/" + model.Image.FileName;
+            }
+            else
+            {
+                stadium.Image = "Empty";
+            }
 
             if (!StadiumExists(stadium.Id))
             {
@@ -98,13 +122,32 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Stadium>> PostStadium(StadiumsViewModel model)
+        public async Task<ActionResult<Stadium>> PostStadium([FromForm] StadiumsAddModel model)
         {
             Stadium stadium = new Stadium();
             stadium.Name = model.Name;
             stadium.Capacity = int.Parse(model.Capacity);
-            stadium.Image = model.Image;
             stadium.Rank = int.Parse(model.Rank);
+            if (model.Image != null)
+            {
+                var filePath = Path.Combine(_env.WebRootPath, "Upload", "Stadiums"); ;
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                var fullPath = Path.Combine(_env.WebRootPath, "Upload", "Stadiums", model.Image.FileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    model.Image.CopyTo(stream);
+                }
+
+                stadium.Image = "https://localhost:5001/Upload/Stadiums/" + model.Image.FileName;
+            }
+            else
+            {
+                stadium.Image = "Empty";
+            }
 
             _context.Stadiums.Add(stadium);
             await _context.SaveChangesAsync();

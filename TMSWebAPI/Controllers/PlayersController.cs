@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +17,13 @@ namespace TMSWebAPI.Controllers
     public class PlayersController : ControllerBase
     {
         private readonly TMSContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public PlayersController(TMSContext context)
+        public PlayersController(TMSContext context,
+                                IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         // GET: api/Players
@@ -64,7 +69,7 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut]
-        public async Task<IActionResult> PutPlayer(PlayersViewModel model)
+        public async Task<IActionResult> PutPlayer([FromForm] PlayersAddModel model)
         {
             Player player = new Player();
             player.Id = int.Parse(model.Id);
@@ -76,6 +81,26 @@ namespace TMSWebAPI.Controllers
             player.Kit = model.Kit;
             player.Price = decimal.Parse(model.Price);
             player.TeamId = int.Parse(model.TeamId);
+            if (model.Photo != null)
+            {
+                var filePath = Path.Combine(_env.WebRootPath, "Upload", "Players"); ;
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                var fullPath = Path.Combine(_env.WebRootPath, "Upload", "Players", model.Photo.FileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    model.Photo.CopyTo(stream);
+                }
+
+                player.Photo = "https://localhost:5001/Upload/Players/" + model.Photo.FileName;
+            }
+            else
+            {
+                player.Photo = "Empty";
+            }
 
             if (!PlayerExists(player.Id))
             {
@@ -93,7 +118,7 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Player>> PostPlayer(PlayersViewModel model)
+        public async Task<ActionResult<Player>> PostPlayer([FromForm] PlayersAddModel model)
         {
             Player player = new Player();
             player.FirstName = model.FirstName;
@@ -104,6 +129,26 @@ namespace TMSWebAPI.Controllers
             player.Kit = model.Kit;
             player.Price = decimal.Parse(model.Price);
             player.TeamId = int.Parse(model.TeamId);
+            if (model.Photo != null)
+            {
+                var filePath = Path.Combine(_env.WebRootPath, "Upload", "Players"); ;
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                var fullPath = Path.Combine(_env.WebRootPath, "Upload", "Players", model.Photo.FileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    model.Photo.CopyTo(stream);
+                }
+
+                player.Photo = "https://localhost:5001/Upload/Players/" + model.Photo.FileName;
+            }
+            else
+            {
+                player.Photo = "Empty";
+            }
 
             _context.Players.Add(player);
             await _context.SaveChangesAsync();

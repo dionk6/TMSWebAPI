@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TMSWebAPI.Models;
@@ -16,10 +18,13 @@ namespace TMSWebAPI.Controllers
     public class TeamsController : ControllerBase
     {
         private readonly TMSContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public TeamsController(TMSContext context)
+        public TeamsController(TMSContext context,
+                                IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         // GET: api/Teams
@@ -67,13 +72,12 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut]
-        public async Task<IActionResult> PutTeam(TeamsViewModel model)
+        public async Task<IActionResult> PutTeam([FromForm] TeamsAddModel model)
         {
             Team team = new Team();
             team.Id = int.Parse(model.Id);
             team.Name = model.Name;
             team.City = model.City;
-            team.Logo = model.Logo;
             team.FoundedYear = int.Parse(model.FoundedYear);
             team.Manager = model.Manager;
             team.Trophies = int.Parse(model.Trophies);
@@ -81,6 +85,26 @@ namespace TMSWebAPI.Controllers
             team.Budget = model.Budget;
             team.LeagueId = int.Parse(model.LeagueId);
             team.StadiumId = int.Parse(model.StadiumId);
+            if (model.Logo != null)
+            {
+                var filePath = Path.Combine(_env.WebRootPath, "Upload", "Teams"); ;
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                var fullPath = Path.Combine(_env.WebRootPath, "Upload", "Teams", model.Logo.FileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    model.Logo.CopyTo(stream);
+                }
+
+                team.Logo = "https://localhost:5001/Upload/Leagues/" + model.Logo.FileName;
+            }
+            else
+            {
+                team.Logo = "Empty";
+            }
 
             if (!TeamExists(team.Id))
             {
@@ -109,12 +133,11 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Team>> PostTeam(TeamsViewModel model)
+        public async Task<ActionResult<Team>> PostTeam([FromForm] TeamsAddModel model)
         {
             Team team = new Team();
             team.Name = model.Name;
             team.City = model.City;
-            team.Logo = model.Logo;
             team.FoundedYear = int.Parse(model.FoundedYear);
             team.Manager = model.Manager;
             team.Trophies = int.Parse(model.Trophies);
@@ -122,6 +145,26 @@ namespace TMSWebAPI.Controllers
             team.Budget = model.Budget;
             team.LeagueId = int.Parse(model.LeagueId);
             team.StadiumId = int.Parse(model.StadiumId);
+            if (model.Logo != null)
+            {
+                var filePath = Path.Combine(_env.WebRootPath, "Upload", "Teams"); ;
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                var fullPath = Path.Combine(_env.WebRootPath, "Upload", "Teams", model.Logo.FileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    model.Logo.CopyTo(stream);
+                }
+
+                team.Logo = "https://localhost:5001/Upload/Leagues/" + model.Logo.FileName;
+            }
+            else
+            {
+                team.Logo = "Empty";
+            }
 
             _context.Teams.Add(team);
             await _context.SaveChangesAsync();
