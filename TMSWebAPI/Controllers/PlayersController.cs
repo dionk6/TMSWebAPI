@@ -36,7 +36,7 @@ namespace TMSWebAPI.Controllers
         [HttpGet("PlayersTable")]
         public IEnumerable<PlayersTable> PlayersTable()
         {
-            IEnumerable<PlayersTable> model = _context.Players.Include(t => t.Team).Select(t => new PlayersTable
+            IEnumerable<PlayersTable> model = _context.Players.Include(t => t.Team).Select(t => new PlayersTable 
             {
                 Id = t.Id.ToString(),
                 FirstName = t.FirstName,
@@ -44,6 +44,7 @@ namespace TMSWebAPI.Controllers
                 Age = t.Age.ToString(),
                 PlayerNo = t.PlayerNo,
                 Position = t.Position,
+                Photo = t.Photo,
                 Kit = t.Kit,
                 Price = t.Price.ToString(),
                 Team = t.Team.Name
