@@ -1,4 +1,9 @@
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
   background-color: #000000;
 }
 .headerInner {
@@ -9,7 +14,6 @@ header {
   height: 100px;
   color: #ffffff;
 }
-
 .headersLinks {
   align-items: center;
   display: flex;
@@ -17,14 +21,30 @@ header {
 }
 .toggleButtonDiv {
   display: none;
+  cursor: pointer;
 }
 .toggleButtonDiv span {
   display: block;
+  position: relative;
   width: 30px;
   height: 3px;
   margin-bottom: 5px;
   border-radius: 5px;
   background-color: #ffffff;
+  transition: all 0.15s linear 0.15s;
+}
+.toggleButtonDiv.active span:nth-child(1) {
+  transform: rotate(-45deg);
+}
+.toggleButtonDiv.active span:nth-child(2) {
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+  opacity: 0;
+  margin: -7px;
+}
+.toggleButtonDiv.active span:nth-child(3) {
+  transform: rotate(45deg);
 }
 .header ul {
   list-style: none;
@@ -50,16 +70,22 @@ header {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
     width: 100%;
     justify-content: center;
-    height: 100vh;
+    height: 0;
     background-color: #000000;
     visibility: hidden;
     opacity: 0;
+    transition: all 0.15s linear 0.15s;
   }
   .headersLinks.active {
     visibility: visible;
     opacity: 1;
+    height: 100vh;
+  }
+  .headersLinks ul li {
+    display: block;
   }
   .toggleButtonDiv {
     display: block;

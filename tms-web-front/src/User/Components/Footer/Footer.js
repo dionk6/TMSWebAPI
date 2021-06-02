@@ -11,9 +11,9 @@ const Footer = (props) =>{
                     </div>
                     <div className="footerLinks col-md-4 col-sm-12">
                         <ul>    
-                            <l1>L</l1>
-                            <l1>A</l1>
-                            <l1>L</l1>
+                            <li>L</li>
+                            <li>A</li>
+                            <li>L</li>
                         </ul>
                     </div>
                     <div className=" col-md-4 col-sm-12">

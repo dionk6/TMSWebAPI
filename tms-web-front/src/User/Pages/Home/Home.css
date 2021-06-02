@@ -1,6 +1,6 @@
-/* .topLeagues {
+.topLeagues {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
 }
 .TitleTopLeagues {
@@ -10,4 +10,4 @@
 .TitleTopLeagues span {
   border-radius: 10px;
   background-color: red;
-} */
+}
