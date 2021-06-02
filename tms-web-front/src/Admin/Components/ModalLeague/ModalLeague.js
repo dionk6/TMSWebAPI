@@ -3,35 +3,47 @@ import {useForm} from "react-hook-form";
 import {LeaugesHttpRequestPost,LeaugesHttpRequestPut} from '../../../http/http-requests';
 import './ModalLeague.css'
 const ModalLeague = (props) =>{
-    const [state, setState] = useState({})
+    const [league, setLeague] = useState({});
 
     const { register , handleSubmit } = useForm();
 
     useEffect(()=>{
-        setState(props.league);
+        setLeague(props.league);
+        console.log(props.league.logo)
     },[props.league]);
 
     function handleChange(evt) {
         const value = evt.target.value;
-        var inputName = evt.target.name;
-        setState({
-            id: (inputName === "id" ? value : state.id),
-            name: (inputName === "name" ? value : state.name),
-            country: (inputName === "country" ? value : state.country),
-            foundedYear: (inputName === "foundedYear" ? value : state.foundedYear),
-            maxNrTeam: (inputName === "maxNrTeam" ? value : state.maxNrTeam),
-            tvPartner: (inputName === "tvPartner" ? value : state.tvPartner),
-            logo: (inputName === "logo" ? value : state.logo),
-            currentChampion: (inputName === "currentChampion" ? value : state.currentChampion)
+        let inputName = evt.target.name;
+        setLeague({
+            id: (inputName === "id" ? value : league.id),
+            name: (inputName === "name" ? value : league.name),
+            country: (inputName === "country" ? value : league.country),
+            foundedYear: (inputName === "foundedYear" ? value : league.foundedYear),
+            maxNrTeam: (inputName === "maxNrTeam" ? value : league.maxNrTeam),
+            tvPartner: (inputName === "tvPartner" ? value : league.tvPartner),
+            logo: (inputName === "logo" ? value : league.logo),
+            currentChampion: (inputName === "currentChampion" ? value : league.currentChampion)
         });
     }
 
     const onSubmitLeague = async (data) =>{
+        data.logo=data.logo[0];
+        let formData = new FormData();
+        formData.append('id',data.id);
+        formData.append('name',data.name);
+        formData.append('country',data.country);
+        formData.append('foundedYear',data.foundedYear);
+        formData.append('maxNrTeam',data.maxNrTeam);
+        formData.append('tvPartner',data.tvPartner);
+        formData.append('logo',data.logo);
+        formData.append('currentChampion',data.currentChampion);
+
         try{
             if(data.id !== ""){
-                await LeaugesHttpRequestPut(data);
+                await LeaugesHttpRequestPut(formData);
             }else{
-                await LeaugesHttpRequestPost(data);
+                await LeaugesHttpRequestPost(formData);
             }
         }catch(err){
             console.log(err);
@@ -55,37 +67,37 @@ const ModalLeague = (props) =>{
                 </div>
                 <div className="modalBodyCustom">
                     <form onSubmit={handleSubmit(onSubmitLeague)}>
-                        <input type="hidden" value={state.id != null ? state.id : ""} name="id" ref={register({required: false})} />
+                        <input type="hidden" value={league.id != null ? league.id : ""} name="id" ref={register({required: false})} />
 
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Name</label>
-                                    <input type="text" value={state.name != null ? state.name : ""} name="name" onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                    <input type="text" value={league.name != null ? league.name : ""} name="name" onChange={handleChange} className="form-control" ref={register({required: true})} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Country</label>
-                                    <input type="text" value={state.country != null ? state.country : ""} onChange={handleChange} className="form-control" name="country" ref={register({required: true})} />
+                                    <input type="text" value={league.country != null ? league.country : ""} onChange={handleChange} className="form-control" name="country" ref={register({required: true})} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Founded Year</label>
-                                    <input type="number" value={state.foundedYear != null ? state.foundedYear : ""} onChange={handleChange} className="form-control" name="foundedYear" ref={register({required: true})} />
+                                    <input type="number" value={league.foundedYear != null ? league.foundedYear : ""} onChange={handleChange} className="form-control" name="foundedYear" ref={register({required: true})} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Max Nr Team</label>
-                                    <input type="number" value={state.maxNrTeam != null ? state.maxNrTeam : ""} onChange={handleChange} className="form-control" name="maxNrTeam" ref={register({required: true})} />
+                                    <input type="number" value={league.maxNrTeam != null ? league.maxNrTeam : ""} onChange={handleChange} className="form-control" name="maxNrTeam" ref={register({required: true})} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Tv Partner</label>
-                                    <input type="text" value={state.tvPartner != null ? state.tvPartner : ""} onChange={handleChange} className="form-control" name="tvPartner" ref={register({required: true})} />
+                                    <input type="text" value={league.tvPartner != null ? league.tvPartner : ""} onChange={handleChange} className="form-control" name="tvPartner" ref={register({required: true})} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Logo</label>
-                                    <input type="text" value={state.logo != null ? state.logo : ""} onChange={handleChange} className="form-control" name="logo" ref={register({required: true})} />
+                                    <input type="file" onChange={handleChange} className="form-control" name="logo" ref={register({required: true})} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Current Champion</label>
-                                    <input type="text" value={state.currentChampion != null ? state.currentChampion : ""} onChange={handleChange} className="form-control" name="currentChampion" ref={register({required: true})} />
+                                    <input type="text" value={league.currentChampion != null ? league.currentChampion : ""} onChange={handleChange} className="form-control" name="currentChampion" ref={register({required: true})} />
                                 </div>
                             </div>
                                 {props.league.id != null ? <button type="submit" className="modalButton">Update</button> : <button type="submit" className="modalButton">Save</button> }

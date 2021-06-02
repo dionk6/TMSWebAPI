@@ -3,7 +3,7 @@ import './DeleteModal.css'
 const DeleteModal = (props) =>{
 
     return(
-        <div className={`deleteModalWraper ${props.openModalDelete ? "active" : ""}`}>
+        <div className={`deleteModalWraper ${props.openDeleteModal ? "active" : ""}`}>
             <div className="deleteModal">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -17,8 +17,8 @@ const DeleteModal = (props) =>{
                 </svg>
                 <h1>Are you sure you want to delete it !</h1>
                 <div className="deleteModalActionButtons">
-                    <button onClick={()=>{props.closeDeleteModalHeandler(1,props.deleteId)}}>Yes</button>
-                    <button onClick={()=>{props.closeDeleteModalHeandler(0)}}>No</button>
+                    <button onClick={()=>{props.Delete(1,props.deleteId)}}>Yes</button>
+                    <button onClick={()=>{props.Delete(0)}}>No</button>
                 </div>
             </div>
         </div>

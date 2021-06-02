@@ -1,7 +1,5 @@
 import {useEffect,useState} from "react";
 import {StadiumsTable} from '../../../http/http-requests'
-import ModalStadiums from "../../Components/ModalStadiums/ModalStadiums";
-import ModalPlayer from '../../Components/ModalStadiums/ModalStadiums';
 
 const Stadiums = ()=>{
     const [stadiums,setStadiumsData] = useState([]);
@@ -42,7 +40,6 @@ const Stadiums = ()=>{
                 </tbody>
             </table>
             </div>
-            <ModalStadiums/>
         </div>
     );
 }

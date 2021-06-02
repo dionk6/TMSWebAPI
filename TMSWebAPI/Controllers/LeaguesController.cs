@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -103,22 +104,37 @@ namespace TMSWebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<League>> PostLeague(LeaguesViewModel model)
+        public async Task<ActionResult<League>> PostLeague([FromForm]LeaguesAddModel model)
         {
-            League league = new League();
-            league.Name = model.Name;
-            league.Country = model.Country;
-            league.FoundedYear = int.Parse(model.FoundedYear);
-            league.MaxNrTeam = int.Parse(model.MaxNrTeam);
-            league.TvPartner = model.TvPartner;
-            league.Logo = model.Logo;
-            league.CurrentChampion = model.CurrentChampion;
+            try {
+                League league = new League();
+                league.Name = model.Name;
+                league.Country = model.Country;
+                league.FoundedYear = int.Parse(model.FoundedYear);
+                league.MaxNrTeam = int.Parse(model.MaxNrTeam);
+                league.TvPartner = model.TvPartner;
+                IFormFile logo = model.Logo;
+                league.Logo = logo.FileName;
 
 
-            _context.Leagues.Add(league);
-            await _context.SaveChangesAsync();
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", logo.FileName);
+                using (Stream stream = new FileStream(path, FileMode.Create))
+                {
+                    logo.CopyTo(stream);
+                }
 
-            return Ok();
+                league.CurrentChampion = model.CurrentChampion;
+
+
+                _context.Leagues.Add(league);
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            catch (Exception) {
+                return StatusCode(StatusCodes.Status400BadRequest);
+            }
+           
         }
 
         // DELETE: api/Leagues/5

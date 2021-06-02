@@ -1,6 +1,7 @@
 import {useEffect,useState} from "react";
 import {LeaguesTable,GetLeague,LeaugesHttpRequestDelete} from '../../../http/http-requests';
 import ModalLeague from '../../Components/ModalLeague/ModalLeague';
+import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 
 import './Leauges.css'
 
@@ -8,6 +9,8 @@ const Leagues = () =>{
     const [leagues,setLeaguesData] = useState([]);
     const [league,setLeague] = useState({});
     const [openModal,setOpenModal] = useState(false);
+    const [openDeleteModal,setOpenDeleteModal] = useState(false);
+    const [deleteId,setDeleteId] = useState(null);
     
     const tableDataHeandler = async () =>{
         const allLeagues = await LeaguesTable();
@@ -25,18 +28,21 @@ const Leagues = () =>{
         }
     }
 
-    const DeleteLeague = async (id) => {
-        await LeaugesHttpRequestDelete(id);
+    const DeleteLeague = async (state,id) => {
+        setDeleteId(id);
+        if(state===1){
+            await LeaugesHttpRequestDelete(deleteId);
+        }
+        setOpenDeleteModal(!openDeleteModal);
     }
 
     const closeModalHeandler = () =>{
         setLeague({});
         setOpenModal(false);
     }
-
     useEffect(()=>{
         tableDataHeandler();
-    },[openModal,DeleteLeague,AddEdit]);
+    },[openModal,openDeleteModal]);
 
     return(
         <div className="leaugesPage">
@@ -70,7 +76,7 @@ const Leagues = () =>{
                                         <td>{element.currentChampion}</td>
                                         <td>
                                             <button onClick={()=>{AddEdit(element.id)}} className="editButton">Edit</button>  
-                                            <button onClick={()=>{DeleteLeague(element.id)}} className="deleteButton">Delete</button>  
+                                            <button onClick={()=>{DeleteLeague(0,element.id)}} className="deleteButton">Delete</button>  
                                         </td>
                                     </tr>
                                 )
@@ -80,6 +86,7 @@ const Leagues = () =>{
                 </div>
             </div>
             <ModalLeague openModal={openModal} league={league} closeModalHeandler={closeModalHeandler}/>
+            <DeleteModal openDeleteModal={openDeleteModal} deleteId={deleteId} Delete={DeleteLeague}/>
         </div>
     );
 }

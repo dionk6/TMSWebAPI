@@ -1,11 +1,15 @@
 import {useEffect,useState} from "react"
 import {playersHttpRequestTable,GetPlayer,playersHttpRequestDelete,SelectAllTeams} from "../../../http/http-requests"
 import ModalPlayer from '../../Components/ModalPlayer/ModalPlayer';
+import DeleteModal from '../../Components/DeleteModal/DeleteModal';
+
 const Players = () =>{
     const [players,setPlayers] = useState([]);
     const [player,setPlayer] = useState({});
     const [options,setOptions] = useState({});
     const [openModal,setOpenModal] = useState(false);
+    const [openDeleteModal,setOpenDeleteModal] = useState(false);
+    const [deleteId,setDeleteId] = useState(false);
 
     const playersTable = async () =>{
         const playersTableData = await playersHttpRequestTable();
@@ -28,9 +32,12 @@ const Players = () =>{
         }
     }
     
-    const DeletePlayer = async (id) =>{
-        await playersHttpRequestDelete(id);
-        window.location.reload();
+    const DeletePlayer = async (status,id) =>{
+        setDeleteId(id)
+        if(status===1){
+            await playersHttpRequestDelete(deleteId);
+        }
+        setOpenDeleteModal(!openDeleteModal);
     }
 
     const closeModalHeandler = () =>{
@@ -41,7 +48,7 @@ const Players = () =>{
     useEffect(()=>{
         playersTable();
         teamOptions();
-    },[]);
+    },[openModal,openDeleteModal]);
 
     return(
         <div>
@@ -77,7 +84,7 @@ const Players = () =>{
                                         <td>{player.team}</td>
                                         <td>
                                             <button onClick={()=>{AddEdit(player.id)}}>Edit</button>  
-                                            <button onClick={()=>{DeletePlayer(player.id)}}>Delete</button>  
+                                            <button onClick={()=>{DeletePlayer(0,player.id)}}>Delete</button>  
                                         </td>
                                     </tr>
                                 );
@@ -87,6 +94,7 @@ const Players = () =>{
                 </table>
             </div>
             <ModalPlayer openModal={openModal} player={player} options={options} closeModalHeandler={closeModalHeandler} />
+            <DeleteModal openDeleteModal={openDeleteModal} delteId={deleteId}  Delete={DeletePlayer} />
         </div>
     );
 }
