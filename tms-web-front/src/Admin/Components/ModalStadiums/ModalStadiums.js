@@ -1,6 +1,52 @@
+import {useEffect,useState} from 'react';
+import {useForm} from "react-hook-form";
+import {AddStadium,SetStadium} from '../../../http/http-requests';
+
 import './ModalStadiums.css'
 
 const ModalStadiums = (props) =>{
+
+    const [stadium, setStadium] = useState({});
+
+    const { register , handleSubmit } = useForm();
+
+    useEffect(()=>{
+        setStadium(props.stadium);
+    },[props.stadium]);
+
+    function handleChange(evt) {
+        const value = evt.target.value;
+        let inputName = evt.target.name;
+        setStadium({
+            id: (inputName === "id" ? value : stadium.id),
+            name: (inputName === "name" ? value : stadium.name),
+            capacity: (inputName === "capacity" ? value : stadium.capacity),
+            image: (stadium.image),
+            rank: (inputName === "rank" ? value : stadium.rank)
+        });
+    }
+
+    const onSubmitLeague = async (data) =>{
+        data.image=data.image[0];
+        let formData = new FormData();
+        formData.append('id',data.id);
+        formData.append('name',data.name);
+        formData.append('image',data.image);
+        formData.append('capacity',data.capacity);
+        formData.append('rank',data.rank);
+        try{
+            if(data.id !== ""){
+                await SetStadium(formData);
+            }else{
+                await AddStadium(formData);
+            }
+        }catch(err){
+            console.log(err);
+        }finally{
+            props.closeModalHeandler();
+        }
+    }
+
     return(
        <div className={`modalCustom ${props.openModal ? "active" : ""}`}>
            <div className="modalContent">
@@ -15,24 +61,28 @@ const ModalStadiums = (props) =>{
                     </svg>
                 </div>
                 <div className="modalBodyCustom">
-                    <form style={{width: "300px"}}>
+                    <form autoComplete="off" onSubmit={handleSubmit(onSubmitLeague)}>
+                        <div className="col-12 d-flex justify-content-center mb-3">
+                            {stadium.id !== undefined ? <img src={stadium.image} style={{width: "150px",padding: "10px",background: "white",borderRadius: "20px"}} /> : "" }
+                        </div>
+                        <input type="hidden" value={stadium.id != null ? stadium.id : ""} onChange={handleChange} name="id" ref={register({required: false})} />
                         <div className="mb-3">
                             <label className="form-label">Name</label>
-                            <input type="text" name="name" className="form-control" />
+                            <input type="text" value={stadium.name != null ? stadium.name : ""} onChange={handleChange} className="form-control" name="name"  ref={register({required: true})}/>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Capacity</label>
-                            <input type="number" className="form-control" name="capacity" />
+                            <input type="number" value={stadium.capacity != null ? stadium.capacity : ""} onChange={handleChange} className="form-control" name="capacity" ref={register({required: true})} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Image</label>
-                            <input type="file" className="form-control" name="image" />
+                            <input type="file"  className="form-control" onChange={handleChange} name="image" ref={register({required: true})}/>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Rank</label>
-                            <input type="number" className="form-control" name="rank" />
+                            <input type="number" value={stadium.rank != null ? stadium.rank : ""} onChange={handleChange} className="form-control" name="rank" ref={register({required: true})}/>
                         </div>
-                        <button type="submit" className="btn btn-primary">Save</button>
+                        {props.stadium.id != null ? <button type="submit" className="modalButton">Update</button> : <button type="submit" className="modalButton">Save</button> }
                     </form>
                 </div>
             </div>

@@ -1,6 +1,9 @@
 .tableWrapper {
     text-align: right;
 }
+.tableWrapper table{
+    text-align: left;
+}
 .tableWrapper .deleteButton,
 .tableWrapper .editButton,
 .tableWrapper .addButton{

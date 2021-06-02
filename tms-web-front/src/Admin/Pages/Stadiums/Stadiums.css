@@ -1,0 +1,27 @@
+.tableWrapper {
+    text-align: right;
+}
+.tableWrapper table{
+    text-align: left;
+}
+.tableWrapper .deleteButton,
+.tableWrapper .editButton,
+.tableWrapper .addButton{
+    padding: 10px 40px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    border:none;
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+.tableWrapper .addButton{
+    background-color: #2976bb;
+}
+.tableWrapper .editButton{
+    background-color: #eba83a;
+    color: #000;
+}
+.tableWrapper .deleteButton{
+    background-color: #f55c47;
+}
