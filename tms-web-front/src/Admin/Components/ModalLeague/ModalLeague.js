@@ -9,7 +9,6 @@ const ModalLeague = (props) =>{
 
     useEffect(()=>{
         setLeague(props.league);
-        console.log(props.league.logo)
     },[props.league]);
 
     function handleChange(evt) {
@@ -22,7 +21,6 @@ const ModalLeague = (props) =>{
             foundedYear: (inputName === "foundedYear" ? value : league.foundedYear),
             maxNrTeam: (inputName === "maxNrTeam" ? value : league.maxNrTeam),
             tvPartner: (inputName === "tvPartner" ? value : league.tvPartner),
-            logo: (inputName === "logo" ? value : league.logo),
             currentChampion: (inputName === "currentChampion" ? value : league.currentChampion)
         });
     }
@@ -68,9 +66,11 @@ const ModalLeague = (props) =>{
                 <div className="modalBodyCustom">
                     <form onSubmit={handleSubmit(onSubmitLeague)}>
                         <input type="hidden" value={league.id != null ? league.id : ""} name="id" ref={register({required: false})} />
-
                         <div className="container-fluid">
                             <div className="row">
+                                <div className="col-12 d-flex justify-content-center mb-3">
+                                    <img src={league.logo} style={{width: "150px",padding: "10px",background: "white",borderRadius: "20px"}} />
+                                </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Name</label>
                                     <input type="text" value={league.name != null ? league.name : ""} name="name" onChange={handleChange} className="form-control" ref={register({required: true})} />
@@ -93,7 +93,7 @@ const ModalLeague = (props) =>{
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Logo</label>
-                                    <input type="file" onChange={handleChange} className="form-control" name="logo" ref={register({required: true})} />
+                                    <input type="file" className="form-control" name="logo" ref={register({required: true})} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Current Champion</label>

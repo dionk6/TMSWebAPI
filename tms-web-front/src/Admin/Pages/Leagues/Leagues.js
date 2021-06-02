@@ -53,12 +53,12 @@ const Leagues = () =>{
                     <table className="table table-striped">
                         <thead>
                             <tr>
+                                <th scope="col">Logo</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Country</th>
                                 <th scope="col">Founded Year</th>
                                 <th scope="col">Max Nr Team</th>
                                 <th scope="col">TV Partner</th>
-                                <th scope="col">Logo</th>
                                 <th scope="col">CurrentChampion</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -67,12 +67,14 @@ const Leagues = () =>{
                             {leagues.map((element,index) => {
                                 return (
                                     <tr key={index}>
+                                        <td>
+                                            <img src={element.logo} style={{width: "50px"}} alt="Logo" />
+                                        </td>
                                         <td>{element.name}</td>
                                         <td>{element.country}</td>
                                         <td>{element.foundedYear}</td>
                                         <td>{element.maxNrTeam}</td>
                                         <td>{element.tvPartner}</td>
-                                        <td>{element.logo}</td>
                                         <td>{element.currentChampion}</td>
                                         <td>
                                             <button onClick={()=>{AddEdit(element.id)}} className="editButton">Edit</button>  

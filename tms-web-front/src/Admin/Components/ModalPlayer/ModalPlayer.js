@@ -69,41 +69,46 @@ const ModalPlayer = (props) =>{
                     </svg>
                 </div>
                 <div className="modalBodyCustom">
-                    <form style={{width: "300px"}} onSubmit={handleSubmit(onSubmitLeague)} >
-                    <input type="hidden" value={state.id != null ? state.id : ""} name="id" ref={register({required: false})} />
-                        <div className="mb-3">
-                            <label className="form-label">First Name</label>
-                            <input type="text" className="form-control" name="firstName" value={state.firstName != null ? state.firstName : ""} onChange={handleChange} ref={register({required: true})} />
+                    <form onSubmit={handleSubmit(onSubmitLeague)} >
+                        <input type="hidden" value={state.id != null ? state.id : ""} name="id" ref={register({required: false})} />
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">First Name</label>
+                                    <input type="text" className="form-control" name="firstName" value={state.firstName != null ? state.firstName : ""} onChange={handleChange} ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Last Name</label>
+                                    <input type="text" className="form-control" name="lastName" value={state.lastName != null ? state.lastName : ""} onChange={handleChange} ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Age</label>
+                                    <input type="number" className="form-control" name="age" value={state.age != null ? state.age : ""} onChange={handleChange} ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Player No</label>
+                                    <input type="number" className="form-control" name="playerNo" value={state.playerNo != null ? state.playerNo : ""} onChange={handleChange} ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Position</label>
+                                    <input type="text" className="form-control" name="position" value={state.position != null ? state.position : ""} onChange={handleChange} ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Kit</label>
+                                    <input type="text" className="form-control" name="kit" value={state.kit != null ? state.kit : ""} onChange={handleChange} ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Price</label>
+                                    <input type="number" className="form-control" name="price" value={state.price != null ? state.price : ""} onChange={handleChange} ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <label className="form-label">Team</label>
+                                    <Select onChange={handleChangeSelect} options={options} />
+                                </div>
+                            </div>
                         </div>
-                        <div className="mb-3">
-                            <label className="form-label">Last Name</label>
-                            <input type="text" className="form-control" name="lastName" value={state.lastName != null ? state.lastName : ""} onChange={handleChange} ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Age</label>
-                            <input type="number" className="form-control" name="age" value={state.age != null ? state.age : ""} onChange={handleChange} ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Player No</label>
-                            <input type="number" className="form-control" name="playerNo" value={state.playerNo != null ? state.playerNo : ""} onChange={handleChange} ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Position</label>
-                            <input type="text" className="form-control" name="position" value={state.position != null ? state.position : ""} onChange={handleChange} ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Kit</label>
-                            <input type="text" className="form-control" name="kit" value={state.kit != null ? state.kit : ""} onChange={handleChange} ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Price</label>
-                            <input type="number" className="form-control" name="price" value={state.price != null ? state.price : ""} onChange={handleChange} ref={register({required: true})} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Team</label>
-                            <Select onChange={handleChangeSelect} options={options} />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Save</button>
+                        
+                        <button type="submit" className="modalButton">Save</button>
                     </form>
                 </div>
             </div>
