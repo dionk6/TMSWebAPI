@@ -80,7 +80,7 @@ const ModalTeams = (props) =>{
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-12 d-flex justify-content-center mb-3">
-                                    <img src={team.logo} style={{width: "150px",padding: "10px",background: "white",borderRadius: "20px"}} />
+                                   {team.id !== undefined ? <img src={team.logo} className="formImagePreview" alt={team.name} /> : ""}
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Name</label>
@@ -92,7 +92,7 @@ const ModalTeams = (props) =>{
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Logo</label>
-                                    <input type="file" className="form-control" name="logo" ref={register({required: true})} />
+                                    <input type="file" className="form-control" name="logo" ref={register({required: false})} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Founded Year</label>

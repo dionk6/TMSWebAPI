@@ -2,12 +2,13 @@
     text-align: right;
 }
 .tableWrapper table{
+    vertical-align: middle;
     text-align: left;
 }
 .tableWrapper .deleteButton,
 .tableWrapper .editButton,
 .tableWrapper .addButton{
-    padding: 10px 40px;
+    padding: 10px 30px;
     border-radius: 5px;
     color: #ffffff;
     font-weight: bold;

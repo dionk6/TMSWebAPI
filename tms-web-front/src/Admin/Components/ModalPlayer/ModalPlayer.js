@@ -87,7 +87,7 @@ const ModalPlayer = (props) =>{
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-12 d-flex justify-content-center mb-3">
-                                    <img src={state.photo} style={{width: "150px",padding: "10px",background: "white",borderRadius: "20px"}} />
+                                    {state.photo !== undefined ? <img src={state.photo} className="formImagePreview" alt={state.name} /> : ""}
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">First Name</label>

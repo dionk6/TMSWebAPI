@@ -63,7 +63,7 @@ const ModalStadiums = (props) =>{
                 <div className="modalBodyCustom">
                     <form autoComplete="off" onSubmit={handleSubmit(onSubmitLeague)}>
                         <div className="col-12 d-flex justify-content-center mb-3">
-                            {stadium.id !== undefined ? <img src={stadium.image} style={{width: "150px",padding: "10px",background: "white",borderRadius: "20px"}} /> : "" }
+                            {stadium.id !== undefined ? <img src={stadium.image} className="formImagePreview" alt={stadium.name} /> : "" }
                         </div>
                         <input type="hidden" value={stadium.id != null ? stadium.id : ""} onChange={handleChange} name="id" ref={register({required: false})} />
                         <div className="mb-3">

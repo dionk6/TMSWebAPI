@@ -70,7 +70,7 @@ const ModalLeague = (props) =>{
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-12 d-flex justify-content-center mb-3">
-                                    <img src={league.logo} style={{width: "150px",padding: "10px",background: "white",borderRadius: "20px"}} />
+                                   {league.id !== undefined ? <img src={league.logo} className="formImagePreview" alt={league.name} /> : "" } 
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Name</label>

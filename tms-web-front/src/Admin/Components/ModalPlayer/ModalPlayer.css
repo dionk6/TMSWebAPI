@@ -59,8 +59,21 @@
   color: #ffffff;
   transition: all .15s linear .15s;
 }
+.modalCustom .modalContent form .formImagePreview{
+  width: 150px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 5px solid #45b4b4;
+  transition: all .15s linear .15s;
+}
 .modalCustom .modalContent form .modalButton:hover{
   border: 1px solid #45b4b4;
   color: #45b4b4;
 }
 
+.box-img{
+  width: 150px;
+  height: 150px;
+  background-color: white;
+}

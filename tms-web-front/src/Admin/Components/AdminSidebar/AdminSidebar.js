@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState,useLayoutEffect} from "react"
 import { NavLink } from "react-router-dom";
 import TMSLogo from "../../../assets/img/TMSLogo.png" 
 // CSS
@@ -9,9 +9,19 @@ const AdminSidebar = (props) =>{
     const toggleSidebarHandler = () =>{
         setActive(active ? "" : "active");
     }
+    const resizeHeandler = () =>{
+        if(window.innerWidth < 980){
+            setActive(active);
+        }
+    }
+
+    useLayoutEffect(()=>{
+        window.addEventListener('resize',resizeHeandler);
+        return window.removeEventListener('resize',resizeHeandler);
+    });
 
     return(
-        <aside className={active ? "" : "active"}>
+        <aside className={active ? "active" : ""}>
             <div className="asideTranslate">
                 <div className="asideLogo">
                     <NavLink to="/">
@@ -27,7 +37,7 @@ const AdminSidebar = (props) =>{
                     </ul>
                 </nav>
             </div>
-            <div className={`asideToggleButton ${active ? "" : "active"}`} onClick={toggleSidebarHandler}>
+            <div className={`asideToggleButton ${active ? "active" : ""}`} onClick={toggleSidebarHandler}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0"

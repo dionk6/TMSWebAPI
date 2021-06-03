@@ -2,6 +2,7 @@
     text-align: right;
 }
 .tableWrapper table{
+    vertical-align: middle;
     text-align: left;
 }
 .tableWrapper .deleteButton,
