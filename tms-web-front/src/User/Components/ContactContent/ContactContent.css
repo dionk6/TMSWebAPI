@@ -1,0 +1,29 @@
+.contactContent{
+    background: black;
+}
+
+.contactContent h1{
+    color: white;
+    font-size: 40px;
+    font-weight: normal;
+    padding-bottom: 5px;
+}
+
+.contactContent h1 span:nth-child(1){
+    border-bottom: 1px solid rgb(179, 12, 12);
+}
+.contactContent h1 span:nth-child(2){
+    color: rgb(179, 12, 12);
+}
+.contactContent p {
+    color: gray;
+    font-size: 14px;
+    font-weight: 500;
+}
+.roundBox{
+    width: auto;
+    height: auto;
+    border: 1px solid red;
+    padding: 15px;
+    border-radius: 50%;
+}

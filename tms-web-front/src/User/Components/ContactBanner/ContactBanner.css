@@ -1,0 +1,13 @@
+.contactBanner{
+    height: 500px;
+    background: url(../../../assets/img/innerpageBg.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.title{
+    color: white;
+    font-size: 80px;
+}
+.title span{
+    color: rgb(179, 12, 12);
+}

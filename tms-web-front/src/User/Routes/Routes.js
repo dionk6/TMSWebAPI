@@ -2,13 +2,18 @@ import React, { lazy, Suspense } from 'react'
 import {Switch, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('../Pages/Home/Home'));
+const Contact = lazy(() => import('../Pages/Contact/Contact'));
 
 
 const routes = [
     {
         path: "/",
-        component: Home,
+        component: Home
     },
+    {
+        path: "/Contact",
+        component: Contact
+    }
 ];
 
 const Routes = (props) =>{
