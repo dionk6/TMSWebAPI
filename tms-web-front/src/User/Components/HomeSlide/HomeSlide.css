@@ -1,33 +1,33 @@
-.HomeSlide{
-    width: 100%;
-    height: 100vh;
-    display: flex;
+.HomeSlide {
+  width: 100%;
+  height: 100vh;
+  display: flex;
 }
-.HomeSlide .homeSlideImage{
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.HomeSlide .homeSlideImage {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.HomeSlide .homeSlideImage .teamImage{
-    width: 500px;
-    height: 500px;
+.HomeSlide .homeSlideImage .teamImage {
+  width: 300px;
+  height: 300px;
 }
-.HomeSlide .homeSlideImage .teamImage img{
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.HomeSlide .homeSlideImage .teamImage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.HomeSlide .homeSlideText{
-    width: 50%;
-    color: #fff;
-    background-color: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.HomeSlide .homeSlideText {
+  width: 50%;
+  color: #fff;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.HomeSlide .homeSlideText .homeSliderContent{
-    text-align: center;
+.HomeSlide .homeSlideText .homeSliderContent {
+  text-align: center;
 }

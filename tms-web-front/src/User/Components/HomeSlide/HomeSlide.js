@@ -6,7 +6,7 @@ const HomeSlide = (props) =>{
         <div className="HomeSlide">
             <div className="homeSlideImage" style={{background:`url(${backGroundImage}) no-repeat center`,backgroundSize:"cover"}}>
                 <div className="teamImage">
-                    <img src={props.teamImage} alt="Team Image Slide"/>
+                    <img src={props.teamImage} alt={props.teamImage}/>
                 </div>
             </div>
             <div className="homeSlideText">
