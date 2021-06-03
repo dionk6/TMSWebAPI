@@ -3,7 +3,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 100;
   background-color: #000000;
 }
 .headerInner {
@@ -31,7 +31,7 @@ header {
   margin-bottom: 5px;
   border-radius: 5px;
   background-color: #ffffff;
-  transition: all 0.15s linear 0.15s;
+  transition: all 0.15s linear ;
 }
 .toggleButtonDiv.active span:nth-child(1) {
   transform: rotate(-45deg);

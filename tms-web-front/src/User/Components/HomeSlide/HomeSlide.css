@@ -18,7 +18,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .HomeSlide .homeSlideText {
   width: 50%;
@@ -30,4 +30,23 @@
 }
 .HomeSlide .homeSlideText .homeSliderContent {
   text-align: center;
+}
+.HomeSlide .homeSlideText .homeSliderContent h1{
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.HomeSlide .homeSlideText .homeSliderContent .teamInfoManager ,
+.HomeSlide .homeSlideText .homeSliderContent .teamInfoCity ,
+.HomeSlide .homeSlideText .homeSliderContent .teamInfoTrophies {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.HomeSlide .homeSlideText .homeSliderContent .teamInfoManager svg,
+.HomeSlide .homeSlideText .homeSliderContent .teamInfoCity svg,
+.HomeSlide .homeSlideText .homeSliderContent .teamInfoTrophies svg{
+  width: 30px;
+  height: 30px;
+  fill: #45b4b4;
 }
