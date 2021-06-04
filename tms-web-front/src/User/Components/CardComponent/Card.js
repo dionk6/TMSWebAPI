@@ -13,7 +13,7 @@ const Card = (props)=>{
                         <div >
                             <img src={TMSLogo} />
                         </div>
-                        <div className="footer">
+                        <div className="footerleagueCard">
                             <div className="row">
                                 <div className="col-md-6 p-2">
                                     Max.Teams: 20
@@ -33,7 +33,7 @@ const Card = (props)=>{
                         <div >
                             <img src={TMSLogo} />
                         </div>
-                        <div className="footer">
+                        <div className="footerleagueCard">
                             <div className="row">
                                 <div className="col-md-6 p-2">
                                     Max.Teams: 20
@@ -53,7 +53,7 @@ const Card = (props)=>{
                         <div >
                             <img src={TMSLogo} />
                         </div>
-                        <div className="footer">
+                        <div className="footerleagueCard">
                             <div className="row">
                                 <div className="col-md-6 p-2">
                                     Max.Teams: 20
@@ -73,7 +73,7 @@ const Card = (props)=>{
                         <div >
                             <img src={TMSLogo} />
                         </div>
-                        <div className="footer">
+                        <div className="footerleagueCard">
                             <div className="row">
                                 <div className="col-md-6 p-2">
                                     Max.Teams: 20

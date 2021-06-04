@@ -1,18 +1,20 @@
-.leagueCard{
+.leagueCard {
   color: black;
-  background-color: black;
-  width: 80%;
+  background-color: white;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 50px;
+  border: none;
+  border-radius: 15px;
 }
 
-.leagueCard img{
+.leagueCard img {
   width: 100%;
 }
 
-.Title{
+.Title {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -20,8 +22,9 @@
   background-color: #45b4b4;
 }
 
-.footer{
+.footerleagueCard {
   color: #45b4b4;
   background-color: black;
   width: 100% !important;
+  text-align: center;
 }
