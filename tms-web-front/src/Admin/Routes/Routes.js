@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import {Switch, Route } from 'react-router-dom';
+import PreLoader from "../../PreLoader";
 
 const Leagues = lazy(() => import('../Pages/Leagues/Leagues'));
 const Stadiums = lazy(() => import('../Pages/Stadiums/Stadiums'));
@@ -28,8 +29,8 @@ const routes = [
 
 const Routes = (props) =>{
     return(
-        <div className="routerWrapperAdmin">
-            <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<PreLoader/>}>
+            <div className="routerWrapperAdmin">
                 <Switch>
                 {routes.map(({ path, component }, index) => {
                     if (path) {
@@ -41,8 +42,8 @@ const Routes = (props) =>{
                     }
                 })}
                 </Switch>
-            </Suspense>
-        </div>
+            </div>
+        </Suspense>
     );
 }
 
