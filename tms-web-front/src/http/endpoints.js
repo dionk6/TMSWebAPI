@@ -7,5 +7,6 @@ const TEAMSTable = '/api/teams/teamstable';
 const Team = '/api/teams';
 const Player = '/api/players';
 const SelectTeams = '/api/teams/selectteams';
+const SendEmail = '/api/contacts/SendEmail';
 
-export {LEAGUES,STADIUM,PLAYERSTable,STADIUMSTable,LEAGUESTable,TEAMSTable,Team,Player,SelectTeams};
+export {LEAGUES,STADIUM,PLAYERSTable,STADIUMSTable,LEAGUESTable,TEAMSTable,Team,Player,SelectTeams,SendEmail};

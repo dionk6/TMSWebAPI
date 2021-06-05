@@ -9,6 +9,7 @@ import {
   Team,
   Player,
   SelectTeams,
+  SendEmail,
 } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
@@ -170,6 +171,14 @@ const SelectAllTeams = () => {
   });
 };
 
+const sendEmail = (data) => {
+  return axios({
+    method: POST,
+    url: SendEmail,
+    data: data,
+  });
+};
+
 export {
   LeaugesHttpRequest,
   AddStadium,
@@ -192,5 +201,6 @@ export {
   SelectAllTeams,
   SetTeam,
   AddTeam,
-  DeleteTeam
+  DeleteTeam,
+  sendEmail
 };

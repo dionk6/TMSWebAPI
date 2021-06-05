@@ -8,6 +8,6 @@ namespace TMSWebAPI.Interfaces
 {
     public interface IEmailService
     {
-        Task SendEmailAsync(ContactViewModel contact);
+        Task<bool> SendEmailAsync(ContactViewModel contact);
     }
 }

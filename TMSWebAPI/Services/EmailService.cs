@@ -11,7 +11,7 @@ namespace TMSWebAPI.Services
 {
     public class EmailService : IEmailService
     {
-        public async Task SendEmailAsync(ContactViewModel contact)
+        public async Task<bool> SendEmailAsync(ContactViewModel contact)
         {
             try
             {
@@ -32,11 +32,11 @@ namespace TMSWebAPI.Services
                 mailMessage.Body = "<h1>Subject:</h1> " + contact.Subject + "<h3>Email:</h3> " + contact.Email + "<br/> <h3>Message:</h3> " + contact.Message;
                 mailMessage.To.Add("ushtrimeemail@gmail.com");
                 await smtpClient.SendMailAsync(mailMessage);
+                return true;
             }
             catch (Exception e)
             {
-
-                throw e;
+                return false;
             }
         }
     }

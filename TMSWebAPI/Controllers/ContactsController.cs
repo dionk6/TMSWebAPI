@@ -19,8 +19,8 @@ namespace TMSWebAPI.Controllers
             _email = email;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<ContactViewModel>> PostMessage(ContactViewModel contact)
+        [HttpPost("SendEmail")]
+        public async Task<bool> SendEmail(ContactViewModel contact)
         {
             ContactViewModel email = new ContactViewModel();
             email.FirstName = contact.FirstName;
@@ -29,8 +29,8 @@ namespace TMSWebAPI.Controllers
             email.Subject = contact.Subject;
             email.Message = contact.Message;
 
-            await _email.SendEmailAsync(email);
-            return Ok();
+            var res = await _email.SendEmailAsync(email);
+            return res;
         }
     }
 }
