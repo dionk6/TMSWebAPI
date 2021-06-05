@@ -1,0 +1,16 @@
+.LeaguesBanner {
+  position: relative;
+  width: 100%;
+  max-height: 500px;
+}
+.headerInfo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.headerImage img {
+  width: 100%;
+  max-height: 500px;
+}

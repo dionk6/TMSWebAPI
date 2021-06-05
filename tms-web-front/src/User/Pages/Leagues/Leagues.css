@@ -1,0 +1,16 @@
+.Leagues {
+  display: flex;
+  flex-direction: column;
+}
+.infoLeagues {
+  display: flex;
+  flex-direction: column;
+}
+.titleLeagues {
+  display: flex;
+  justify-content: center;
+}
+/* .cardLeagues {
+  width: 100%;
+  height: 600px;
+} */

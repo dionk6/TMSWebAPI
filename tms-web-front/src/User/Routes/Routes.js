@@ -4,7 +4,7 @@ import PreLoader from  '../../PreLoader';
 
 const Home = lazy(() => import('../Pages/Home/Home'));
 const Contact = lazy(() => import('../Pages/Contact/Contact'));
-
+const Leagues = lazy(() => import ('../Pages/Leagues/Leagues'));
 
 const routes = [
     {
@@ -14,6 +14,10 @@ const routes = [
     {
         path: "/Contact",
         component: Contact
+    },
+    {
+        path:"/Leagues",
+        component: Leagues
     }
 ];
 
