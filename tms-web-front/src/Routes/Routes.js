@@ -22,6 +22,10 @@ const routes = [
         component:User
     },
     {
+        path: "/About",
+        component:User
+    },
+    {
         path: "/Admin",
         component: Admin,
     },
