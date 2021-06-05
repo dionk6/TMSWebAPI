@@ -18,6 +18,10 @@ const routes = [
         component:User
     },
     {
+        path: "/Leagues",
+        component:User
+    },
+    {
         path: "/Admin",
         component: Admin,
     },
