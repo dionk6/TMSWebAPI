@@ -14,6 +14,8 @@ const Home = (props) => {
           </div>
           <div className="allLeagues">
             <Card/>
+            <Card/>
+            <Card/>
           </div>
         </div>
       </div>

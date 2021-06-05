@@ -21,31 +21,33 @@ const HomeSlider = (porps) => {
   }, []);
 
   return (
-    <Swiper
-      slidesPerView={1}
-      effect="fade"
-      loop={true}
-      autoplay={{
-        delay: 4000,
-        disableOnInteraction: false,
-      }}
-    >
-      {teams.map((team, i) => {
-        return (
-          <SwiperSlide key={i}>
-            <HomeSlide
-              teamImage={team.logo}
-              teamName={team.name}
-              city={team.city}
-              manager={team.manager}
-              trophies={team.trophies}
-              league={team.league}
-              stadium={team.stadium}
-            />
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+    <div className="HomeSilder">
+      <Swiper
+        slidesPerView={1}
+        effect="fade"
+        loop={true}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+      >
+        {teams.map((team, i) => {
+          return (
+            <SwiperSlide key={i}>
+              <HomeSlide
+                teamImage={team.logo}
+                teamName={team.name}
+                city={team.city}
+                manager={team.manager}
+                trophies={team.trophies}
+                league={team.league}
+                stadium={team.stadium}
+              />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
   );
 };
 

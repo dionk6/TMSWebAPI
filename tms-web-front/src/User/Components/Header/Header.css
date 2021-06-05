@@ -57,9 +57,14 @@ header {
   padding: 10px;
   font-size: 20px;
 }
-.header ul li:hover {
-  color: red;
-  text-decoration: underline;
+.header ul li a{
+  color: #ffffff;
+  text-decoration: none;
+  transition: all .15s linear .15s;
+}
+.header ul li a:hover {
+  color: #45b4b4;
+  text-decoration: none;
 }
 .logoHeader a img {
   width: 100px;
@@ -79,10 +84,16 @@ header {
     opacity: 0;
     transition: all 0.15s linear 0.15s;
   }
+  .headersLinks ul{
+    display: none;
+  }
   .headersLinks.active {
     visibility: visible;
     opacity: 1;
     height: 100vh;
+  }
+  .headersLinks.active ul{
+    display: block;
   }
   .headersLinks ul li {
     display: block;

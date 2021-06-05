@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {NavLink} from "react-router-dom"
 import './Header.css';
 import TMSLogo from "../../Images/TMSLogo.png";
  
@@ -22,16 +23,16 @@ const Header = (props) =>{
                         <nav className={`headersLinks ${active ? "active" : ""}`}>
                             <ul>
                                 <li className="navItem">
-                                    <a>Home</a>
+                                    <NavLink to="/">Home</NavLink>
                                 </li>
                                 <li className="navItem">
-                                    <a>Leagues</a>
+                                    <NavLink to="/Leagues">Leagues</NavLink>
                                 </li>
                                 <li className="navItem">
-                                    <a>About</a>
+                                    <NavLink to="/About">About</NavLink>
                                 </li>
                                 <li className="navItem">
-                                    <a>Contact</a>
+                                    <NavLink to="/Contact">Contact</NavLink>
                                 </li>    
                             </ul>    
                         </nav>
