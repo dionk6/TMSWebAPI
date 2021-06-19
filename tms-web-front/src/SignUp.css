@@ -1,0 +1,62 @@
+.Login{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+}
+
+.box{
+    width: 500px;
+}
+
+.logo{
+    width: 200px;
+}
+
+.loginBox{
+    border-radius: 5px;
+}
+
+input{
+    width: 100%;
+    height: 50px;
+    padding: 0px 15px;
+    margin: 0px 0 15px 0;
+    color: #172b43;
+    font-size: 16px;
+    outline: none;
+    background: #fff;
+    border: 0;
+    border-bottom: 2px solid #e6e6e6;
+}
+
+input:focus{
+    border-bottom: 2px solid #45b4b4;
+}
+
+h4{
+    margin-bottom: 40px;
+}
+
+button{
+    padding: 12px 0px;
+    width: 150px;
+    background-color: #45b4b4;
+    color: white;
+    border: 0;
+    border-radius: 50px;
+}
+
+a{
+    padding: 12px 0px;
+    width: 150px;
+    background-color: #45b4b4;
+    color: white;
+    border: 0;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+button:hover,a:hover{
+    background-color: #0c5e5e;
+    color: white;
+}

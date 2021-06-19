@@ -6,12 +6,22 @@ import PreLoader from '../PreLoader';
 const User = lazy(() => import('../User/User'));
 const Admin = lazy(() => import('../Admin/Admin'));
 const NotFound = lazy(() => import('../NotFound'));
+const Login = lazy(() => import('../Login'));
+const SignUp = lazy(() => import('../SignUp'));
 
 
 const routes = [
     {
         path: "/",
         component:User
+    },
+    {
+        path: "/Login",
+        component:Login
+    },
+    {
+        path: "/SignUp",
+        component:SignUp
     },
     {
         path: "/Contact",
