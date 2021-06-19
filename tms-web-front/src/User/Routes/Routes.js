@@ -5,6 +5,7 @@ import PreLoader from  '../../PreLoader';
 const Home = lazy(() => import('../Pages/Home/Home'));
 const Contact = lazy(() => import('../Pages/Contact/Contact'));
 const Leagues = lazy(() => import ('../Pages/Leagues/Leagues'));
+const LeagueDetail = lazy(() => import ('../Pages/LeagueDetail/LeagueDetail'));
 const About = lazy(() => import('../Pages/About/About'));
 
 
@@ -20,6 +21,10 @@ const routes = [
     {
         path:"/Leagues",
         component: Leagues
+    },
+    {
+        path:"/LeagueDetail/:id",
+        component: LeagueDetail
     },
     {
         

@@ -1,5 +1,5 @@
 import './Card.css';
-import TMSLogo from "../../Images/TMSLogo.png";
+import {NavLink} from 'react-router-dom'
 
 const Card = (props)=>{
     return(           
@@ -13,7 +13,7 @@ const Card = (props)=>{
                     <img src={props.image} />
                 </div>
                 <div className="cardLeagueFooter">
-                    <button id={props.id}>View Details</button>
+                    <NavLink to={`/LeagueDetail/${props.id}`} id={props.id}>View Details</NavLink>
                 </div>
             </div>
 

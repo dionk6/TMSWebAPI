@@ -32,9 +32,10 @@
   color: #ffffff;
   border-top: 1px solid #45b4b4;
 }
-.cardLeague .cardLeagueFooter button{
+.cardLeague .cardLeagueFooter a{
   background-color: #ffffff;
   color: #000000;
+  text-decoration: none;
   border-radius: 8px;
   border:1px solid #ffffff;
   font-size: 20px;
@@ -43,7 +44,7 @@
   transition: all .15s linear .15s;
 } 
 
-.cardLeague .cardLeagueFooter button:hover{
+.cardLeague .cardLeagueFooter a:hover{
   background-color: transparent;
   border: 1px solid #45b4b4;
   color: #ffffff;
