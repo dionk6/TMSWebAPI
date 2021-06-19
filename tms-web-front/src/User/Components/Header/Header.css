@@ -19,6 +19,9 @@ header {
   display: flex;
   justify-content: flex-end;
 }
+.headersLinks a.active{
+  color: W;
+}
 .toggleButtonDiv {
   display: none;
   cursor: pointer;

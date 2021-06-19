@@ -14,6 +14,7 @@ const HomeSlider = (porps) => {
   const allTeams = async () => {
     const allTeams = await TeamsTable();
     setTeams(allTeams.data);
+    console.log(allTeams.data)
   };
 
   useEffect(() => {
@@ -40,8 +41,7 @@ const HomeSlider = (porps) => {
                 city={team.city}
                 manager={team.manager}
                 trophies={team.trophies}
-                league={team.league}
-                stadium={team.stadium}
+                description={team.description}
               />
             </SwiperSlide>
           );

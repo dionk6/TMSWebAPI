@@ -1,8 +1,22 @@
+import { useEffect, useState } from 'react';
 import './Leagues.css';
 import Card from '../../Components/CardComponent/Card';
 import LeaguesBanner from '../../Components/LeaguesBanner/LeaguesBanner';
+import { LeaguesTable } from "../../../http/http-requests";
+
 
 const Leagues = (props) =>{
+    const [leagues, setLeagues] = useState([]);
+
+    const leaguesCall = async () => {
+      let leaguesFeedback = await LeaguesTable();
+      setLeagues(leaguesFeedback.data);
+      console.log(leagues)
+    };
+    useEffect(() => {
+      leaguesCall();
+    }, []);
+    
     return(
         <div className="Leagues">
             <div className="topHeader">
@@ -14,7 +28,15 @@ const Leagues = (props) =>{
                         <div className="titleLeagues">
                             <h1>All Leagues</h1>
                         </div>
-                        <Card />
+                        <div className="container">
+                            <div className="row">
+                            {leagues.map((league, index) => {
+                                return (
+                                <Card id={league.id} image={league.logo} key={index} />
+                                );
+                            })}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

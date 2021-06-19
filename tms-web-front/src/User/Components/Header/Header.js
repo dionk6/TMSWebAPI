@@ -23,16 +23,16 @@ const Header = (props) =>{
                         <nav className={`headersLinks ${active ? "active" : ""}`}>
                             <ul>
                                 <li className="navItem">
-                                    <NavLink to="/">Home</NavLink>
+                                    <NavLink to="/" exact>Home</NavLink>
                                 </li>
                                 <li className="navItem">
-                                    <NavLink to="/Leagues">Leagues</NavLink>
+                                    <NavLink to="/Leagues" exact>Leagues</NavLink>
                                 </li>
                                 <li className="navItem">
-                                    <NavLink to="/About">About</NavLink>
+                                    <NavLink to="/About" exact>About</NavLink>
                                 </li>
                                 <li className="navItem">
-                                    <NavLink to="/Contact">Contact</NavLink>
+                                    <NavLink to="/Contact" exact>Contact</NavLink>
                                 </li>    
                             </ul>    
                         </nav>
