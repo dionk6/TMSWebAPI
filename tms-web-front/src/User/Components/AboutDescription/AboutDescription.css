@@ -1,5 +1,59 @@
-.Desciption{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+.AboutDescription {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-image: url("../../../assets/img/innerpageBg.jpg");
+  background-attachment: fixed;
+}
+
+.aboutUsHeader {
+  margin: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutUsInfo1 {
+  padding-top: 15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.15s linear 0.15s;
+}
+
+.aboutUsInfo1 svg,
+.aboutUsInfo2 svg,
+.aboutUsInfo3 svg,
+.aboutUsInfo4 svg {
+  fill: white;
+  width: 100px;
+  height: 100px;
+}
+
+.aboutUsInfo1:hover svg {
+  width: 60px;
+  height: 60px;
+  fill: black;
+  transition: all 0.15s linear 0.15s;
+}
+.aboutUsInfo1:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 10px;
+  color: black;
+}
+.contactAboutUs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttoncontact {
+  border: none;
+  border-radius: 15px;
+  margin-left: 10px;
 }

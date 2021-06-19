@@ -1,18 +1,16 @@
 import "./AboutBanner.css";
-import AboutUs from '../../Images/AboutBanner.png';
+// import shakingHands from '../../../assets/img/shakingHands.jpg';
 
 const AboutBanner = ()=>{
     return (
         <div className="AboutBanner">
-            <div className="container-fluid imgcontainer">
-                <div className="row m-0">
-                    <div className="col-12 p-0">
-                        <img src={AboutUs}/>
-                    </div>
+            <div className="imgcontainer">
+                <div className="headerInfo">
+                    <h1>ABOUT US</h1>
                 </div>
             </div>
         </div>
-    )
+    )   
 }
 
 export default AboutBanner;
