@@ -32,12 +32,17 @@ const ModalPlayer = (props) =>{
             position: (inputName === "position" ? value : state.position),
             photo: state.photo,
             kit: (inputName === "kit" ? value : state.kit),
-            price: (inputName === "price" ? value : state.price)
+            price: (inputName === "price" ? value : state.price),
+            bio: (inputName === "bio" ? value : state.bio)
         });
     }
 
     const onSubmitLeague = async (data) =>{
-        data.teamId = select.selectedOption.value;
+        if(select.selectedOption == undefined){
+            data.teamId = "0";
+        }else{
+            data.teamId = select.selectedOption.value;
+        }
         data.logo=data.logo[0];
         let formData = new FormData();
         formData.append('id',data.id);
@@ -48,9 +53,9 @@ const ModalPlayer = (props) =>{
         formData.append('position',data.position);
         formData.append('photo',data.logo);
         formData.append('kit',data.kit);
+        formData.append('bio',data.bio);
         formData.append('price',data.price);
         formData.append('teamId',data.teamId);
-        //console.log(data);
         try{
             if(data.id !== ""){
                 await playersHttpRequestPut(formData);
@@ -121,9 +126,13 @@ const ModalPlayer = (props) =>{
                                     <label className="form-label">Team</label>
                                     <Select onChange={handleChangeSelect} options={options} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-12 mb-3">
                                     <label className="form-label">Logo</label>
-                                    <input type="file" className="form-control" name="logo" ref={register({required: true})} />
+                                    <input type="file" className="form-control" name="logo" ref={register({required: false})} />
+                                </div>
+                                <div className="col-md-12 mb-3">
+                                    <label className="form-label">Bio</label>
+                                    <textarea rows="4" className="form-control" name="bio" value={state.bio != null ? state.bio : ""} onChange={handleChange} ref={register({required: true})}></textarea>
                                 </div>
                             </div>
                         </div>

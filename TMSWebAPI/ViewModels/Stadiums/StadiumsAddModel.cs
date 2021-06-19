@@ -11,6 +11,7 @@ namespace TMSWebAPI.ViewModels.Stadiums
         public string Id { get; set; }
         public string Name { get; set; }
         public string Capacity { get; set; }
+        public string Description { get; set; }
         public IFormFile Image { get; set; }
         public string Rank { get; set; }
     }

@@ -14,6 +14,7 @@ namespace TMSWebAPI.ViewModels.Teams
         public IFormFile Logo { get; set; }
         public string FoundedYear { get; set; }
         public string Manager { get; set; }
+        public string Description { get; set; }
         public string Trophies { get; set; }
         public string Owner { get; set; }
         public string Budget { get; set; }

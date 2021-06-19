@@ -69,6 +69,7 @@ const Players = () =>{
                                 <th scope="col">Position</th>
                                 <th scope="col">Kit</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Bio</th>
                                 <th scope="col">Team</th>
                                 <th scope="col">Actions</th>
                             </tr>
@@ -88,6 +89,7 @@ const Players = () =>{
                                             <td>{player.position}</td>
                                             <td>{player.kit}</td>
                                             <td>{player.price}</td>
+                                            <td>{player.bio}</td>
                                             <td>{player.team}</td>
                                             <td>
                                                 <button onClick={()=>{AddEdit(player.id)}} className="editButton">Edit</button>  

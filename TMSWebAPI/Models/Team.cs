@@ -18,9 +18,11 @@ namespace TMSWebAPI.Models
         public string Logo { get; set; }
         public int FoundedYear { get; set; }
         public string Manager { get; set; }
+        public string Description { get; set; }
         public int Trophies { get; set; }
         public string Owner { get; set; }
         public string Budget { get; set; }
+        public bool? IsDeleted { get; set; }
         public int LeagueId { get; set; }
         public int StadiumId { get; set; }
 

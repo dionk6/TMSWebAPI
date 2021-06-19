@@ -31,13 +31,13 @@ namespace TMSWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Team>>> GetPlayers()
         {
-            return await _context.Teams.ToListAsync();
+            return await _context.Teams.Where(t => t.IsDeleted == false).ToListAsync();
         }
 
         [HttpGet("TeamsTable")]
         public IEnumerable<TeamsTable> TeamsTable()
         {
-            IEnumerable<TeamsTable> model = _context.Teams.Include(t => t.League).Include(t => t.Stadium).Select(t => new TeamsTable
+            IEnumerable<TeamsTable> model = _context.Teams.Where(t => t.IsDeleted == false).Include(t => t.League).Include(t => t.Stadium).Select(t => new TeamsTable
             {
                 Id = t.Id.ToString(),
                 Name = t.Name,
@@ -49,7 +49,8 @@ namespace TMSWebAPI.Controllers
                 Owner = t.Owner,
                 Budget = t.Budget,
                 League = t.League.Name,
-                Stadium = t.Stadium.Name
+                Stadium = t.Stadium.Name,
+                Description = t.Description
             });
             return model;
         }
@@ -74,8 +75,7 @@ namespace TMSWebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> PutTeam([FromForm] TeamsAddModel model)
         {
-            Team team = new Team();
-            team.Id = int.Parse(model.Id);
+            Team team = await _context.Teams.FindAsync(int.Parse(model.Id));
             team.Name = model.Name;
             team.City = model.City;
             team.FoundedYear = int.Parse(model.FoundedYear);
@@ -83,8 +83,15 @@ namespace TMSWebAPI.Controllers
             team.Trophies = int.Parse(model.Trophies);
             team.Owner = model.Owner;
             team.Budget = model.Budget;
-            team.LeagueId = int.Parse(model.LeagueId);
-            team.StadiumId = int.Parse(model.StadiumId);
+            if (int.Parse(model.LeagueId) != 0)
+            {
+                team.LeagueId = int.Parse(model.LeagueId);
+            }
+            if (int.Parse(model.StadiumId) != 0)
+            {
+                team.StadiumId = int.Parse(model.StadiumId);
+            }
+            team.Description = model.Description;
             if (model.Logo != null)
             {
                 var filePath = Path.Combine(_env.WebRootPath, "Upload", "Teams"); ;
@@ -139,8 +146,24 @@ namespace TMSWebAPI.Controllers
             team.Trophies = int.Parse(model.Trophies);
             team.Owner = model.Owner;
             team.Budget = model.Budget;
-            team.LeagueId = int.Parse(model.LeagueId);
-            team.StadiumId = int.Parse(model.StadiumId);
+            if (int.Parse(model.LeagueId) != 0)
+            {
+                team.LeagueId = int.Parse(model.LeagueId);
+            }
+            else
+            {
+                team.LeagueId = _context.Leagues.Where(t => t.IsDeleted == false).FirstOrDefault().Id;
+            }
+            if (int.Parse(model.StadiumId) != 0)
+            {
+                team.StadiumId = int.Parse(model.StadiumId);
+            }
+            else
+            {
+                team.StadiumId = _context.Stadiums.Where(t => t.IsDeleted == false).FirstOrDefault().Id;
+            }
+            team.Description = model.Description;
+            team.IsDeleted = false;
             if (model.Logo != null)
             {
                 var filePath = Path.Combine(_env.WebRootPath, "Upload", "Teams"); ;
@@ -178,7 +201,8 @@ namespace TMSWebAPI.Controllers
                 return NotFound();
             }
 
-            _context.Teams.Remove(team);
+            team.IsDeleted = true;
+            _context.Teams.Update(team);
             await _context.SaveChangesAsync();
 
             return team;

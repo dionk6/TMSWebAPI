@@ -17,9 +17,11 @@ namespace TMSWebAPI.Models
         public string Country { get; set; }
         public int FoundedYear { get; set; }
         public int MaxNrTeam { get; set; }
+        public string Description { get; set; }
         public string TvPartner { get; set; }
         public string Logo { get; set; }
         public string CurrentChampion { get; set; }
+        public bool? IsDeleted { get; set; }
 
         public virtual ICollection<Team> Teams { get; set; }
     }

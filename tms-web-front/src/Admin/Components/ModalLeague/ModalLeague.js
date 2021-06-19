@@ -22,7 +22,8 @@ const ModalLeague = (props) =>{
             maxNrTeam: (inputName === "maxNrTeam" ? value : league.maxNrTeam),
             logo: league.logo,
             tvPartner: (inputName === "tvPartner" ? value : league.tvPartner),
-            currentChampion: (inputName === "currentChampion" ? value : league.currentChampion)
+            currentChampion: (inputName === "currentChampion" ? value : league.currentChampion),
+            description: (inputName === "description" ? value : league.description)
         });
     }
 
@@ -37,7 +38,7 @@ const ModalLeague = (props) =>{
         formData.append('tvPartner',data.tvPartner);
         formData.append('logo',data.logo);
         formData.append('currentChampion',data.currentChampion);
-
+        formData.append('description',data.description);
         try{
             if(data.id !== ""){
                 await LeaugesHttpRequestPut(formData);
@@ -72,33 +73,37 @@ const ModalLeague = (props) =>{
                                 <div className="col-12 d-flex justify-content-center mb-3">
                                    {league.id !== undefined ? <img src={league.logo} className="formImagePreview" alt={league.name} /> : "" } 
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Name</label>
                                     <input type="text" value={league.name != null ? league.name : ""} name="name" onChange={handleChange} className="form-control" ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Country</label>
                                     <input type="text" value={league.country != null ? league.country : ""} onChange={handleChange} className="form-control" name="country" ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Founded Year</label>
                                     <input type="number" value={league.foundedYear != null ? league.foundedYear : ""} onChange={handleChange} className="form-control" name="foundedYear" ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Max Nr Team</label>
                                     <input type="number" value={league.maxNrTeam != null ? league.maxNrTeam : ""} onChange={handleChange} className="form-control" name="maxNrTeam" ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Tv Partner</label>
                                     <input type="text" value={league.tvPartner != null ? league.tvPartner : ""} onChange={handleChange} className="form-control" name="tvPartner" ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
-                                    <label className="form-label">Logo</label>
-                                    <input type="file" className="form-control" name="logo" ref={register({required: true})} />
-                                </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Current Champion</label>
                                     <input type="text" value={league.currentChampion != null ? league.currentChampion : ""} onChange={handleChange} className="form-control" name="currentChampion" ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-12 mb-3">
+                                    <label className="form-label">Logo</label>
+                                    <input type="file" className="form-control" name="logo" ref={register({required: false})} />
+                                </div>
+                                <div className="col-md-12 mb-3">
+                                    <label className="form-label">Description</label>
+                                    <textarea rows="4" value={league.description != null ? league.description : ""} onChange={handleChange} className="form-control" name="description" ref={register({required: true})}></textarea>
                                 </div>
                             </div>
                                 {props.league.id != null ? <button type="submit" className="modalButton">Update</button> : <button type="submit" className="modalButton">Save</button> }

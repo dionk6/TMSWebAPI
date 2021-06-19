@@ -9,6 +9,8 @@ import {
   Team,
   Player,
   SelectTeams,
+  SelectLeagues,
+  SelectStadiums,
   SendEmail,
 } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
@@ -171,6 +173,20 @@ const SelectAllTeams = () => {
   });
 };
 
+const SelectAllLeagues = () => {
+  return axios({
+    method: GET,
+    url: SelectLeagues,
+  });
+};
+
+const SelectAllStadiums = () => {
+  return axios({
+    method: GET,
+    url: SelectStadiums,
+  });
+};
+
 const sendEmail = (data) => {
   return axios({
     method: POST,
@@ -199,6 +215,8 @@ export {
   playersHttpRequestPut,
   playersHttpRequestPost,
   SelectAllTeams,
+  SelectAllLeagues,
+  SelectAllStadiums,
   SetTeam,
   AddTeam,
   DeleteTeam,

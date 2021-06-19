@@ -14,6 +14,7 @@ namespace TMSWebAPI.ViewModels.Players
         public string Age { get; set; }
         public string PlayerNo { get; set; }
         public string Position { get; set; }
+        public string Bio { get; set; }
         public IFormFile Photo { get; set; }
         public string Kit { get; set; }
         public string Price { get; set; }

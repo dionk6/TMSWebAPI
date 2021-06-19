@@ -1,11 +1,25 @@
 import {useEffect,useState} from 'react';
 import {useForm} from "react-hook-form";
 import {LeaugesHttpRequestPost,LeaugesHttpRequestPut,SetTeam,AddTeam} from '../../../http/http-requests';
+import Select from 'react-select'
 
 import './ModalTeams.css'
 
 const ModalTeams = (props) =>{
     const [team, setTeam] = useState({});
+    const leaguesOptions = props.leaguesOptions;
+    const stadiumsOptions = props.stadiumsOptions;
+
+    const [selectLeague, setSelectLeague] = useState({})
+    const [selectStadium, setSelectStadium] = useState({})
+
+    function handleChangeSelectLeague(selectedOption){
+        setSelectLeague({selectedOption});
+    }
+
+    function handleChangeSelectStadium(selectedOption){
+        setSelectStadium({selectedOption});
+    }
 
     const { register , handleSubmit } = useForm();
 
@@ -26,15 +40,23 @@ const ModalTeams = (props) =>{
             owner: (inputName === "owner" ? value : team.owner),
             logo: team.logo,
             budget: (inputName === "budget" ? value : team.budget),
-            leagueId: (inputName === "leagueId" ? value : team.leagueId),
-            stadiumId: (inputName === "stadiumId" ? value : team.stadiumId)
+            description: (inputName === "description" ? value : team.description),
         });
     }
 
     const onSubmitTeam = async (data) =>{
         data.logo=data.logo[0];
+        if(selectLeague.selectedOption == undefined){
+            data.leagueId = "0";
+        }else{
+            data.leagueId = selectLeague.selectedOption.value;
+        }
 
-        console.log(data);
+        if(selectStadium.selectedOption == undefined){
+            data.stadiumId = "0";
+        }else{
+            data.stadiumId = selectStadium.selectedOption.value;
+        }
 
         let formData = new FormData();
         formData.append('id',data.id);
@@ -46,6 +68,7 @@ const ModalTeams = (props) =>{
         formData.append('owner',data.owner);
         formData.append('logo',data.logo);
         formData.append('budget',data.budget);
+        formData.append('description',data.description);
         formData.append('leagueId',data.leagueId);
         formData.append('stadiumId',data.stadiumId);
         try{
@@ -116,11 +139,16 @@ const ModalTeams = (props) =>{
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">League</label>
-                                    <input type="text" className="form-control" name="leagueId" value={team.leagueId != null ? team.leagueId : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                    <Select onChange={handleChangeSelectLeague} options={leaguesOptions} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Stadium</label>
-                                    <input type="text" className="form-control" name="stadiumId" value={team.stadiumId != null ? team.stadiumId : ""} onChange={handleChange} className="form-control" ref={register({required: true})} />
+                                    <Select onChange={handleChangeSelectStadium} options={stadiumsOptions} />
+                                </div>
+                                <div className="col-md-12 mb-3">
+                                    <label className="form-label">Description</label>
+                                    <textarea rows="4" className="form-control" name="description" value={team.description != null ? team.description : ""} onChange={handleChange} className="form-control" ref={register({required: true})}></textarea>
+                                    
                                 </div>
                             </div>
                         </div>

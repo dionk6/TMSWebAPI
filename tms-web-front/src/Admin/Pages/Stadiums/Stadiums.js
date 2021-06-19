@@ -56,6 +56,7 @@ const Stadiums = ()=>{
                         <th scope="col">Name</th>
                         <th scope="col">Capacity</th>
                         <th scope="col">Rank</th>
+                        <th scope="col">Description</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -69,6 +70,7 @@ const Stadiums = ()=>{
                                 <td>{stadium.name}</td>
                                 <td>{stadium.capacity}</td>
                                 <td>{stadium.rank}</td>
+                                <td>{stadium.description}</td>
                                 <td>
                                     <button onClick={()=>{AddEdit(stadium.id)}} className="editButton">Edit</button>  
                                     <button onClick={()=>{DeleteStadiumHeandler(0,stadium.id)}}  className="deleteButton">Delete</button>  

@@ -31,19 +31,20 @@ namespace TMSWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Stadium>>> GetStadiums()
         {
-            return await _context.Stadiums.ToListAsync();
+            return await _context.Stadiums.Where(t => t.IsDeleted == false).ToListAsync();
         }
 
         [HttpGet("StadiumsTable")]
         public IEnumerable<StadiumsViewModel> StadiumsTable()
         {
-            var model = _context.Stadiums.Select(t => new StadiumsViewModel
+            var model = _context.Stadiums.Where(t => t.IsDeleted == false).Select(t => new StadiumsViewModel
             {
                 Id = t.Id.ToString(),
                 Name = t.Name,
                 Capacity = t.Capacity.ToString(),
                 Image = t.Image,
-                Rank = t.Rank.ToString()
+                Rank = t.Rank.ToString(),
+                Description = t.Description
             });
 
             return model;
@@ -69,11 +70,11 @@ namespace TMSWebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> PutStadium([FromForm] StadiumsAddModel model)
         {
-            Stadium stadium = new Stadium();
-            stadium.Id = int.Parse(model.Id);
+            Stadium stadium = await _context.Stadiums.FindAsync(int.Parse(model.Id));
             stadium.Name = model.Name;
             stadium.Capacity = int.Parse(model.Capacity);
             stadium.Rank = int.Parse(model.Rank);
+            stadium.Description = model.Description;
             if (model.Image != null)
             {
                 var filePath = Path.Combine(_env.WebRootPath, "Upload", "Stadiums"); ;
@@ -106,7 +107,7 @@ namespace TMSWebAPI.Controllers
         [HttpGet("SelectStadiums")]
         public IEnumerable<SelectViewModel> SelectStadiums()
         {
-            var model = _context.Stadiums.Select(t => new SelectViewModel
+            var model = _context.Stadiums.Where(t => t.IsDeleted == false).Select(t => new SelectViewModel
             {
                 value = t.Id.ToString(),
                 label = t.Name
@@ -124,6 +125,8 @@ namespace TMSWebAPI.Controllers
             stadium.Name = model.Name;
             stadium.Capacity = int.Parse(model.Capacity);
             stadium.Rank = int.Parse(model.Rank);
+            stadium.Description = model.Description;
+            stadium.IsDeleted = false;
             if (model.Image != null)
             {
                 var filePath = Path.Combine(_env.WebRootPath, "Upload", "Stadiums"); ;
@@ -161,7 +164,8 @@ namespace TMSWebAPI.Controllers
                 return NotFound();
             }
 
-            _context.Stadiums.Remove(stadium);
+            stadium.IsDeleted = true;
+            _context.Stadiums.Update(stadium);
             await _context.SaveChangesAsync();
 
             return Ok();

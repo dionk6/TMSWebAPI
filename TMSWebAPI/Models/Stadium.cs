@@ -15,6 +15,8 @@ namespace TMSWebAPI.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int Capacity { get; set; }
+        public string Description { get; set; }
+        public bool? IsDeleted { get; set; }
         public string Image { get; set; }
         public int Rank { get; set; }
 

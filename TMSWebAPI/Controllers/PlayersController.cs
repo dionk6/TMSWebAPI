@@ -30,13 +30,13 @@ namespace TMSWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Player>>> GetPlayers()
         {
-            return await _context.Players.ToListAsync();
+            return await _context.Players.Where(t => t.IsDeleted == false).ToListAsync();
         }
 
         [HttpGet("PlayersTable")]
         public IEnumerable<PlayersTable> PlayersTable()
         {
-            IEnumerable<PlayersTable> model = _context.Players.Include(t => t.Team).Select(t => new PlayersTable 
+            IEnumerable<PlayersTable> model = _context.Players.Where(t => t.IsDeleted == false).Include(t => t.Team).Select(t => new PlayersTable 
             {
                 Id = t.Id.ToString(),
                 FirstName = t.FirstName,
@@ -47,7 +47,8 @@ namespace TMSWebAPI.Controllers
                 Photo = t.Photo,
                 Kit = t.Kit,
                 Price = t.Price.ToString(),
-                Team = t.Team.Name
+                Team = t.Team.Name,
+                Bio = t.Bio
             });
             return model;
         }
@@ -72,8 +73,7 @@ namespace TMSWebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> PutPlayer([FromForm] PlayersAddModel model)
         {
-            Player player = new Player();
-            player.Id = int.Parse(model.Id);
+            Player player = await _context.Players.FindAsync(int.Parse(model.Id));
             player.FirstName = model.FirstName;
             player.LastName = model.LastName;
             player.Age = int.Parse(model.Age);
@@ -81,7 +81,11 @@ namespace TMSWebAPI.Controllers
             player.Position = model.Position;
             player.Kit = model.Kit;
             player.Price = decimal.Parse(model.Price);
-            player.TeamId = int.Parse(model.TeamId);
+            if (int.Parse(model.TeamId) != 0)
+            {
+                player.TeamId = int.Parse(model.TeamId);
+            }
+            player.Bio = model.Bio;
             if (model.Photo != null)
             {
                 var filePath = Path.Combine(_env.WebRootPath, "Upload", "Players");
@@ -125,7 +129,16 @@ namespace TMSWebAPI.Controllers
             player.Position = model.Position;
             player.Kit = model.Kit;
             player.Price = decimal.Parse(model.Price);
-            player.TeamId = int.Parse(model.TeamId);
+            if (int.Parse(model.TeamId) != 0)
+            {
+                player.TeamId = int.Parse(model.TeamId);
+            }
+            else
+            {
+                player.TeamId = _context.Teams.Where(t => t.IsDeleted == false).FirstOrDefault().Id;
+            }
+            player.Bio = model.Bio;
+            player.IsDeleted = false;
             if (model.Photo != null)
             {
                 var filePath = Path.Combine(_env.WebRootPath, "Upload", "Players"); ;
@@ -163,7 +176,8 @@ namespace TMSWebAPI.Controllers
                 return NotFound();
             }
 
-            _context.Players.Remove(player);
+            player.IsDeleted = true;
+            _context.Players.Update(player);
             await _context.SaveChangesAsync();
 
             return Ok();

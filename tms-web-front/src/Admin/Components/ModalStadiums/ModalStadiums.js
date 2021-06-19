@@ -22,18 +22,21 @@ const ModalStadiums = (props) =>{
             name: (inputName === "name" ? value : stadium.name),
             capacity: (inputName === "capacity" ? value : stadium.capacity),
             image: (stadium.image),
-            rank: (inputName === "rank" ? value : stadium.rank)
+            rank: (inputName === "rank" ? value : stadium.rank),
+            description: (inputName === "description" ? value : stadium.description)
         });
     }
 
     const onSubmitLeague = async (data) =>{
         data.image=data.image[0];
+        console.log(data);
         let formData = new FormData();
         formData.append('id',data.id);
         formData.append('name',data.name);
         formData.append('image',data.image);
         formData.append('capacity',data.capacity);
         formData.append('rank',data.rank);
+        formData.append('description',data.description);
         try{
             if(data.id !== ""){
                 await SetStadium(formData);
@@ -76,11 +79,15 @@ const ModalStadiums = (props) =>{
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Image</label>
-                            <input type="file"  className="form-control" onChange={handleChange} name="image" ref={register({required: true})}/>
+                            <input type="file"  className="form-control" onChange={handleChange} name="image" ref={register({required: false})}/>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Rank</label>
                             <input type="number" value={stadium.rank != null ? stadium.rank : ""} onChange={handleChange} className="form-control" name="rank" ref={register({required: true})}/>
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Description</label>
+                            <textarea rows="4" className="form-control" name="description" value={stadium.description != null ? stadium.description : ""} onChange={handleChange} ref={register({required: true})}></textarea>
                         </div>
                         {props.stadium.id != null ? <button type="submit" className="modalButton">Update</button> : <button type="submit" className="modalButton">Save</button> }
                     </form>

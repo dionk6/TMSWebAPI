@@ -12,6 +12,7 @@ namespace TMSWebAPI.ViewModels.Leagues
         public string Country { get; set; }
         public string FoundedYear { get; set; }
         public string MaxNrTeam { get; set; }
+        public string Description { get; set; }
         public string TvPartner { get; set; }
         public string Logo { get; set; }
         public string CurrentChampion { get; set; }

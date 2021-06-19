@@ -31,13 +31,13 @@ namespace TMSWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<League>>> GetLeagues()
         {
-            return await _context.Leagues.ToListAsync();
+            return await _context.Leagues.Where(t => t.IsDeleted == false).ToListAsync();
         }
 
         [HttpGet("LeaguesTable")]
         public IEnumerable<LeaguesViewModel> LeaguesTable()
         {
-            var model = _context.Leagues.Select(t => new LeaguesViewModel
+            var model = _context.Leagues.Where(t => t.IsDeleted == false).Select(t => new LeaguesViewModel
             {
                 Id = t.Id.ToString(),
                 Name = t.Name,
@@ -46,7 +46,8 @@ namespace TMSWebAPI.Controllers
                 MaxNrTeam = t.MaxNrTeam.ToString(),
                 TvPartner = t.TvPartner,
                 Logo = t.Logo,
-                CurrentChampion = t.CurrentChampion
+                CurrentChampion = t.CurrentChampion,
+                Description = t.Description
             });
             return model;
         }
@@ -54,7 +55,7 @@ namespace TMSWebAPI.Controllers
         [HttpGet("SelectLeague")]
         public IEnumerable<SelectViewModel> SelectLeague()
         {
-            var model = _context.Leagues.Select(t => new SelectViewModel
+            var model = _context.Leagues.Where(t => t.IsDeleted == false).Select(t => new SelectViewModel
             {
                 value = t.Id.ToString(),
                 label = t.Name
@@ -82,14 +83,15 @@ namespace TMSWebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> PutLeague([FromForm] LeaguesAddModel model)
         {
-            League league = new League();
-            league.Id = int.Parse(model.Id);
+            League league = await _context.Leagues.FindAsync(int.Parse(model.Id));
+            //league.Id = int.Parse(model.Id);
             league.Name = model.Name;
             league.Country = model.Country;
             league.FoundedYear = int.Parse(model.FoundedYear);
             league.MaxNrTeam = int.Parse(model.MaxNrTeam);
             league.TvPartner = model.TvPartner;
             league.CurrentChampion = model.CurrentChampion;
+            league.Description = model.Description;
             if (model.Logo != null)
             {
                 var filePath = Path.Combine(_env.WebRootPath, "Upload", "Leagues"); ;
@@ -133,6 +135,8 @@ namespace TMSWebAPI.Controllers
                 league.MaxNrTeam = int.Parse(model.MaxNrTeam);
                 league.TvPartner = model.TvPartner;
                 league.CurrentChampion = model.CurrentChampion;
+                league.Description = model.Description;
+                league.IsDeleted = false;
                 if (model.Logo != null)
                 {
                     var filePath = Path.Combine(_env.WebRootPath, "Upload", "Leagues"); ;
@@ -176,7 +180,8 @@ namespace TMSWebAPI.Controllers
                 return NotFound();
             }
 
-            _context.Leagues.Remove(league);
+            league.IsDeleted = true;
+            _context.Leagues.Update(league);
             await _context.SaveChangesAsync();
 
             return league;

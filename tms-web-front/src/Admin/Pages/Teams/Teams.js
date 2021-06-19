@@ -1,6 +1,6 @@
 import {useEffect,useState} from "react";
 import ModalTeams from '../../Components/ModalTeams/ModalTeams'
-import {TeamsTable,GetTeam,DeleteTeam} from '../../../http/http-requests'
+import {TeamsTable,GetTeam,DeleteTeam,SelectAllLeagues,SelectAllStadiums} from '../../../http/http-requests'
 import DeleteModal from '../../Components/DeleteModal/DeleteModal';
 
 import './Teams.css'
@@ -11,6 +11,18 @@ const Stadiums = ()=>{
     const [openModal,setOpenModal] = useState(false);
     const [openDeleteModal,setOpenDeleteModal] = useState(false);
     const [deleteId,setDeleteId] = useState(null);
+
+    const [leaguesOptions,setLeaguesOptions] = useState({});
+    const [stadiumsOptions,setStadiumOptions] = useState({});
+
+
+    const getOptions = async () =>{
+        const allLeagues = await SelectAllLeagues();
+        setLeaguesOptions(allLeagues.data);
+
+        const allStadiums = await SelectAllStadiums();
+        setStadiumOptions(allStadiums.data);
+    }
     
     const tableDataHeandler = async () =>{
         const allTeams = await TeamsTable();
@@ -44,6 +56,7 @@ const Stadiums = ()=>{
 
     useEffect(()=>{
         tableDataHeandler();
+        getOptions();
     },[openModal,openDeleteModal]);
 
     return(
@@ -63,6 +76,7 @@ const Stadiums = ()=>{
                                 <th scope="col">Trophies</th>
                                 <th scope="col">Owner</th>
                                 <th scope="col">Budget</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">League</th>
                                 <th scope="col">Stadium</th>
                                 <th scope="col">Actions</th>
@@ -82,6 +96,7 @@ const Stadiums = ()=>{
                                         <td>{element.trophies}</td>
                                         <td>{element.owner}</td>
                                         <td>{element.budget}</td>
+                                        <td>{element.description}</td>
                                         <td>{element.league}</td>
                                         <td>{element.stadium}</td>
                                         <td>
@@ -95,7 +110,7 @@ const Stadiums = ()=>{
                     </table>
                 </div>
             </div>
-            <ModalTeams openModal={openModal} team={team} closeModalHeandler={closeModalHeandler}/>
+            <ModalTeams openModal={openModal} team={team} leaguesOptions={leaguesOptions} stadiumsOptions={stadiumsOptions} closeModalHeandler={closeModalHeandler}/>
             <DeleteModal openDeleteModal={openDeleteModal} deleteId={deleteId} Delete={DeleteLeague}/>
         </div>
     );

@@ -60,6 +60,7 @@ const Leagues = () =>{
                                 <th scope="col">Max Nr Team</th>
                                 <th scope="col">TV Partner</th>
                                 <th scope="col">CurrentChampion</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -76,6 +77,7 @@ const Leagues = () =>{
                                         <td>{element.maxNrTeam}</td>
                                         <td>{element.tvPartner}</td>
                                         <td>{element.currentChampion}</td>
+                                        <td>{element.description}</td>
                                         <td>
                                             <button onClick={()=>{AddEdit(element.id)}} className="editButton">Edit</button>  
                                             <button onClick={()=>{DeleteLeague(0,element.id)}} className="deleteButton">Delete</button>  
