@@ -95,7 +95,7 @@ namespace TMSWebAPI.Controllers
             model.Logo = league.Logo;
             model.CurrentChampion = league.CurrentChampion;
 
-            var teams = league.Teams.Select(t => new TeamsTable
+            var teams = league.Teams.Where(t => t.IsDeleted == false).Select(t => new TeamsTable
             {
                 Id = t.Id.ToString(),
                 Name = t.Name,

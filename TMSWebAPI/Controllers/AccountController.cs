@@ -82,5 +82,13 @@ namespace TMSWebAPI.Controllers
             await _signInManager.SignOutAsync();
             return true;
         }
+
+        [HttpGet("GetUser")]
+        public async Task<string> GetUser()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            return user.Email;
+        }
     }
 }
