@@ -1,8 +1,32 @@
 import './Login.css';
+import {useForm} from "react-hook-form";
 import TMSLogo from "../src/User/Images/TMSLogo.png";
+import {signIn} from "../src/http/http-requests";
 import {NavLink} from "react-router-dom"
 
 const Login = () =>{
+    const { register , handleSubmit } = useForm();
+
+    const onSubmitAccount = async (data) =>{
+        try{
+            var result = await signIn(data);
+            if(result.data.isCorrect){
+                alert(result.data.message);
+                if(result.data.roleId == "2"){
+                    window.location.href = "/";
+                }else if(result.data.roleId == "1"){
+                    window.location.href = "/admin";
+                }
+            }else{
+                alert(result.data.message);
+            }
+        }catch(err){
+            console.log(err);
+        }finally{
+
+        }
+    }
+
     return(
         <div className="Login row m-0 justify-content-center">
             <div className="col-sm-12 box text-white d-flex flex-column">
@@ -12,12 +36,12 @@ const Login = () =>{
                 <div className="loginBox col-lg-12 bg-white p-5 text-dark">
                     <h4 className="text-center">Login to your Account</h4>
                     <div className="col-lg-12">
-                        <form>
+                        <form onSubmit={handleSubmit(onSubmitAccount)}>
                             <div className="form-group">
-                                <input type="text" placeholder="Email" />
+                                <input type="text" placeholder="Email" name="email" className="form-control" ref={register({required: true})} />
                             </div>
                             <div className="form-group">
-                                <input type="password" placeholder="Password" />
+                                <input type="password" placeholder="Password" name="password" className="form-control" ref={register({required: true})} />
                             </div>
                             <div className="row m-0 mt-3">
                                 <div className="form-group col-lg-6 col-sm-6 col-12 d-flex justify-content-center mt-2">

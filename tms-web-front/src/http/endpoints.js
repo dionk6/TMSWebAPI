@@ -10,5 +10,8 @@ const SelectTeams = '/api/teams/selectteams';
 const SelectLeagues = '/api/leagues/selectLeague';
 const SelectStadiums = '/api/stadiums/SelectStadiums';
 const SendEmail = '/api/contacts/SendEmail';
+const CreateAccount = '/api/Account/CreateAccount';
+const SignIn = '/api/Account/SignIn';
 
-export {LEAGUES,STADIUM,PLAYERSTable,STADIUMSTable,LEAGUESTable,TEAMSTable,Team,Player,SelectTeams,SelectLeagues,SelectStadiums,SendEmail};
+
+export {LEAGUES,STADIUM,PLAYERSTable,STADIUMSTable,LEAGUESTable,TEAMSTable,Team,Player,SelectTeams,SelectLeagues,SelectStadiums,SendEmail,CreateAccount,SignIn};

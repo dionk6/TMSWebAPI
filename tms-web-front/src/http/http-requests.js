@@ -12,6 +12,8 @@ import {
   SelectLeagues,
   SelectStadiums,
   SendEmail,
+  CreateAccount,
+  SignIn
 } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
@@ -201,6 +203,22 @@ const sendEmail = (data) => {
   });
 };
 
+const createAccount = (data) => {
+  return axios({
+    method: POST,
+    url: CreateAccount,
+    data: data,
+  });
+};
+
+const signIn = (data) => {
+  return axios({
+    method: POST,
+    url: SignIn,
+    data: data,
+  });
+};
+
 export {
   LeaugesHttpRequest,
   GetLeaugeHttpRequest,
@@ -227,5 +245,7 @@ export {
   SetTeam,
   AddTeam,
   DeleteTeam,
-  sendEmail
+  sendEmail,
+  createAccount,
+  signIn
 };

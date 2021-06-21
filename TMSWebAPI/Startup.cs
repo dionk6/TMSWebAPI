@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +35,9 @@ namespace TMSWebAPI
             services.AddDbContext<TMSContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<TMSContext>();
+
             services.AddCors(option => option.AddDefaultPolicy(
                 builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
             ));
@@ -53,6 +56,7 @@ namespace TMSWebAPI
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 
