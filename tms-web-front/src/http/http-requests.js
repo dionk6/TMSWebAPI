@@ -21,6 +21,12 @@ const LeaugesHttpRequest = () => {
     url: LEAGUES,
   });
 };
+const GetLeaugeHttpRequest = (id) => {
+  return axios({
+    method: GET,
+    url: LEAGUES + '/' + id,
+  });
+};
 
 const LeaguesTable = () => {
   return axios({
@@ -197,6 +203,7 @@ const sendEmail = (data) => {
 
 export {
   LeaugesHttpRequest,
+  GetLeaugeHttpRequest,
   AddStadium,
   GetStadium,
   SetStadium,
