@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using TMSWebAPI.Models;
 using TMSWebAPI.ViewModels;
 using TMSWebAPI.ViewModels.Leagues;
+using TMSWebAPI.ViewModels.Teams;
 
 namespace TMSWebAPI.Controllers
 {
@@ -76,6 +77,45 @@ namespace TMSWebAPI.Controllers
 
             return league;
         }
+
+        // GET: api/Leagues
+        [HttpGet("GetLeagueWithTeams/{id}")]
+        public ActionResult<LeaguesViewModel> GetLeagueWithTeams(int id)
+        {
+            var league = _context.Leagues.Include(t => t.Teams).ThenInclude(t => t.Stadium).Where(t => t.Id == id).FirstOrDefault();
+
+            var model = new LeaguesViewModel();
+            model.Id = league.Id.ToString();
+            model.Name = league.Name;
+            model.Country = league.Country;
+            model.FoundedYear = league.FoundedYear.ToString();
+            model.MaxNrTeam = league.MaxNrTeam.ToString();
+            model.Description = league.Description;
+            model.TvPartner = league.TvPartner;
+            model.Logo = league.Logo;
+            model.CurrentChampion = league.CurrentChampion;
+
+            var teams = league.Teams.Select(t => new TeamsTable
+            {
+                Id = t.Id.ToString(),
+                Name = t.Name,
+                City = t.City,
+                Logo = t.Logo,
+                FoundedYear = t.FoundedYear.ToString(),
+                Manager = t.Manager,
+                Description = t.Description,
+                Trophies = t.Trophies.ToString(),
+                Owner = t.Owner,
+                Budget = t.Budget,
+                League = league.Name,
+                Stadium = t.Stadium.Name
+            }).ToList();
+
+            model.Teams = teams;
+
+            return model;
+        }
+      
 
         // PUT: api/Leagues/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMSWebAPI.ViewModels.Teams;
 
 namespace TMSWebAPI.ViewModels.Leagues
 {
@@ -16,5 +17,6 @@ namespace TMSWebAPI.ViewModels.Leagues
         public string TvPartner { get; set; }
         public string Logo { get; set; }
         public string CurrentChampion { get; set; }
+        public List<TeamsTable> Teams { get; set; }
     }
 }
