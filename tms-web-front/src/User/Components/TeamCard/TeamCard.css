@@ -12,6 +12,7 @@
 .photoTeam {
   background-image: url("../../../assets/img/soccer-field.jpg");
   background-attachment: fixed;
+  background-size: contain;
   border: none;
   border-radius: 100px;
   display: flex;
