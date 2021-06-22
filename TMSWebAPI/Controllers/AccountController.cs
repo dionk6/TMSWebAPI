@@ -91,5 +91,20 @@ namespace TMSWebAPI.Controllers
 
             return user.Email;
         }
+
+        [HttpGet("GetAllUser")]
+        public List<IdentityUser> GetAllUser()
+        {
+            var user = _userManager.Users.ToList();
+            return user;
+        }
+
+        [HttpGet("Logout")]
+        public async Task<bool> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return true;
+        }
     }
 }
