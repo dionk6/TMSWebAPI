@@ -64,6 +64,7 @@ namespace TMSWebAPI.Controllers
             {
                 modelReturn.IsCorrect = true;
                 modelReturn.Message = "Successfully logged in";
+                modelReturn.UserId = user.Id;
                 var role = await _userManager.IsInRoleAsync(user, "User");
                 modelReturn.roleId = role ? "2" : "1";
                 return modelReturn;
@@ -83,10 +84,10 @@ namespace TMSWebAPI.Controllers
             return true;
         }
 
-        [HttpGet("GetUser")]
-        public async Task<string> GetUser()
+        [HttpGet("GetUser/{id}")]
+        public async Task<string> GetUser(string id)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var user = await _userManager.FindByIdAsync(id);
 
             return user.Email;
         }
