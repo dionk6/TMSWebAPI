@@ -77,7 +77,7 @@ const Leagues = () =>{
                                         <td>{element.maxNrTeam}</td>
                                         <td>{element.tvPartner}</td>
                                         <td>{element.currentChampion}</td>
-                                        <td>{element.description}</td>
+                                        <td>{element.description.substring(0, 40)+"..."}</td>
                                         <td>
                                             <button onClick={()=>{AddEdit(element.id)}} className="editButton">Edit</button>  
                                             <button onClick={()=>{DeleteLeague(0,element.id)}} className="deleteButton">Delete</button>  

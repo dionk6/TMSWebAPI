@@ -94,25 +94,29 @@ const ModalPlayer = (props) =>{
                                 <div className="col-12 d-flex justify-content-center mb-3">
                                     {state.photo !== undefined ? <img src={state.photo} className="formImagePreview" alt={state.name} /> : ""}
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">First Name</label>
                                     <input type="text" className="form-control" name="firstName" value={state.firstName != null ? state.firstName : ""} onChange={handleChange} ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Last Name</label>
                                     <input type="text" className="form-control" name="lastName" value={state.lastName != null ? state.lastName : ""} onChange={handleChange} ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Age</label>
                                     <input type="number" className="form-control" name="age" value={state.age != null ? state.age : ""} onChange={handleChange} ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Player No</label>
                                     <input type="number" className="form-control" name="playerNo" value={state.playerNo != null ? state.playerNo : ""} onChange={handleChange} ref={register({required: true})} />
                                 </div>
-                                <div className="col-md-6 mb-3">
+                                <div className="col-md-4 mb-3">
                                     <label className="form-label">Position</label>
                                     <input type="text" className="form-control" name="position" value={state.position != null ? state.position : ""} onChange={handleChange} ref={register({required: true})} />
+                                </div>
+                                <div className="col-md-4 mb-3">
+                                    <label className="form-label">Team</label>
+                                    <Select onChange={handleChangeSelect} options={options} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Kit</label>
@@ -121,10 +125,6 @@ const ModalPlayer = (props) =>{
                                 <div className="col-md-6 mb-3">
                                     <label className="form-label">Price</label>
                                     <input type="number" className="form-control" name="price" value={state.price != null ? state.price : ""} onChange={handleChange} ref={register({required: true})} />
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <label className="form-label">Team</label>
-                                    <Select onChange={handleChangeSelect} options={options} />
                                 </div>
                                 <div className="col-md-12 mb-3">
                                     <label className="form-label">Logo</label>

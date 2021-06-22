@@ -89,7 +89,7 @@ const Players = () =>{
                                             <td>{player.position}</td>
                                             <td>{player.kit}</td>
                                             <td>{player.price}</td>
-                                            <td>{player.bio}</td>
+                                            <td>{player.bio.substring(0, 40)+"..."}</td>
                                             <td>{player.team}</td>
                                             <td>
                                                 <button onClick={()=>{AddEdit(player.id)}} className="editButton">Edit</button>  

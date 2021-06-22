@@ -70,7 +70,7 @@ const Stadiums = ()=>{
                                 <td>{stadium.name}</td>
                                 <td>{stadium.capacity}</td>
                                 <td>{stadium.rank}</td>
-                                <td>{stadium.description}</td>
+                                <td>{stadium.description.substring(0, 40)+"..."}</td>
                                 <td>
                                     <button onClick={()=>{AddEdit(stadium.id)}} className="editButton">Edit</button>  
                                     <button onClick={()=>{DeleteStadiumHeandler(0,stadium.id)}}  className="deleteButton">Delete</button>  

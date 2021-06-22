@@ -13,7 +13,9 @@ import {
   SelectStadiums,
   SendEmail,
   CreateAccount,
-  SignIn
+  SignIn,
+  GetUser,
+  Logout
 } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
@@ -219,6 +221,20 @@ const signIn = (data) => {
   });
 };
 
+const getUser = (id) => {
+  return axios({
+    method: GET,
+    url: GetUser+"/"+id,
+  });
+};
+
+const logout = () => {
+  return axios({
+    method: GET,
+    url: Logout
+  });
+};
+
 export {
   LeaugesHttpRequest,
   GetLeaugeHttpRequest,
@@ -247,5 +263,7 @@ export {
   DeleteTeam,
   sendEmail,
   createAccount,
-  signIn
+  signIn,
+  getUser,
+  logout
 };

@@ -96,7 +96,7 @@ const Stadiums = ()=>{
                                         <td>{element.trophies}</td>
                                         <td>{element.owner}</td>
                                         <td>{element.budget}</td>
-                                        <td>{element.description}</td>
+                                        <td>{element.description.substring(0, 40)+"..."}</td>
                                         <td>{element.league}</td>
                                         <td>{element.stadium}</td>
                                         <td>

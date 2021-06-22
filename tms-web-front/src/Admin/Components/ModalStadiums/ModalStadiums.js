@@ -69,22 +69,31 @@ const ModalStadiums = (props) =>{
                             {stadium.id !== undefined ? <img src={stadium.image} className="formImagePreview" alt={stadium.name} /> : "" }
                         </div>
                         <input type="hidden" value={stadium.id != null ? stadium.id : ""} onChange={handleChange} name="id" ref={register({required: false})} />
-                        <div className="mb-3">
-                            <label className="form-label">Name</label>
-                            <input type="text" value={stadium.name != null ? stadium.name : ""} onChange={handleChange} className="form-control" name="name"  ref={register({required: true})}/>
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Capacity</label>
-                            <input type="number" value={stadium.capacity != null ? stadium.capacity : ""} onChange={handleChange} className="form-control" name="capacity" ref={register({required: true})} />
+                        <div className="row">
+                            <div className="col-lg-5">
+                                <div className="mb-3">
+                                    <label className="form-label">Name</label>
+                                    <input type="text" value={stadium.name != null ? stadium.name : ""} onChange={handleChange} className="form-control" name="name"  ref={register({required: true})}/>
+                                </div>
+                            </div>
+                            <div className="col-lg-5">
+                                <div className="mb-3">
+                                    <label className="form-label">Capacity</label>
+                                    <input type="number" value={stadium.capacity != null ? stadium.capacity : ""} onChange={handleChange} className="form-control" name="capacity" ref={register({required: true})} />
+                                </div>
+                            </div>
+                            <div className="col-lg-2">
+                                <div className="mb-3">
+                                    <label className="form-label">Rank</label>
+                                    <input type="number" value={stadium.rank != null ? stadium.rank : ""} onChange={handleChange} className="form-control" name="rank" ref={register({required: true})}/>
+                                </div>
+                            </div>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Image</label>
                             <input type="file"  className="form-control" onChange={handleChange} name="image" ref={register({required: false})}/>
                         </div>
-                        <div className="mb-3">
-                            <label className="form-label">Rank</label>
-                            <input type="number" value={stadium.rank != null ? stadium.rank : ""} onChange={handleChange} className="form-control" name="rank" ref={register({required: true})}/>
-                        </div>
+                        
                         <div className="mb-3">
                             <label className="form-label">Description</label>
                             <textarea rows="4" className="form-control" name="description" value={stadium.description != null ? stadium.description : ""} onChange={handleChange} ref={register({required: true})}></textarea>
