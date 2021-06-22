@@ -12,6 +12,7 @@ const Login = () =>{
             var result = await signIn(data);
             if(result.data.isCorrect){
                 window.localStorage.setItem("UserId",result.data.userId);
+                window.localStorage.setItem("RoleId",result.data.roleId);
                 alert(result.data.message);
                 if(result.data.roleId == "2"){
                     window.location.href = "/";

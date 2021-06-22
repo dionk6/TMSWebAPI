@@ -27,6 +27,7 @@ const AdminSidebar = (props) =>{
         console.log(result);
         if(result.data){
             window.localStorage.removeItem("UserId");
+            window.localStorage.removeItem("RoleId");
             window.location.href = "/Login";
         }
     }
