@@ -92,12 +92,18 @@ namespace TMSWebAPI.Controllers
             return user.Email;
         }
 
-        [HttpGet("GetAllUser")]
-        public List<IdentityUser> GetAllUser()
+        public async Task<string> GetRole(IdentityUser user)
         {
-            var user = _userManager.Users.ToList();
-            return user;
-        }
+            var IsUser = await _userManager.IsInRoleAsync(user, "User");
+            if (IsUser)
+            {
+                return "User";
+            }
+            else
+            {
+                return "Admin";
+            }
+        } 
 
         [HttpGet("Logout")]
         public async Task<bool> Logout()
