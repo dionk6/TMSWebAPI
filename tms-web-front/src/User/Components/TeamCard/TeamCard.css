@@ -1,0 +1,65 @@
+.teamscard {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.info {
+  background-color: black;
+  border-radius: 100px;
+  border: none;
+  width: 100%;
+  height: 400px;
+}
+.photoTeam {
+  background-image: url("../../../assets/img/soccer-field.jpg");
+  background-attachment: fixed;
+  border: none;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tmslogo {
+  width: 250px;
+  height: 250px;
+}
+
+.infoTeam {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+.headerInfo {
+  justify-content: center;
+  text-align: center;
+  height: 30%;
+  color: #45b4b4;
+}
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #45b4b4;
+  font-size: 25px;
+}
+.info1 {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+.info1 svg {
+  fill: #45b4b4;
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+.buttonDetails {
+  border: none;
+  background-color: #45b4b4;
+  border-radius: 10px;
+}
+.buttonDetails:hover {
+  border: 1px solid white;
+  color: white;
+}

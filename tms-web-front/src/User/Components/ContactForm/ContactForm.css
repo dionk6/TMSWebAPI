@@ -1,32 +1,40 @@
-.contactForm h1{
-    color: gray;
-    font-weight: normal;
+.contactForm h1 {
+  color: gray;
+  font-weight: normal;
 }
 
-.contactForm h1 span:nth-child(1){
-    border-bottom: 2px solid red;
+.contactForm h1 span:nth-child(1) {
+  border-bottom: 2px solid rgb(0, 99, 149);
 }
 
-.contactForm h1 span:nth-child(2){
-    color: rgb(179, 12, 12);
+.contactForm h1 span:nth-child(2) {
+  color: rgb(0, 99, 149);
 }
 .contactForm h1 span span {
-    color: rgb(179, 12, 12);
+  color: rgb(0, 99, 149);
 }
-.inputsDesign{
-    background: black;
-    height: 60px;
-    color: gray;
-    font-size: 18px;
-}
-
-.inputsDesign:focus{
-    background:black;
-    border-color: rgb(179, 12, 12);
-    box-shadow: none;
-    color: gray;
+.inputsDesign {
+  background: black;
+  height: 60px;
+  color: gray;
+  font-size: 18px;
 }
 
-.contactForm textarea{
-    height: 150px;
+.inputsDesign:focus {
+  background: black;
+  border-color: rgb(0, 99, 149);
+  box-shadow: none;
+  color: gray;
+}
+
+.contactForm textarea {
+  height: 150px;
+}
+.btn-danger {
+  color: #fff;
+  background-color: rgb(0, 99, 149);
+  border-color: white;
+}
+svg {
+  fill: rgb(0, 99, 149);
 }

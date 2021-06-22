@@ -32,6 +32,11 @@ const routes = [
         component:User
     },
     {
+        path:"/Teams",
+        component:User
+    },
+
+    {
         path: "/About",
         component:User
     },

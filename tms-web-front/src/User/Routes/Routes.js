@@ -7,6 +7,7 @@ const Contact = lazy(() => import('../Pages/Contact/Contact'));
 const Leagues = lazy(() => import ('../Pages/Leagues/Leagues'));
 const LeagueDetail = lazy(() => import ('../Pages/LeagueDetail/LeagueDetail'));
 const About = lazy(() => import('../Pages/About/About'));
+const Teams = lazy(() => import('../Pages/Teams/Teams'));
 
 
 const routes = [
@@ -30,6 +31,10 @@ const routes = [
         
         path: "/About",
         component: About
+    },
+    {
+        path: "/Teams",  
+        component:Teams
     }
 ];
 
