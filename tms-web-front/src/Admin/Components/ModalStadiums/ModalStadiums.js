@@ -85,7 +85,7 @@ const ModalStadiums = (props) =>{
                             <div className="col-lg-2">
                                 <div className="mb-3">
                                     <label className="form-label">Rank</label>
-                                    <input type="number" value={stadium.rank != null ? stadium.rank : ""} onChange={handleChange} className="form-control" name="rank" ref={register({required: true})}/>
+                                    <input type="number" value={stadium.rank != null ? stadium.rank : 0} onChange={handleChange} className="form-control" name="rank" ref={register({required: true})}/>
                                 </div>
                             </div>
                         </div>

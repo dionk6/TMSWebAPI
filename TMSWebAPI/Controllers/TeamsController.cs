@@ -106,7 +106,7 @@ namespace TMSWebAPI.Controllers
                     model.Logo.CopyTo(stream);
                 }
 
-                team.Logo = "https://localhost:5001/Upload/Leagues/" + model.Logo.FileName;
+                team.Logo = "https://localhost:5001/Upload/Teams/" + model.Logo.FileName;
             }
 
             if (!TeamExists(team.Id))
