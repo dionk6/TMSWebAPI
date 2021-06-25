@@ -1,6 +1,7 @@
 const LEAGUES = '/api/leagues';
 const STADIUM = '/api/stadiums'
 const LEAGUESTable = '/api/leagues/LeaguesTable';
+const ALLLEAGUEDATA = '/api/leagues/GetLeagueWithTeams';
 const STADIUMSTable = '/api/stadiums/StadiumsTable';
 const PLAYERSTable = '/api/players/playerstable';
 const TEAMSTable = '/api/teams/teamstable';
@@ -16,4 +17,4 @@ const GetUser = '/api/Account/GetUser';
 const Logout = '/api/Account/Logout';
 
 
-export {LEAGUES,STADIUM,PLAYERSTable,STADIUMSTable,LEAGUESTable,TEAMSTable,Team,Player,SelectTeams,SelectLeagues,SelectStadiums,SendEmail,CreateAccount,SignIn,GetUser,Logout};
+export {LEAGUES,ALLLEAGUEDATA,STADIUM,PLAYERSTable,STADIUMSTable,LEAGUESTable,TEAMSTable,Team,Player,SelectTeams,SelectLeagues,SelectStadiums,SendEmail,CreateAccount,SignIn,GetUser,Logout};

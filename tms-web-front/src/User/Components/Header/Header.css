@@ -20,7 +20,7 @@ header {
   justify-content: flex-end;
 }
 .headersLinks a.active{
-  color: W;
+  color: #45b4b4;
 }
 .toggleButtonDiv {
   display: none;

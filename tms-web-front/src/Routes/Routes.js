@@ -35,7 +35,10 @@ const routes = [
         path:"/Teams",
         component:User
     },
-
+    {
+        path: "/LeagueDetail/:id",
+        component:User
+    },
     {
         path: "/About",
         component:User

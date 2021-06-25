@@ -15,7 +15,8 @@ import {
   CreateAccount,
   SignIn,
   GetUser,
-  Logout
+  Logout,
+  ALLLEAGUEDATA
 } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
@@ -28,7 +29,7 @@ const LeaugesHttpRequest = () => {
 const GetLeaugeHttpRequest = (id) => {
   return axios({
     method: GET,
-    url: LEAGUES + '/' + id,
+    url: ALLLEAGUEDATA + '/' + id,
   });
 };
 
