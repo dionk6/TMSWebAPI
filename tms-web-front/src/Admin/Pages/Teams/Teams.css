@@ -5,8 +5,7 @@
     vertical-align: middle;
     text-align: left;
 }
-.tableWrapper .deleteButton,
-.tableWrapper .editButton,
+
 .tableWrapper .addButton{
     padding: 10px 30px;
     border-radius: 5px;
@@ -19,10 +18,15 @@
 .tableWrapper .addButton{
     background-color: #2976bb;
 }
-.tableWrapper .editButton{
-    background-color: #eba83a;
-    color: #000;
+.tableWrapper .editButton,
+.tableWrapper .deleteButton{
+    background-color: transparent;
+    border: none;
 }
 .tableWrapper .deleteButton{
-    background-color: #f55c47;
+    fill: rgb(221, 72, 72);
+}
+
+.tableWrapper .editButton{
+    fill: rgb(228, 166, 51);
 }

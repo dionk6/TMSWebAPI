@@ -141,8 +141,8 @@ const ModalTeams = (props) =>{
                                     <label className="form-label">League</label>
                                     <Select onChange={handleChangeSelectLeague} options={leaguesOptions} />
                                 </div>
-                                <div className="col-md-6 mb-3">
-                                    <label className="form-label">Stadium</label>
+                                <div className="col-md-6 mb-3 text-dark">
+                                    <label className="form-label text-white">Stadium</label>
                                     <Select onChange={handleChangeSelectStadium} options={stadiumsOptions} />
                                 </div>
                                 <div className="col-md-12 mb-3">

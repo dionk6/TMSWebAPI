@@ -6,7 +6,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   background-color:rgba(0, 0, 0, 0.5);
   transition: all .15s linear .15s;
@@ -16,7 +16,10 @@
 .modalCustom.active{
   visibility: visible;
   opacity: 1;
+  overflow-y: auto;
+  padding: 0 15px;
 }
+
 .modalCustom .modalRemove{
   position: absolute;
   top: 20px;
@@ -41,6 +44,7 @@
   visibility: hidden;
   opacity: 0;
   transform: translateY(-100%);
+  margin: 15px 0;
 }
 .modalCustom.active .modalContent{
   visibility: visible;
