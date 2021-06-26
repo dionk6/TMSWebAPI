@@ -3,13 +3,8 @@ import innerpageBg from "../../../assets/img/innerpageBg.jpg";
 
 const LeaguesBanner = (props) =>{
     return(
-        <div className="LeaguesBanner">
-            <div className="headerImage">
-                <img src={innerpageBg} alt="headerImage"/>
-                <div className="headerInfo">
-                    <h1>Some info</h1>
-                </div>
-            </div>
+        <div className="playerBanner col-12 d-flex justify-content-center align-items-center text-center">
+            <h1 className="title">LEAGUES</h1>
         </div>
     );
 };

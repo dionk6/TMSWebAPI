@@ -1,66 +1,39 @@
-.teamscard {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-.info {
+.TeamLogo img{
   background-color: black;
-  border-radius: 100px;
-  border: none;
   width: 100%;
-  height: 400px;
-}
-.photoTeam {
-  background-image: url("../../../assets/img/soccer-field.jpg");
-  background-attachment: fixed;
-  background-size: contain;
-  border: none;
-  border-radius: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
 }
 
-.tmslogo {
-  width: 250px;
-  height: 250px;
+.FontSize{
+  font-size: 20px;
+  margin-left: 10px;
 }
 
-.infoTeam {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
+p{
+  font-size: 14px;
 }
-.headerInfo {
-  justify-content: center;
-  text-align: center;
-  height: 30%;
+
+.TeamCard{
+  background: url(../../Images/whiteBgBig.jpg) repeat;
+}
+
+.Info{
   color: #45b4b4;
 }
-.infoContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #45b4b4;
-  font-size: 25px;
+
+.BuyNowWrapper{
+  float: right;
 }
-.info1 {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-}
-.info1 svg {
-  fill: #45b4b4;
-  width: 40px;
-  height: 40px;
-  margin-right: 15px;
-}
-.buttonDetails {
-  border: none;
+
+.BuyNowWrapper button{
   background-color: #45b4b4;
-  border-radius: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: all .15s linear .15s;
 }
-.buttonDetails:hover {
-  border: 1px solid white;
-  color: white;
+
+.BuyNowWrapper button:hover{
+  color: #45b4b4;
+  background: black;
 }
