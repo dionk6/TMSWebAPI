@@ -32,7 +32,7 @@ const Leagues = (props) =>{
                             <div className="row">
                             {leagues.map((league, index) => {
                                 return (
-                                <Card id={league.id} image={league.logo} key={index} />
+                                    <Card league={league} key={index} />
                                 );
                             })}
                             </div>
