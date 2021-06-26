@@ -1,6 +1,8 @@
 .PlayerPageTitle{
     text-align: center;
     padding: 20px 0;
+    margin-bottom: 10px;
+    height: 100vh;
 }
 .PlayerPageTitle h1{
     position: relative;
@@ -12,7 +14,7 @@
     display: block;
     width: 85px;
     height: 3px;
-    background-color: red;
+    background-color: #45b4b4;
     position: absolute;
     bottom: -10px;
     left: 20px;

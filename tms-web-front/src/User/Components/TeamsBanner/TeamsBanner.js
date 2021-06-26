@@ -1,14 +1,9 @@
 import "./TeamsBanner.css";
-// import shakingHands from '../../../assets/img/shakingHands.jpg';
 
 const TeamsBanner = ()=>{
     return (
-        <div className="AboutBanner">
-            <div className="imgcontainer">
-                <div className="headerInfoAbout">
-                    <h1>Teams</h1>
-                </div>
-            </div>
+        <div className="playerBanner col-12 d-flex justify-content-center align-items-center text-center">
+            <h1 className="title">TEAMS</h1>
         </div>
     )   
 }

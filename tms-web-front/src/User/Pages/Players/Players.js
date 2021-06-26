@@ -1,19 +1,14 @@
 import "./Players.css";
 import PlayerCard from "../../Components/PlayerCard/PlayerCard";
+import PlayerBanner from "../../Components/PlayerBanner/PlayerBanner"
 
 const Players = () => {
     return (
         <div className="PlayersPage">
-            <div className="PlayerPageBanner">
-            <div className="container">
-                <div className="row">
-                    <div className="PlayerPageTitle">
-                        <h1>Players</h1>
-                    </div>
-                </div>
+            <div className="mb-5">
+                <PlayerBanner/>
             </div>
-            </div>
-            <PlayerCard/>
+                <PlayerCard/>
         </div>
     );
 }
