@@ -44,6 +44,10 @@ const routes = [
         component:User
     },
     {
+        path: "/Players",
+        component:User
+    },
+    {
         path: "/Admin",
         component: Admin,
     },

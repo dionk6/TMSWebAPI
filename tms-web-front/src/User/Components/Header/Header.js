@@ -31,12 +31,15 @@ const Header = (props) =>{
                                 <li className="navItem">
                                     <NavLink to="/Teams" exact>Teams</NavLink>
                                 </li>
+                                <li>
+                                    <NavLink to="/Players" exact>Players</NavLink>
+                                </li>  
                                 <li className="navItem">
                                     <NavLink to="/About" exact>About</NavLink>
                                 </li>
                                 <li className="navItem">
                                     <NavLink to="/Contact" exact>Contact</NavLink>
-                                </li>    
+                                </li>
                             </ul>    
                         </nav>
                         <div className={`toggleButtonDiv ${active ? "active" : ""}`} onClick={toggleHeaderButton}>

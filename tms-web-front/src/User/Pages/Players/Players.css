@@ -1,0 +1,19 @@
+.PlayerPageTitle{
+    text-align: center;
+    padding: 20px 0;
+}
+.PlayerPageTitle h1{
+    position: relative;
+    display: inline-block;
+}
+
+.PlayerPageTitle h1::before{
+    content: '';
+    display: block;
+    width: 85px;
+    height: 3px;
+    background-color: red;
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+}
