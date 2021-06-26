@@ -29,6 +29,9 @@ const Header = (props) =>{
                                     <NavLink to="/Leagues" exact>Leagues</NavLink>
                                 </li>
                                 <li className="navItem">
+                                    <NavLink to="/Teams" exact>Teams</NavLink>
+                                </li>
+                                <li className="navItem">
                                     <NavLink to="/About" exact>About</NavLink>
                                 </li>
                                 <li className="navItem">

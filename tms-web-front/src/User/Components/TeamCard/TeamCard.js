@@ -11,7 +11,7 @@ const TeamCard = (props) =>{
             <div className="container teamscard">
                 <div className="info row m-0">
                     {/* <img className="soccerfield" src={soccerField} /> */}
-                    <div class="photoTeam col-md-6">
+                    <div className="photoTeam col-md-6">
                         <img className="tmslogo" src={TMSLogo} />
                     </div>
                     <div className="infoTeam col-md-6">

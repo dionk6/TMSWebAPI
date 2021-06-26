@@ -3,12 +3,8 @@ import "./AboutBanner.css";
 
 const AboutBanner = ()=>{
     return (
-        <div className="AboutBanner">
-            <div className="imgcontainer">
-                <div className="headerInfo">
-                    <h1>ABOUT US</h1>
-                </div>
-            </div>
+        <div className="contactBanner col-12 d-flex justify-content-center align-items-center text-center">
+            <h1 className="title">ABOUT <span>US</span></h1>
         </div>
     )   
 }

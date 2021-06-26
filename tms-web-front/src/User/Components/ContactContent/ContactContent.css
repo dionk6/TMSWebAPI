@@ -10,10 +10,10 @@
 }
 
 .contactContent h1 span:nth-child(1) {
-  border-bottom: 1px solid rgb(0, 99, 149);
+  border-bottom: 1px solid #45b4b4;
 }
 .contactContent h1 span:nth-child(2) {
-  color: rgb(0, 99, 149);
+  color: #45b4b4;
 }
 .contactContent p {
   color: gray;
@@ -23,10 +23,10 @@
 .roundBox {
   width: auto;
   height: auto;
-  border: 1px solid rgb(0, 99, 149);
+  border: 1px solid #45b4b4;
   padding: 15px;
   border-radius: 50%;
 }
 .roundBox svg path {
-  fill: rgb(0, 99, 149);
+  fill: #45b4b4;
 }
