@@ -8,6 +8,7 @@ const LeagueDetail = ({match}) =>{
     const getLeadueData = async () => {
         const data = await GetLeaugeHttpRequest(match.params.id);
         setDetailData(data.data);
+        console.log(data)
     };
     useEffect(()=>{
         getLeadueData();
