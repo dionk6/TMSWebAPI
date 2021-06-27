@@ -1,7 +1,6 @@
 import "./PlayerCard.css";
 
 const PlayerCard = (props) => {
-    console.log(props.player)
     return (
         <div className="PlayerCardPage ">
             <div className="container">
