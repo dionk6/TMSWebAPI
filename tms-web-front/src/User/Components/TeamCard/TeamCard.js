@@ -2,7 +2,6 @@ import './TeamCard.css';
 
 
 const TeamCard = (props) =>{
-    console.log(props.team)
     return(
         <div className="TeamCard">
             <div className="container">

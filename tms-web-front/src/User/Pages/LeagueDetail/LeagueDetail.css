@@ -21,12 +21,13 @@
 .LeagueDetail .leagueImageHolder .leagueImage{
     width: 200px;
     height: 200px;
+    background: rgb(242, 242, 242);
+    border-radius: 8px;
 }
 .LeagueDetail .leagueImageHolder .leagueImage img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
 }
 .LeagueDetail .descriptionContent {
     margin-bottom: 200px;

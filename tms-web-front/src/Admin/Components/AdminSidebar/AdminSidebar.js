@@ -24,7 +24,7 @@ const AdminSidebar = (props) =>{
 
     const Logout = async () =>{
         var result = await logout();
-        console.log(result);
+     
         if(result.data){
             window.localStorage.removeItem("UserId");
             window.localStorage.removeItem("RoleId");
