@@ -4,6 +4,7 @@
   text-align: center;
   width: 100%;
   height: 100%;
+  padding: 30px 0;
 }
 .footer ul {
   display: flex;
@@ -12,6 +13,7 @@
   justify-content: center;
   align-items: center;
   padding: 0px;
+  margin: 0px;
 }
 .footer ul li svg {
   fill: #ffffff;
@@ -24,13 +26,64 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+.footerLogo {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 .footerLogo img {
-  width: 80px;
+  width: 180px;
   height: 80px;
+  object-fit: contain;
 }
 .footerInfo {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.copyrightFooter {
+  color: #45b4b4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+}
+.copyrightFooter P {
+  padding: 0px;
+  margin: 0px;
+}
+.footersLinks {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+.footersLinks a.active {
+  color: #45b4b4;
+}
+.footersLinks ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+.footersLinks ul li {
+  display: inline-block;
+  padding: 5px;
+  font-size: 20px;
+}
+.footersLinks ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.15s linear 0.15s;
+}
+.footersLinks ul li a:hover {
+  color: #45b4b4;
+  text-decoration: none;
 }

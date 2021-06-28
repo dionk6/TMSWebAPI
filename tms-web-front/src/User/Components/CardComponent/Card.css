@@ -1,18 +1,18 @@
-.Card .leagueTitle{
+.Card .leagueTitle {
   text-align: left;
   text-transform: uppercase;
 }
 
-.Card .firstDescription{
+.Card .firstDescription {
   text-align: left;
   color: #45b4b4;
 }
 
-.Card .leagueDescription{
+.Card .leagueDescription {
   text-align: left;
 }
 
-.Card .leagueDetails{
+.Card .leagueDetails {
   height: 180px;
   background-image: url(../../Images/heroesBg.png);
   background-repeat: no-repeat;
@@ -20,25 +20,26 @@
   background-position: center center;
 }
 
-.Card .lastDetails{
+.Card .lastDetails {
   background: #45b4b4;
   padding: 15px;
 }
-.Card .leagueDate{
+.Card .leagueDate {
   text-align: left;
 }
-.Card .leagueButton{
+.Card .leagueButton {
   text-align: right;
 }
-.Card .btn{
-  background: #0a7272;
-  border-color: #0a7272;
-  color: white;
+.Card .btn {
+  background: #ffffff;
+  /* border-color: #0a7272; */
+  color: black;
   transition: 0.2s;
+  font-weight: bold;
 }
 
 .Card .btn:hover {
   color: #0a7272;
   background: white;
-  border-color: white;
+  border-color: #0a7272;
 }

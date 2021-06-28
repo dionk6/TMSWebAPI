@@ -1,0 +1,42 @@
+.TeamDetail {
+  background-color: #000000;
+  color: #ffffff;
+}
+.TeamDetail .leagueDetailHeader {
+  text-align: center;
+  margin: 50px 0;
+}
+.TeamDetail .leagueImageHolder {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1600px;
+  height: 400px;
+  background: url("../../../assets/img/soccer-field.jpg") no-repeat center;
+  background-size: cover;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  border: 3px solid #45b4b4;
+}
+.TeamDetail .leagueImageHolder .leagueImage {
+  width: 220px;
+  height: 220px;
+  background: rgba(242, 242, 242, 0.5);
+  border-radius: 8px;
+  padding: 20px;
+}
+.TeamDetail .leagueImageHolder .leagueImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.TeamDetail .descriptionContent {
+  margin-bottom: 200px;
+}
+.TeamDetail .descriptionContent .descriptionContentBeforeInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}

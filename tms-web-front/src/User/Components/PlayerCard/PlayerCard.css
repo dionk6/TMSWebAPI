@@ -1,50 +1,54 @@
-.PlayerCardPage .PlayerInfo{
-    background-image: url(../../Images/blackblueBg.jpg);
-    color: white;
+.PlayerCardPage .PlayerInfo {
+  background-image: url(../../Images/blackblueBg.jpg);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.PlayerCardPage .Red{
-    color: #45b4b4;
+.PlayerCardPage .Red {
+  color: #45b4b4;
 }
 
-.PlayerCardPage p{
-    font-size: 14px;
+.PlayerCardPage p {
+  font-size: 14px;
 }
 
-.PlayerCardPage .Kit{
-    text-align: center;
-    background: url(../../Images/shirt.png) no-repeat center;
-    background-size: contain;
-    padding: 20px 0;
+.PlayerCardPage .Kit {
+  text-align: center;
+  background: url(../../Images/shirt.png) no-repeat center;
+  background-size: contain;
+  padding: 20px 0;
 }
 
-.PlayerCardPage .PlayerImg{
-    background-color: black;
+.PlayerCardPage .PlayerImg {
+  background-color: black;
 }
 
-.PlayerCardPage .PlayerImg img{
-    width: 100%;
-    height: 100%;
+.PlayerCardPage .PlayerImg img {
+  width: 100%;
+  height: 100%;
 }
 
-.PlayerCardPage .FontSize{
-    font-size: 20px;
-    margin-left: 10px;
+.PlayerCardPage .FontSize {
+  font-size: 20px;
+  margin-left: 10px;
 }
 
-.PlayerCardPage .BuyNowWrapper{
-    float: right;
+.PlayerCardPage .BuyNowWrapper {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.PlayerCardPage .BuyNowWrapper button{
-    background-color: #45b4b4;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    transition: all .15s linear .15s;
+.PlayerCardPage .BuyNowWrapper button {
+  background-color: #45b4b4;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: all 0.15s linear 0.15s;
 }
 
-.PlayerCardPage .BuyNowWrapper button:hover{
-    color: #45b4b4;
-    background: black;
+.PlayerCardPage .BuyNowWrapper button:hover {
+  color: #45b4b4;
+  background: black;
 }
