@@ -1,6 +1,6 @@
 import {useEffect,useState} from 'react';
 import {useForm} from "react-hook-form";
-import {LeaugesHttpRequestPost,LeaugesHttpRequestPut,SetTeam,AddTeam} from '../../../http/http-requests';
+import {SetTeam,AddTeam} from '../../../http/http-requests';
 import Select from 'react-select'
 
 import './ModalTeams.css'
@@ -46,13 +46,13 @@ const ModalTeams = (props) =>{
 
     const onSubmitTeam = async (data) =>{
         data.logo=data.logo[0];
-        if(selectLeague.selectedOption == undefined){
+        if(selectLeague.selectedOption === undefined){
             data.leagueId = "0";
         }else{
             data.leagueId = selectLeague.selectedOption.value;
         }
 
-        if(selectStadium.selectedOption == undefined){
+        if(selectStadium.selectedOption === undefined){
             data.stadiumId = "0";
         }else{
             data.stadiumId = selectStadium.selectedOption.value;

@@ -12,7 +12,7 @@ const Header = (props) =>{
 
     return(
         <header className="header">
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
                     <div className="headerInner">
                         <div className="logoHeader">

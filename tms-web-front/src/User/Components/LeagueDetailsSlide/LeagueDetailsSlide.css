@@ -1,0 +1,11 @@
+.LeagueDetailsSlide img{
+    width: 200px;
+    height: 200px;
+}
+.LeagueDetailsSlide{
+    text-align: center;
+}
+.swiper-button-prev,
+.swiper-button-next{
+    color: #45b4b4;
+}

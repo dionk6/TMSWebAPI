@@ -38,7 +38,7 @@ const ModalPlayer = (props) =>{
     }
 
     const onSubmitLeague = async (data) =>{
-        if(select.selectedOption == undefined){
+        if(select.selectedOption === undefined){
             data.teamId = "0";
         }else{
             data.teamId = select.selectedOption.value;

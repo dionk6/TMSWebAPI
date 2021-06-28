@@ -1,4 +1,5 @@
-import {useState,useEffect,useLayoutEffect} from "react"
+import {useState,useEffect,useLayoutEffect} from "react";
+import { useHistory  } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import TMSLogo from "../../../assets/img/Tms.jpg" 
 import { getUser,logout } from "../../../http/http-requests";
@@ -7,6 +8,7 @@ import './AdminSidebar.css';
 const AdminSidebar = (props) =>{
     const [active,setActive]=useState(true);
     const [email,setEmail]=useState("");
+    const routerHistory = useHistory();
     
     const toggleSidebarHandler = () =>{
         setActive(active ? "" : "active");
@@ -30,7 +32,7 @@ const AdminSidebar = (props) =>{
         if(result.data){
             window.localStorage.removeItem("UserId");
             window.localStorage.removeItem("RoleId");
-            window.location.href = "/Login";
+            routerHistory.push('/Login');
         }
     }
 

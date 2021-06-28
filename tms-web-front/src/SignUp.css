@@ -4,19 +4,19 @@
     background-color: black;
 }
 
-.box{
+.Login .box{
     width: 500px;
 }
 
-.logo{
+.Login .logo{
     width: 200px;
 }
 
-.loginBox{
+.Login .loginBox{
     border-radius: 5px;
 }
 
-input{
+.Login input{
     width: 100%;
     height: 50px;
     padding: 0px 15px;
@@ -29,15 +29,15 @@ input{
     border-bottom: 2px solid #e6e6e6;
 }
 
-input:focus{
+.Login input:focus{
     border-bottom: 2px solid #45b4b4;
 }
 
-h4{
+.Login h4{
     margin-bottom: 40px;
 }
 
-button{
+.Login button{
     padding: 12px 0px;
     width: 150px;
     background-color: #45b4b4;
@@ -46,7 +46,7 @@ button{
     border-radius: 50px;
 }
 
-a{
+.Login a{
     padding: 12px 0px;
     width: 150px;
     background-color: #45b4b4;
@@ -56,7 +56,8 @@ a{
     text-decoration: none;
 }
 
-button:hover,a:hover{
+.Login button:hover,
+.Login a:hover{
     background-color: #0c5e5e;
     color: white;
 }

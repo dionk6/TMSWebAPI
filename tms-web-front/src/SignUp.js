@@ -9,7 +9,7 @@ const SignUp = () =>{
     const { register , handleSubmit } = useForm();
     
     const onSubmitAccount = async (data) =>{
-        if(data.password != data.confirmPassword){
+        if(data.password !== data.confirmPassword){
             alert("Password not matching");
             return;
         }

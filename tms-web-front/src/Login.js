@@ -1,11 +1,13 @@
 import './Login.css';
 import {useForm} from "react-hook-form";
+import { useHistory  } from 'react-router-dom'
 import TMSLogo from "../src/User/Images/TMSLogo.png";
 import {signIn} from "../src/http/http-requests";
 import {NavLink} from "react-router-dom"
 
 const Login = () =>{
     const { register , handleSubmit } = useForm();
+    const routerHistory = useHistory();
     
     const onSubmitAccount = async (data) =>{
         try{
@@ -13,14 +15,14 @@ const Login = () =>{
             if(result.data.isCorrect){
                 window.localStorage.setItem("UserId",result.data.userId);
                 window.localStorage.setItem("RoleId",result.data.roleId);
-                alert(result.data.message);
-                if(result.data.roleId == "2"){
-                    window.location.href = "/";
-                }else if(result.data.roleId == "1"){
-                    window.location.href = "/admin";
+                console.log(result.data.message);
+                if(result.data.roleId === "2"){
+                    routerHistory.push('/');
+                }else if(result.data.roleId === "1"){
+                    routerHistory.push('/Admin');
                 }
             }else{
-                alert(result.data.message);
+                console.log(result.data.message);
             }
         }catch(err){
             console.log(err);
