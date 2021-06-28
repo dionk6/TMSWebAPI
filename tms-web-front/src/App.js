@@ -1,3 +1,4 @@
+import './App.css'
 import Routes from './Routes/Routes';
 const  App = () => {
   return (

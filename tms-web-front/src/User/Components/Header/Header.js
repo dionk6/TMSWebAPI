@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {NavLink} from "react-router-dom"
 import './Header.css';
-import TMSLogo from "../../Images/TMSLogo.png";
+import TMSLogo from "../../Images/Tms.jpg";
  
 const Header = (props) =>{
     const [active,setActive]=useState(false);
@@ -15,10 +15,10 @@ const Header = (props) =>{
             <div className="container">
                 <div className="row">
                     <div className="headerInner">
-                        <div className="logoHeader col-md-4 col-sm-2">
-                            <a>
+                        <div className="logoHeader">
+                            <NavLink to='/' exact>
                                 <img src={TMSLogo} alt="Logo"/>
-                            </a>
+                            </NavLink>
                         </div>
                         <nav className={`headersLinks ${active ? "active" : ""}`}>
                             <ul>
@@ -26,7 +26,7 @@ const Header = (props) =>{
                                     <NavLink to="/" exact>Home</NavLink>
                                 </li>
                                 <li className="navItem">
-                                    <NavLink to="/Leagues" exact>Leagues</NavLink>
+                                    <NavLink to="/Leagues">Leagues</NavLink>
                                 </li>
                                 <li className="navItem">
                                     <NavLink to="/Teams" exact>Teams</NavLink>

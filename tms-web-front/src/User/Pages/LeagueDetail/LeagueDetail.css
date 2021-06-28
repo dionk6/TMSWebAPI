@@ -12,17 +12,19 @@
     justify-content: center;
     align-items: center;
     max-width: 1600px;
-    height: 500px;
+    height: 400px;
     background: url('../../../assets/img/soccer-field.jpg') no-repeat center;
     background-size: cover;
     border-radius: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+    border: 3px solid #45b4b4;
 }
 .LeagueDetail .leagueImageHolder .leagueImage{
-    width: 200px;
-    height: 200px;
-    background: rgb(242, 242, 242);
+    width: 220px;
+    height: 220px;
+    background: rgba(242, 242, 242,.5);
     border-radius: 8px;
+    padding: 20px;
 }
 .LeagueDetail .leagueImageHolder .leagueImage img{
     width: 100%;

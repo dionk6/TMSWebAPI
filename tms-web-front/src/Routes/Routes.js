@@ -36,7 +36,7 @@ const routes = [
         component:User
     },
     {
-        path: "/LeagueDetail/:id",
+        path: "/Leagues/:id",
         component:User
     },
     {

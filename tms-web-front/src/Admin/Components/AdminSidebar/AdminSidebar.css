@@ -12,8 +12,35 @@ aside {
 }
 .asideTranslate{
   transition: all .15s linear .15s;
+} 
+aside .asideTranslate h5{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
+aside .asideTranslate h5,
+aside .asideTranslate .logoutButtonWrapper{
+  transition: all .15s linear .15s;
+}
+aside .asideTranslate .logoutButtonWrapper button{
+  padding: 10px 40px;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  transition: all .15s linear .15s;
+}
+aside .asideTranslate .logoutButtonWrapper button:hover{
+  background-color: #000000;
+  color: #45b4b4;
+  border: 1px solid #45b4b4;
+}
+aside.active .asideTranslate h5,
+aside.active .asideTranslate .logoutButtonWrapper{
+  visibility: hidden;
+  opacity: 0;
+}
 aside.active{
   width:80px;
 }
@@ -33,11 +60,11 @@ aside .asideToggleButton{
 aside .asideToggleButton svg{
   display: block;
   fill: #45b4b4;
-  transform: rotate(-180deg);
+  transform: rotate(0deg);
   transition: .15s ease-in-out .15s;
 }
 aside .asideToggleButton.active svg{
-  transform: rotate(0deg);
+  transform: rotate(-180deg);
 }
 aside .asideToggleButton svg:hover{
   fill: #fff;
@@ -47,15 +74,16 @@ aside .asideLogo {
   width: 100%;
   text-align: center;
   padding: 20px 0;
+  background: #000000;
 }
 aside .asideLogo a {
   display: inline-block;
   cursor: pointer;
 }
 aside .asideLogo a img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  width: 180px;
+  height: 80px;
+  object-fit: contain;
   transition: all .15s linear .15s;
 }
 aside.active .asideLogo a img{
@@ -122,9 +150,4 @@ aside nav ul li .statsDropdownMenu.active ul#statsDropdownMenuList {
   opacity: 1;
   max-height:1000px;
   padding-top: 20px;
-}
-@media (max-width: 767px) { 
-  aside{
-    width: 100%;
-  }
 }

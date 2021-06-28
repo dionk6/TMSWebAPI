@@ -437,14 +437,36 @@ html {
    Author's custom styles
    ========================================================================== */
    
-   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
-   body{
-     font-family: 'Montserrat', sans-serif;
-     float: left;
-     width: 100%;
-   }
+  body{
+    font-family: 'Montserrat', sans-serif;
+    float: left;
+    width: 100%;
+  }
+    /* width */
+  *::-webkit-scrollbar {
+    width:6px;
+  }
 
+  /* Track */
+  *::-webkit-scrollbar-track {
+    background: #000000;
+    cursor: pointer;
+  }
+
+  /* Handle */
+  *::-webkit-scrollbar-thumb {
+    border: 2px solid #45b4b4;
+    background: #45b4b4;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* Handle on hover */
+  *::-webkit-scrollbar-thumb:hover {
+    background: #fffFFF;
+  }
   /* ==========================================================================
    Helper classes
    ========================================================================== */

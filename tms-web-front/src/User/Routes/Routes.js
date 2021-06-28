@@ -25,7 +25,7 @@ const routes = [
         component: Leagues
     },
     {
-        path:"/LeagueDetail/:id",
+        path:"/Leagues/:id",
         component: LeagueDetail
     },
     {

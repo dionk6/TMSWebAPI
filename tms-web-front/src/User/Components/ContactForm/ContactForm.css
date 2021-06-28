@@ -34,6 +34,7 @@
   color: #fff;
   background-color: #45b4b4;
   border-color: #45b4b4;
+  padding: 10px 40px;
 }
 .btn:hover{
   border-color: #0b5f5f;

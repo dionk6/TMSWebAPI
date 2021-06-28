@@ -23,7 +23,7 @@ const Card = (props)=>{
                     Founded Year: {props.league.foundedYear}
                 </div>
                 <div className="col-lg-6 leagueButton">
-                    <NavLink className="btn" to={`/LeagueDetail/${props.league.id}`} id={props.league.id}>View Details</NavLink>
+                    <NavLink className="btn" to={`/Leagues/${props.league.id}`} id={props.league.id}>View Details</NavLink>
                 </div>
             </div>
         </div>
