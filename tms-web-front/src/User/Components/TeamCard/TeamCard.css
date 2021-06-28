@@ -1,16 +1,16 @@
-.TeamLogo img{
+.TeamCard .TeamLogo img{
   background-color: black;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.FontSize{
+.TeamCard .FontSize{
   font-size: 20px;
   margin-left: 10px;
 }
 
-p{
+.TeamCard p{
   font-size: 14px;
 }
 
@@ -18,15 +18,15 @@ p{
   background: url(../../Images/whiteBgBig.jpg) repeat;
 }
 
-.Info{
+.TeamCard .Info{
   color: #45b4b4;
 }
 
-.BuyNowWrapper{
+.TeamCard .BuyNowWrapper{
   float: right;
 }
 
-.BuyNowWrapper button{
+.TeamCard .BuyNowWrapper button{
   background-color: #45b4b4;
   border: none;
   border-radius: 5px;
@@ -34,7 +34,7 @@ p{
   transition: all .15s linear .15s;
 }
 
-.BuyNowWrapper button:hover{
+.TeamCard .BuyNowWrapper button:hover{
   color: #45b4b4;
   background: black;
 }

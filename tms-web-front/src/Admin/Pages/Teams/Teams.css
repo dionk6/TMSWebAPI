@@ -1,12 +1,12 @@
-.tableWrapper {
+.teamsPage .tableWrapper {
     text-align: right;
 }
-.tableWrapper table{
+.teamsPage .tableWrapper table{
     vertical-align: middle;
     text-align: left;
 }
 
-.tableWrapper .addButton{
+.teamsPage .tableWrapper .addButton{
     padding: 10px 30px;
     border-radius: 5px;
     color: #ffffff;
@@ -15,18 +15,18 @@
     text-transform: uppercase;
     margin: 0 10px;
 }
-.tableWrapper .addButton{
+.teamsPage .tableWrapper .addButton{
     background-color: #2976bb;
 }
-.tableWrapper .editButton,
-.tableWrapper .deleteButton{
+.teamsPage .tableWrapper .editButton,
+.teamsPage .tableWrapper .deleteButton{
     background-color: transparent;
     border: none;
 }
-.tableWrapper .deleteButton{
+.teamsPage .tableWrapper .deleteButton{
     fill: rgb(221, 72, 72);
 }
 
-.tableWrapper .editButton{
+.teamsPage .tableWrapper .editButton{
     fill: rgb(228, 166, 51);
 }

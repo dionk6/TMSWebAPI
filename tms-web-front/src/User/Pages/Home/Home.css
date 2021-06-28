@@ -1,4 +1,4 @@
-.topLeagues {
+.Home .topLeagues {
   display: flex;
   flex-direction: row;
   justify-self: center;
@@ -9,19 +9,19 @@
   background-position: center center;
   padding: 50px 0;
 }
-.TitleTopLeagues {
+.Home .TitleTopLeagues {
   text-align: center;
   margin:50px 0 ;
 }
-.TitleTopLeagues span {
+.Home .TitleTopLeagues span {
   border-radius: 10px;
   background-color: red;
 }
-.allLeagues{
+.Home .allLeagues{
   text-align: center;
   margin-bottom: 50px;
 }
-.homeLeaguesShowMoreBtn{
+.Home .homeLeaguesShowMoreBtn{
   display: inline-block;
   background-color: #000000;
   color: #ffffff;
@@ -31,27 +31,27 @@
   border-radius: 8px;
   transition: all .15s linear .15s;
 }
-.homeLeaguesShowMoreBtn:hover{
+.Home .homeLeaguesShowMoreBtn:hover{
   border: 3px solid #45b4b4;
   background-color: #ffffff;
   color: #000000;
 }
 
-.adv{
+.Home .adv{
   padding: 100px 0;
   background-image: url(../../Images/socialMediaHomeBg.PNG);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
-.adv div{
+.Home .adv div{
   fill: white;
 }
 
-.adv svg{
+.Home .adv svg{
   padding: 10px;
 }
-.topPlayers{
+.Home .topPlayers{
   padding: 100px 0;
   background-image:
     linear-gradient(to bottom, rgba(0, 0,0, 0.52), rgba(0, 0, 0, 0.73)),
@@ -62,6 +62,6 @@
   background-position: center center;
 }
 
-.topPlayers h1{
+.Home .topPlayers h1{
   padding: 20px 0;
 }

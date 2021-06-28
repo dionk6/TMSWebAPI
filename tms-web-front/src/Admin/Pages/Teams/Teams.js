@@ -60,7 +60,7 @@ const Stadiums = () => {
     }, [openModal, openDeleteModal]);
 
     return (
-        <div className="stadiumsPage">
+        <div className="teamsPage">
             <h1>Teams</h1>
             <div className="tableWrapper">
                 <button onClick={() => { AddEdit("0") }} className="addButton">Add</button>

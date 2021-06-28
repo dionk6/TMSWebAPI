@@ -2,7 +2,7 @@ import "./PlayerCard.css";
 
 const PlayerCard = (props) => {
     return (
-        <div className="PlayerCardPage ">
+        <div className="PlayerCardPage">
             <div className="container">
                 <div className="row mb-5">
                     <div className="col-lg-4 PlayerImg">

@@ -53,7 +53,7 @@ const Players = () => {
     }, [openModal, openDeleteModal]);
 
     return (
-        <div>
+        <div className="playersTable">
             <h1>Players</h1>
             <div className="tableWrapper">
                 <button onClick={() => { AddEdit("0") }} className="addButton">Add</button>

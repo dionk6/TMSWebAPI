@@ -20,13 +20,13 @@
   font-size: 14px;
   font-weight: 500;
 }
-.roundBox {
+.contactContent .roundBox {
   width: auto;
   height: auto;
   border: 1px solid #45b4b4;
   padding: 15px;
   border-radius: 50%;
 }
-.roundBox svg path {
+.contactContent .roundBox svg path {
   fill: #45b4b4;
 }

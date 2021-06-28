@@ -1,11 +1,11 @@
-.tableWrapper {
+.stadiumsPage .tableWrapper {
     text-align: right;
 }
-.tableWrapper table{
+.stadiumsPage .tableWrapper table{
     vertical-align: middle;
     text-align: left;
 }
-.tableWrapper .addButton{
+.stadiumsPage .tableWrapper .addButton{
     padding: 10px 40px;
     border-radius: 5px;
     color: #ffffff;
@@ -14,18 +14,18 @@
     text-transform: uppercase;
     margin: 0 10px;
 }
-.tableWrapper .addButton{
+.stadiumsPage .tableWrapper .addButton{
     background-color: #2976bb;
 }
-.tableWrapper .editButton,
-.tableWrapper .deleteButton{
+.stadiumsPage .tableWrapper .editButton,
+.stadiumsPage .tableWrapper .deleteButton{
     background-color: transparent;
     border: none;
 }
-.tableWrapper .deleteButton{
+.stadiumsPage .tableWrapper .deleteButton{
     fill: rgb(221, 72, 72);
 }
 
-.tableWrapper .editButton{
+.stadiumsPage .tableWrapper .editButton{
     fill: rgb(228, 166, 51);
 }

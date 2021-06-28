@@ -1,11 +1,11 @@
-.tableWrapper {
+.leaugesPage .tableWrapper {
     text-align: right;
 }
-.tableWrapper table{
+.leaugesPage .tableWrapper table{
     vertical-align: middle;
     text-align: left;
 }
-.tableWrapper .addButton{
+.leaugesPage .tableWrapper .addButton{
     padding: 10px 40px;
     border-radius: 5px;
     color: #ffffff;
@@ -14,18 +14,18 @@
     text-transform: uppercase;
     margin: 0 10px;
 }
-.tableWrapper .addButton{
+.leaugesPage .tableWrapper .addButton{
     background-color: #2976bb;
 }
-.tableWrapper .editButton,
-.tableWrapper .deleteButton{
+.leaugesPage .tableWrapper .editButton,
+.leaugesPage .tableWrapper .deleteButton{
     background-color: transparent;
     border: none;
 }
-.tableWrapper .deleteButton{
+.leaugesPage .tableWrapper .deleteButton{
     fill: rgb(221, 72, 72);
 }
 
-.tableWrapper .editButton{
+.leaugesPage .tableWrapper .editButton{
     fill: rgb(228, 166, 51);
 }

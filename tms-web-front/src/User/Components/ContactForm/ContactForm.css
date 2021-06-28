@@ -13,14 +13,14 @@
 .contactForm h1 span span {
   color: #45b4b4;
 }
-.inputsDesign {
+.contactForm .inputsDesign {
   background: black;
   height: 60px;
   color: gray;
   font-size: 18px;
 }
 
-.inputsDesign:focus {
+.contactForm .inputsDesign:focus {
   background: black;
   border-color: #45b4b4;
   box-shadow: none;
@@ -30,16 +30,16 @@
 .contactForm textarea {
   height: 150px;
 }
-.btn {
+.contactForm .btn {
   color: #fff;
   background-color: #45b4b4;
   border-color: #45b4b4;
   padding: 10px 40px;
 }
-.btn:hover{
+.contactForm .btn:hover{
   border-color: #0b5f5f;
   background-color: #0b5f5f;
 }
-svg {
+.contactForm svg {
   fill: #45b4b4;
 }

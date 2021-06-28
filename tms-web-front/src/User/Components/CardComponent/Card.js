@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 
 const Card = (props)=>{
     return(           
-        <div className="col-lg-4 mb-5">
+        <div className="Card col-lg-4 mb-5">
             <div style={{background: "#f2f2f2"}} className="text-center p-5">
                 <img height="200" src={props.league.logo} />
             </div>

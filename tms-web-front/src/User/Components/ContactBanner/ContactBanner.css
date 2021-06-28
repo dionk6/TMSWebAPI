@@ -4,10 +4,10 @@
   background-size: cover;
   background-position: center center;
 }
-.title {
+.contactBanner .title {
   color: white;
   font-size: 80px;
 }
-.title span {
+.contactBanner .title span {
   color: #45b4b4;
 }

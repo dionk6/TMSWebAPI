@@ -1,21 +1,21 @@
-.playerText{
-    padding: 10px 0;
-    background-image: url(../../Images/infoBg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-  }
-  .playerNumber{
-    text-align: right;
-  }
-  .playerFont{
-      font-size: 16px;
-  }
-  .buyKit{
-    color: white;
-    cursor: pointer;
-  }
+.homePlayerCard .playerText{
+  padding: 10px 0;
+  background-image: url(../../Images/infoBg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.homePlayerCard .playerNumber{
+  text-align: right;
+}
+.homePlayerCard .playerFont{
+    font-size: 16px;
+}
+.homePlayerCard .buyKit{
+  color: white;
+  cursor: pointer;
+}
 
-  .playerFont:hover {
-    color: #45b4b4;
+.homePlayerCard .playerFont:hover {
+  color: #45b4b4;
 }
