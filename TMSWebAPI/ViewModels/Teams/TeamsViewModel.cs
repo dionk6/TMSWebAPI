@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMSWebAPI.ViewModels.Players;
 
 namespace TMSWebAPI.ViewModels.Teams
 {
@@ -18,5 +19,6 @@ namespace TMSWebAPI.ViewModels.Teams
         public string Budget { get; set; }
         public string LeagueId { get; set; }
         public string StadiumId { get; set; }
+        public List<PlayersTable> Players { get; set; }
     }
 }

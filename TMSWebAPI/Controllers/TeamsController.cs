@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TMSWebAPI.Models;
 using TMSWebAPI.ViewModels;
+using TMSWebAPI.ViewModels.Players;
 using TMSWebAPI.ViewModels.Teams;
 
 namespace TMSWebAPI.Controllers
@@ -67,6 +68,44 @@ namespace TMSWebAPI.Controllers
             }
 
             return team;
+        }
+
+        [HttpGet("GetTeamWithPlayers/{id}")]
+        public ActionResult<TeamsViewModel> GetTeamWithPlayers(int id)
+        {
+            var team =  _context.Teams.Include(t => t.Players).Where(t => t.Id == id).FirstOrDefault();
+
+            var model = new TeamsViewModel();
+            model.Id = team.Id.ToString();
+            model.City = team.City;
+            model.Logo = team.Logo;
+            model.FoundedYear = team.FoundedYear.ToString();
+            model.Manager = team.Manager;
+            model.Trophies = team.Trophies.ToString();
+            model.Owner = team.Owner;
+            model.Budget = team.Budget;
+            model.LeagueId = team.LeagueId.ToString();
+            model.StadiumId = team.StadiumId.ToString();
+
+            var player = team.Players.Where(t => t.IsDeleted == false).Select(t => new PlayersTable
+            {
+                Id = t.Id.ToString(),
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+                Age = t.Age.ToString(),
+                PlayerNo = t.PlayerNo,
+                Bio = t.Bio,
+                Position = t.Position,
+                Photo = t.Photo,
+                Kit = t.Kit,
+                Price = t.Price.ToString(),
+                Team = t.Team.Name
+
+            }).ToList();
+
+            model.Players = player;
+            return model;
+
         }
 
         // PUT: api/Teams/5
