@@ -1,0 +1,75 @@
+.ProductPage .mainColor{
+    color: #45b4b4;
+}
+
+.ProductPage .borderBottom{
+    border-bottom: 3px solid #45b4b4;
+    padding-bottom: 7px;
+}
+.ProductPage h2{
+    font-weight: bold;
+}
+
+.ProductPage .container{
+    margin-top: 80px;
+}
+
+.ProductPage .firstParagraph{
+    color: #a0a6a9;
+    font-size: 15px;
+    margin: 50px 0px;
+}
+
+.ProductPage .imgDiv{
+    background-color: #70757b;
+}
+
+.ProductPage .reviewBorders{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+.ProductPage .reviewBorders svg {
+    padding-right: 5px;
+}
+
+.ProductPage .priceDiv{
+    padding: 60px 0;
+    font-size: 40px;
+    padding-left: 20px;
+    font-weight: 600;
+    line-height: 17px;
+}
+
+.ProductPage .priceDiv span{
+    font-size: 12px;
+    font-weight: normal;
+    color: gray;
+}
+
+.ProductPage .shirtNo{
+    background-image: url(../../Images/blackShirt.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    font-size: 60px;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .ProductPage .priceDiv{
+        font-size: 25px;
+    }
+}
+
+.ProductPage .btn{
+    background-color: #45b4b4;
+    color: white;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.ProductPage .btn:hover{
+    background: white;
+    color: #45b4b4;
+    border: 1px solid #45b4b4;
+}

@@ -55,16 +55,28 @@ namespace TMSWebAPI.Controllers
 
         // GET: api/Players/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Player>> GetPlayer(int id)
+        public async Task<ActionResult<PlayersTable>> GetPlayer(int id)
         {
-            var player = await _context.Players.FindAsync(id);
+            var player = await _context.Players.Include(t => t.Team).Where(t => t.Id == id).FirstAsync();
 
+            var model = new PlayersTable();
+            model.Id = player.Id.ToString();
+            model.FirstName = player.FirstName;
+            model.LastName = player.LastName;
+            model.Age = player.Age.ToString();
+            model.PlayerNo = player.PlayerNo;
+            model.Position = player.Position;
+            model.Photo = player.Photo;
+            model.Kit = player.Kit;
+            model.Price = player.Price.ToString();
+            model.Team = player.Team.Name;
+            model.Bio = player.Bio;
             if (player == null)
             {
                 return NotFound();
             }
 
-            return player;
+            return model;
         }
 
         // PUT: api/Players/5

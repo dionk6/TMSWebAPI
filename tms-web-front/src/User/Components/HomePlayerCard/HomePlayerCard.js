@@ -1,5 +1,6 @@
 import "./HomePlayerCard.css";
 import shirt from "../../Images/shirt.png";
+import {NavLink} from 'react-router-dom'
 
 const HomePlayerCard = (props) => {
     return (
@@ -17,7 +18,7 @@ const HomePlayerCard = (props) => {
             </div>
             <div className="col-lg-12 row m-0 mt-2 p-3 playerText">
                 <div className="col-7 buyKit playerFont">
-                    <a>Buy now</a>
+                    <NavLink className="btn" to={`/Product/${props.player.id}`}>Buy Shirt</NavLink>
                 </div>
                 <div className="col-5 playerNumber playerFont text-danger">
                     {props.player.price} €
