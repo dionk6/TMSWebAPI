@@ -1,4 +1,5 @@
 import "./PlayerCard.css";
+import {NavLink} from 'react-router-dom'
 
 const PlayerCard = (props) => {
     return (
@@ -36,7 +37,7 @@ const PlayerCard = (props) => {
                             </p>
                         </div>
                         <div className="BuyNowWrapper">
-                            <button>Buy Ticket</button>
+                            <NavLink className="btn" to={`/Product/${props.player.id}`}>Buy Shirt</NavLink>
                         </div>
                     </div>
                 </div>

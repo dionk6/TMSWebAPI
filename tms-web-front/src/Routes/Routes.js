@@ -40,6 +40,10 @@ const routes = [
         component:User
     },
     {
+        path: "/Product/:id",
+        component:User
+    },
+    {
         path: "/About",
         component:User
     },

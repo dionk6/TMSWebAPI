@@ -11,11 +11,12 @@
 .homePlayerCard .playerFont{
     font-size: 16px;
 }
-.homePlayerCard .buyKit{
+.homePlayerCard .buyKit a{
   color: white;
   cursor: pointer;
+  padding: 0px;
 }
 
-.homePlayerCard .playerFont:hover {
+.homePlayerCard .playerFont a:hover {
   color: #45b4b4;
 }

@@ -1,0 +1,14 @@
+.ProductBanner {
+    height: 500px;
+    background: url(../../../assets/img/innerpageBg.jpg);
+    background-size: cover;
+    background-position: center center;
+  }
+  .ProductBanner .title {
+    color: white;
+    font-size: 80px;
+  }
+  .ProductBanner .title span {
+    color: #45b4b4;
+  }
+  
