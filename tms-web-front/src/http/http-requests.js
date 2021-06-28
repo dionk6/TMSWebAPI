@@ -16,7 +16,8 @@ import {
   SignIn,
   GetUser,
   Logout,
-  ALLLEAGUEDATA
+  ALLLEAGUEDATA,
+  TeamWithPlayers,
 } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
@@ -29,7 +30,7 @@ const LeaugesHttpRequest = () => {
 const GetLeaugeHttpRequest = (id) => {
   return axios({
     method: GET,
-    url: ALLLEAGUEDATA + '/' + id,
+    url: ALLLEAGUEDATA + "/" + id,
   });
 };
 
@@ -73,7 +74,7 @@ const AddStadium = (data) => {
   return axios({
     method: POST,
     url: STADIUM,
-    data:data
+    data: data,
   });
 };
 const GetStadium = (id) => {
@@ -86,7 +87,7 @@ const SetStadium = (data) => {
   return axios({
     method: PUT,
     url: STADIUM,
-    data:data
+    data: data,
   });
 };
 const DeleteStadium = (id) => {
@@ -114,7 +115,7 @@ const SetTeam = (data) => {
   return axios({
     method: PUT,
     url: Team,
-    data:data
+    data: data,
   });
 };
 
@@ -122,14 +123,14 @@ const AddTeam = (data) => {
   return axios({
     method: POST,
     url: Team,
-    data:data
+    data: data,
   });
 };
 
 const DeleteTeam = (id) => {
   return axios({
     method: DELETE,
-    url: Team+"/"+id
+    url: Team + "/" + id,
   });
 };
 
@@ -225,14 +226,21 @@ const signIn = (data) => {
 const getUser = (id) => {
   return axios({
     method: GET,
-    url: GetUser+"/"+id,
+    url: GetUser + "/" + id,
   });
 };
 
 const logout = () => {
   return axios({
     method: GET,
-    url: Logout
+    url: Logout,
+  });
+};
+
+const GetTeamHttpRequest = (id) => {
+  return axios({
+    method: GET,
+    url: TeamWithPlayers + "/" + id,
   });
 };
 
@@ -266,5 +274,6 @@ export {
   createAccount,
   signIn,
   getUser,
-  logout
+  logout,
+  GetTeamHttpRequest,
 };
