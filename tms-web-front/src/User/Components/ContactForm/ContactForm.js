@@ -1,6 +1,7 @@
 import {useEffect,useState} from 'react';
 import {useForm} from "react-hook-form";
 import {sendEmail} from '../../../http/http-requests';
+import {PostContactHttpRequest} from '../../../httpNode/http-requests';
 
 import './ContactForm.css'
 
@@ -10,10 +11,12 @@ const ContactContent = () => {
     const { register , handleSubmit } = useForm();
     
     const onSubmitContact = async (data) =>{
+        console.log(data)
         try{
-            var result = await sendEmail(data);
-            if(result.data){
-                //alert("Thank you for your message");
+            let result = await sendEmail(data);
+            let resultNode = await PostContactHttpRequest(data);
+            console.log(resultNode)
+            if(result.data && resultNode){
                 contactMessage("Thank you for your message","green");
                 clearData();
             }else{
