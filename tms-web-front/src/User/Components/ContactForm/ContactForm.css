@@ -1,3 +1,15 @@
+.contactForm .responseMessages{
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .15s linear .15s;
+  position: relative;
+}
+.contactForm.active .responseMessages,
+.contactForm.active .responseMessages{
+  opacity: 1;
+  visibility: visible;
+}
 .contactForm h1 {
   color: gray;
   font-weight: normal;
@@ -19,7 +31,40 @@
   color: gray;
   font-size: 18px;
 }
+.contactForm .thankYouAppear{
+  position: absolute;
+  top:0;
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  color: #0b5f5f;
+  font-weight: bold;
+  transition: all .15s linear .15s;
+}
+.contactForm.active .thankYouAppear{
+  position: relative;
+  visibility: visible;
+  opacity: 1;
 
+}
+.contactForm .errorrAppear{
+  position: absolute;
+  top:0;
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  color: #a11d1d;
+  font-weight: bold;
+  transition: all .15s linear .15s;
+}
+.contactForm.error .errorrAppear{
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+
+}
 .contactForm .inputsDesign:focus {
   background: black;
   border-color: #45b4b4;
@@ -42,4 +87,9 @@
 }
 .contactForm svg {
   fill: #45b4b4;
+}
+.contactForm .error-msg { 
+  display: block;
+  margin-top: 10px;
+  color: #db2525;
 }
