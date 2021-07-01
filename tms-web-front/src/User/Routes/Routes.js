@@ -10,6 +10,7 @@ const About = lazy(() => import("../Pages/About/About"));
 const Teams = lazy(() => import("../Pages/Teams/Teams"));
 const Players = lazy(() => import("../Pages/Players/Players"));
 const Product = lazy(() => import("../Pages/Product/Product"));
+const Order = lazy(() => import("../Pages/Order/Order"));
 const TeamDetail = lazy(() => import("../Pages/TeamDetail/TeamDetail"));
 
 const routes = [
@@ -48,6 +49,10 @@ const routes = [
   {
     path: "/Product/:id",
     component: Product,
+  },
+  {
+    path: "/Order/:id",
+    component: Order,
   },
 ];
 

@@ -46,6 +46,10 @@ const routes = [
     component: User,
   },
   {
+    path: "/Order/:id",
+    component: User,
+  },
+  {
     path: "/About",
     component: User,
   },

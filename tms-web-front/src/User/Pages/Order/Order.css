@@ -1,0 +1,65 @@
+.OrderPage .firstBox{
+    background-color: #868F98;
+    color: white;
+    padding: 30px 20px;
+}
+
+.OrderPage .firstBoxTitle{
+    text-align: left;
+}
+
+.OrderPage .firstBoxOrderId{
+    text-align: right;
+    line-height: 30px;
+}
+
+.OrderPage .container{
+    margin-top: 20px;
+}
+
+.OrderPage .secondBox{
+    background-color: #454C54;
+    padding: 30px 20px;
+    color: white;
+}
+
+.OrderPage .secondBox img{
+    background-color: #d3d3d3;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.OrderPage .spaces{
+    height: 25px;
+    background-color: #868F98;
+}
+
+.OrderPage .thirdbox{
+    background-color: #454C54;
+    padding: 30px 20px;
+    color: white;
+}
+
+.OrderPage .btn{
+    background-color: #45b4b4;
+    color: white;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.OrderPage .btn:hover{
+    background: white;
+    color: #45b4b4;
+    border: 1px solid #45b4b4;
+}
+.OrderPage .text-secondary{
+    color: #9f9d9d!important;
+    font-size: 18px;
+}
+
+.OrderPage .fourthBox{
+    background-color: #868F98;
+    padding: 10px;
+    color: white;
+    font-size: 25px;
+}

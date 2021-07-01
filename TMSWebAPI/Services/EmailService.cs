@@ -29,7 +29,7 @@ namespace TMSWebAPI.Services
                 mailMessage.ReplyTo = replyAddress;
                 mailMessage.Subject = contact.Subject;
                 mailMessage.IsBodyHtml = true;
-                mailMessage.Body = "<h1>Subject:</h1> " + contact.Subject + "<h3>Email:</h3> " + contact.Email + "<br/> <h3>Message:</h3> " + contact.Message;
+                mailMessage.Body = "<h1>Subject:" + contact.Subject + "</h1><h3>Email:" + contact.Email + "</h3><br/> <h3>Message:</h3> " + contact.Message;
                 mailMessage.To.Add("ushtrimeemail@gmail.com");
                 await smtpClient.SendMailAsync(mailMessage);
                 return true;

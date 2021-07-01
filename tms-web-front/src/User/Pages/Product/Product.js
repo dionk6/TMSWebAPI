@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Product.css";
 import ProductBanner from '../../Components/ProductBanner/ProductBanner';
-import ibra from "../../Images/ibra.png";
+//import ibra from "../../Images/ibra.png";
 import { GetPlayer } from "../../../http/http-requests";
 
 const Product = ({ match }) => {
