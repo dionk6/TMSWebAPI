@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const config = require('./dbConnection');
 const contacts = require('../routes/contacts');
 const orders = require('../routes/orders');
+const confirmorder = require('../routes/confirmOrder');
 
 mongoose.Promise = global.Promise; 
 mongoose.connect(config.db);
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 app.use(cors()); 
 app.use('/contacts',contacts)
 app.use('/orders',orders)
+app.use('/confirmOrder',confirmorder)
 
 var port = process.env.PORT || 4000;
 

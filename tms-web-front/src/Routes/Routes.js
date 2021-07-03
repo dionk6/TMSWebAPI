@@ -50,6 +50,10 @@ const routes = [
     component: User,
   },
   {
+    path: "/ConfirmOrder/:id",
+    component: User,
+  },
+  {
     path: "/About",
     component: User,
   },

@@ -1,0 +1,85 @@
+.ConfirmOrderPage{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmOrderSucces {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20%);
+    transition: all .15s ease-in .15s;
+}
+.confirmOrderSucces.active{
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+}
+.confirmOrderSucces h1{
+    margin: 40px 0;
+}
+.confirmOrderSucces .success-animation { margin:150px auto;}
+
+.confirmOrderSucces .checkmark {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #4bb71b;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #4bb71b;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    position:relative;
+    top: 5px;
+    right: 5px;
+   margin: 0 auto;
+}
+.confirmOrderSucces .checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #4bb71b;
+    fill: #000000;
+    animation: stroke 0.12s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+ 
+}
+
+.confirmOrderSucces .checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.9s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px #4bb71b;
+    }
+}
