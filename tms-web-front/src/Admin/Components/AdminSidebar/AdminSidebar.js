@@ -64,6 +64,7 @@ const AdminSidebar = (props) =>{
                         <li><NavLink to="/Admin/Players">Players</NavLink></li>
                         <li><NavLink to="/Admin/Stadiums">Stadiums</NavLink></li>
                         <li><NavLink to="/Admin/Teams">Teams</NavLink></li>
+                        <li><NavLink to="/Admin/Orders">Orders</NavLink></li>
                     </ul>
                 </nav>
                 <div className="logoutButtonWrapper text-white text-center mt-5">

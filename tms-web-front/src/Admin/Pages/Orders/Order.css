@@ -1,0 +1,31 @@
+.adminOrders .tableWrapper {
+    text-align: right;
+}
+.adminOrders .tableWrapper table{
+    vertical-align: middle;
+    text-align: left;
+}
+.adminOrders .tableWrapper .addButton{
+    padding: 10px 40px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    border:none;
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+.adminOrders .tableWrapper .addButton{
+    background-color: #2976bb;
+}
+.adminOrders .tableWrapper .editButton,
+.adminOrders .tableWrapper .deleteButton{
+    background-color: transparent;
+    border: none;
+}
+.adminOrders .tableWrapper .deleteButton{
+    fill: rgb(221, 72, 72);
+}
+
+.adminOrders .tableWrapper .editButton{
+    fill: rgb(228, 166, 51);
+}

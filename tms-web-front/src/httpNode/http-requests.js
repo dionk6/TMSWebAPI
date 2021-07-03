@@ -37,10 +37,18 @@ const PostOrderHttpRequest = (DATA) => {
   });
 };
 
+const GetOrdersHttpRequest = () => {
+  return axios({
+    method: GET,
+    url: ORDERS,
+  });
+};
+
 export {
   GetContactHttpRequest,
   PostContactHttpRequest,
   UpdateContactHttpRequest,
   DeleteContactHttpRequest,
   PostOrderHttpRequest,
+  GetOrdersHttpRequest
 };

@@ -74,6 +74,10 @@ const routes = [
     component: Admin,
   },
   {
+    path: "/Admin/Orders",
+    component: Admin,
+  },
+  {
     path: false,
     component: NotFound,
   },
