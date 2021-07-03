@@ -11,6 +11,7 @@ const SelectTeams = "/api/teams/selectteams";
 const SelectLeagues = "/api/leagues/selectLeague";
 const SelectStadiums = "/api/stadiums/SelectStadiums";
 const SendEmail = "/api/contacts/SendEmail";
+const SendConfirmationEmail = "/api/contacts/SendConfirmationEmail";
 const CreateAccount = "/api/Account/CreateAccount";
 const SignIn = "/api/Account/SignIn";
 const GetUser = "/api/Account/GetUser";
@@ -36,4 +37,5 @@ export {
   GetUser,
   Logout,
   TeamWithPlayers,
+  SendConfirmationEmail
 };

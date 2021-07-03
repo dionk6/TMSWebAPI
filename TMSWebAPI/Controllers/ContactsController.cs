@@ -32,5 +32,23 @@ namespace TMSWebAPI.Controllers
             var res = await _email.SendEmailAsync(email);
             return res;
         }
+
+        [HttpPost("SendConfirmationEmail")]
+        public async Task<bool> SendConfirmationEmail(ContactViewModel contact)
+        {
+            ContactViewModel email = new ContactViewModel();
+            email.FirstName = contact.FirstName;
+            email.LastName = contact.LastName;
+            email.Email = contact.Email;
+            email.Subject = contact.Subject;
+
+            string message = "Your Order is accepted and it will deliver on " +DateTime.Now.AddDays(7).ToString("dd/MM/yyyy")+
+                "<br />Click <a href='http://localhost:3000/ConfirmOrder/"+contact.Id+"'>here</a> to confirm your order";
+
+            email.Message = message;
+
+            var res = await _email.SendConfirmedEmail(email);
+            return res;
+        }
     }
 }

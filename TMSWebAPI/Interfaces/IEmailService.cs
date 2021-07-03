@@ -9,5 +9,6 @@ namespace TMSWebAPI.Interfaces
     public interface IEmailService
     {
         Task<bool> SendEmailAsync(ContactViewModel contact);
+        Task<bool> SendConfirmedEmail(ContactViewModel contact);
     }
 }

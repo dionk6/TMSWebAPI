@@ -18,6 +18,7 @@ import {
   Logout,
   ALLLEAGUEDATA,
   TeamWithPlayers,
+  SendConfirmationEmail
 } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
@@ -207,6 +208,14 @@ const sendEmail = (data) => {
   });
 };
 
+const sendConfirmationEmail = (data) => {
+  return axios({
+    method: POST,
+    url: SendConfirmationEmail,
+    data: data,
+  });
+};
+
 const createAccount = (data) => {
   return axios({
     method: POST,
@@ -276,4 +285,5 @@ export {
   getUser,
   logout,
   GetTeamHttpRequest,
+  sendConfirmationEmail
 };

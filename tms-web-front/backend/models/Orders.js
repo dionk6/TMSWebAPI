@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 
 const OrderSchema = mongoose.Schema({
-    // id: { type: String, default: function genUUID() {
-    //     return uuid.v1()
-    // }},
+    // _id:{type:String ,default:()=>{return uuidv4();}},
     address:String,
     city:String,
     postalCode:String,

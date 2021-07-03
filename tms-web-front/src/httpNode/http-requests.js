@@ -1,5 +1,5 @@
 import axios from "./axios";
-import { CONTACTS } from "./endpoints";
+import { CONTACTS,ORDERS } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
 const GetContactHttpRequest = () => {
@@ -29,9 +29,18 @@ const DeleteContactHttpRequest = (id) => {
   });
 };
 
+const PostOrderHttpRequest = (DATA) => {
+  return axios({
+    method: POST,
+    url: ORDERS,
+    data: DATA,
+  });
+};
+
 export {
   GetContactHttpRequest,
   PostContactHttpRequest,
   UpdateContactHttpRequest,
   DeleteContactHttpRequest,
+  PostOrderHttpRequest,
 };

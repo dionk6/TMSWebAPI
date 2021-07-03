@@ -3,6 +3,7 @@ import "./Product.css";
 import ProductBanner from '../../Components/ProductBanner/ProductBanner';
 //import ibra from "../../Images/ibra.png";
 import { GetPlayer } from "../../../http/http-requests";
+import {NavLink} from 'react-router-dom'
 
 const Product = ({ match }) => {
     const [detailData, setDetailData] = useState({});
@@ -106,7 +107,8 @@ const Product = ({ match }) => {
                             </div>
                         </div>
                         <div className="col-lg-12">
-                            <button type="button" className="btn">BUY NOW</button>
+                            <NavLink className="btn" to={`/Order/${detailData.id}`}>BUY NOW</NavLink>
+                            {/* <button type="button" className="btn">BUY NOW</button> */}
                         </div>
                     </div>
                 </div>
