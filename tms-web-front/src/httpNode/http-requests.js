@@ -51,10 +51,18 @@ const ConfirmOrderHttpRequest = (data) => {
     data: data
   });
 };
+
 const GetConfirmOrderHttpRequest = (id) => {
   return axios({
     method: GET,
     url: CONFIRMORDER+"/"+id
+  });
+};
+
+const GetAllConfirmOrderHttpRequest = () => {
+  return axios({
+    method: GET,
+    url: CONFIRMORDER
   });
 };
 
@@ -71,4 +79,9 @@ export {
   UpdateContactHttpRequest,
   DeleteContactHttpRequest,
   PostOrderHttpRequest,
+  ConfirmOrderHttpRequest,
+  GetConfirmOrderHttpRequest,
+  GetOrderHttpRequest,
+  GetOrdersHttpRequest,
+  GetAllConfirmOrderHttpRequest
 };

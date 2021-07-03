@@ -1,14 +1,28 @@
 import { useEffect, useState } from "react";
 import './Order.css'
-import { GetOrdersHttpRequest } from '../../../httpNode/http-requests';
+import { GetOrdersHttpRequest,GetAllConfirmOrderHttpRequest } from '../../../httpNode/http-requests';
 
 const Orders = () => {
     const [orders, setOrdersData] = useState([]);
+    const [allConfirmedOrders, setConfirmedOrders] = useState([]);
 
     const tableDataHeandler = async () => {
         const allOrders = await GetOrdersHttpRequest();
         setOrdersData(allOrders.data);
-        console.log(orders);
+
+        const allConfirmedOrders = await GetAllConfirmOrderHttpRequest();
+        setConfirmedOrders(allConfirmedOrders.data);
+    }
+
+    const IsConfirmed = (id) => {
+        let res = "No";
+        allConfirmedOrders.map((element,index)=>{
+            console.log(element._id,id);
+            if(element._id == id && element.confirmedStatus){
+                res = "Yes";
+            }
+        })
+        return res;
     }
 
     useEffect(() => {
@@ -45,7 +59,7 @@ const Orders = () => {
                                         <td>{element.address+" - "+element.city+" "+element.postalCode}</td>
                                         <td>{element.shirtName+" "+element.shirtType+" ("+element.shirtNo+")"}</td>
                                         <td>{element.shirtPrice}€</td>
-                                        <td>Yes</td>
+                                        <td>{IsConfirmed(element._id)}</td>
                                         <td>{element.updatedDate.substring(0,10)}</td>
                                     </tr>
                                 )
