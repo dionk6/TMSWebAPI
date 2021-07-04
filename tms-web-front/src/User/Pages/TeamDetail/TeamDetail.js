@@ -23,9 +23,7 @@ const TeamDetail = ({ match }) => {
   const [detailDataStadium, setDetailDataStadium] = useState([]);
 
   const getTeamData = async () => {
-    console.log(match.params.id);
     const data = await GetTeamHttpRequest(match.params.id);
-    console.log(data.data);
     setDetailData(data.data);
     setDetailDataPlayer(data.data.players);
     setDetailDataStadium(data.data.stadium);

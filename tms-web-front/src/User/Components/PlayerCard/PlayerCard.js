@@ -2,6 +2,7 @@ import "./PlayerCard.css";
 import {NavLink} from 'react-router-dom'
 
 const PlayerCard = (props) => {
+    const userId = window.localStorage.getItem("UserId");
     return (
         <div className="PlayerCardPage">
             <div className="container">
@@ -37,7 +38,8 @@ const PlayerCard = (props) => {
                             </p>
                         </div>
                         <div className="BuyNowWrapper">
-                            <NavLink className="btn" to={`/Product/${props.player.id}`}>Buy Shirt</NavLink>
+                            {userId ? <NavLink className="btn" to={`/Product/${props.player.id}`}>Buy Shirt</NavLink> : <NavLink className="btn" to="/Login">Buy Shirt</NavLink>}
+                            
                         </div>
                     </div>
                 </div>

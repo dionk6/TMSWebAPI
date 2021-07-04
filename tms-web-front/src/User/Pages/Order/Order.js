@@ -10,7 +10,7 @@ const Order = ({ match }) => {
   const [detailData, setDetailData] = useState({});
   const [error, setError] = useState(false);
   const [succes, setSucces] = useState(false);
-  const { register, handleSubmit, errors, reset } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const date = new Date();
   const getPlayerData = async () => {
@@ -27,13 +27,13 @@ const Order = ({ match }) => {
     let phone = document.getElementById("phoneInput").value;
     let email = document.getElementById("emailInput").value;
     if (
-      address == "" ||
-      city == "" ||
-      postalCode == "" ||
-      firstName == "" ||
-      lastName == "" ||
-      phone == "" ||
-      email == ""
+      address === "" ||
+      city === "" ||
+      postalCode === "" ||
+      firstName === "" ||
+      lastName === "" ||
+      phone === "" ||
+      email === ""
     ) {
       setError(true);
       setTimeout(() => {

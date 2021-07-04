@@ -95,7 +95,6 @@ const Home = (props) => {
               </div>
               {players.map((player, index) => {
                   if (index < 4) {
-                    console.log(player)
                     return (
                       <HomePlayerCard player={player} key={index} />
                     );

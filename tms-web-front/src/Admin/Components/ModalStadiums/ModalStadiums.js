@@ -29,7 +29,6 @@ const ModalStadiums = (props) =>{
 
     const onSubmitLeague = async (data) =>{
         data.image=data.image[0];
-        console.log(data);
         let formData = new FormData();
         formData.append('id',data.id);
         formData.append('name',data.name);

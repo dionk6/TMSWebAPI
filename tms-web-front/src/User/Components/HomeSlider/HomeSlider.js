@@ -17,7 +17,6 @@ const HomeSlider = (porps) => {
   const allTeams = async () => {
     const allTeams = await TeamsTable();
     setTeams(allTeams.data);
-    console.log(allTeams.data)
   };
 
   useEffect(() => {

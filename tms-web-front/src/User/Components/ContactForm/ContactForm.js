@@ -12,7 +12,6 @@ const ContactContent = () => {
   const { register, handleSubmit, errors, reset } = useForm();
 
   const onSubmitContact = async (data) => {
-    console.log(data);
     try {
       let result = await sendEmail(data);
       let resultNode = await PostContactHttpRequest(data);

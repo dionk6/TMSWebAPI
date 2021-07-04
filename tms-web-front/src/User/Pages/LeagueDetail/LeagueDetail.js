@@ -28,9 +28,7 @@ const LeagueDetail = ({ match }) => {
   };
   useEffect(() => {
     getLeadueData();
-  }, []);
-
-  console.log(LeagueDetail);
+  },[]);
   return (
     <div className="LeagueDetail">
       <div className="container">

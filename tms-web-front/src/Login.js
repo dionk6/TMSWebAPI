@@ -15,14 +15,12 @@ const Login = () =>{
             if(result.data.isCorrect){
                 window.localStorage.setItem("UserId",result.data.userId);
                 window.localStorage.setItem("RoleId",result.data.roleId);
-                console.log(result.data.message);
                 if(result.data.roleId === "2"){
                     routerHistory.push('/');
                 }else if(result.data.roleId === "1"){
                     routerHistory.push('/Admin');
                 }
             }else{
-                console.log(result.data.message);
             }
         }catch(err){
             console.log(err);

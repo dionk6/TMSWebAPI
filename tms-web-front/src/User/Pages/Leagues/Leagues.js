@@ -11,7 +11,6 @@ const Leagues = (props) =>{
     const leaguesCall = async () => {
       let leaguesFeedback = await LeaguesTable();
       setLeagues(leaguesFeedback.data);
-      console.log(leagues)
     };
     useEffect(() => {
       leaguesCall();
