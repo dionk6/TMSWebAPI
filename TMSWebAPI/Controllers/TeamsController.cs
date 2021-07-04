@@ -73,13 +73,14 @@ namespace TMSWebAPI.Controllers
         [HttpGet("GetTeamWithPlayers/{id}")]
         public ActionResult<TeamsViewModel> GetTeamWithPlayers(int id)
         {
-            var team =  _context.Teams.Include(t => t.Players).Where(t => t.Id == id).FirstOrDefault();
+            var team =  _context.Teams.Include(t => t.Players).Include(t => t.Stadium).Where(t => t.Id == id).FirstOrDefault();
 
             var model = new TeamsViewModel();
             model.Id = team.Id.ToString();
             model.City = team.City;
             model.Name = team.Name;
             model.Logo = team.Logo;
+            model.Description = team.Description;
             model.FoundedYear = team.FoundedYear.ToString();
             model.Manager = team.Manager;
             model.Trophies = team.Trophies.ToString();
@@ -87,6 +88,7 @@ namespace TMSWebAPI.Controllers
             model.Budget = team.Budget;
             model.LeagueId = team.LeagueId.ToString();
             model.StadiumId = team.StadiumId.ToString();
+            model.Stadium = team.Stadium;
 
             var player = team.Players.Where(t => t.IsDeleted == false).Select(t => new PlayersTable
             {
