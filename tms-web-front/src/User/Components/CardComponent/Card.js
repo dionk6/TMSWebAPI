@@ -15,7 +15,7 @@ const Card = (props)=>{
                     {props.league.country}, {props.league.currentChampion}
                 </div>
                 <div className="col-lg-12 pt-3 pb-3 leagueDescription text-secondary">
-                    {props.league.description.substring(0,150)}
+                    {props.league.description.substring(0,100)}
                 </div>
             </div>
             <div className="col-lg-12 row m-0 lastDetails">

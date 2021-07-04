@@ -66,9 +66,11 @@ const AdminSidebar = (props) =>{
                         <li><NavLink to="/Admin/Stadiums">Stadiums</NavLink></li>
                         <li><NavLink to="/Admin/Teams">Teams</NavLink></li>
                         <li><NavLink to="/Admin/Orders">Orders</NavLink></li>
+                        <li><NavLink to="/Admin/Contacts">Contacts</NavLink></li>
+                        <li><NavLink to="/Admin/Subscriptions">Subscriptions</NavLink></li>
                     </ul>
                 </nav>
-                <div className="logoutButtonWrapper text-white text-center mt-5">
+                <div className="logoutButtonWrapper text-white text-center mt-3">
                     <button onClick={()=>{Logout()}}>Logout</button>
                 </div>
             </div>

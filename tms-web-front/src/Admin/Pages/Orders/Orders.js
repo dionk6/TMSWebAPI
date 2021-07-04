@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import './Order.css'
+import './Order.css';
 import { GetOrdersHttpRequest,GetAllConfirmOrderHttpRequest } from '../../../httpNode/http-requests';
 
 const Orders = () => {

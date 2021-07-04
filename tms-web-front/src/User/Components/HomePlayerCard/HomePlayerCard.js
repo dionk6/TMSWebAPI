@@ -3,6 +3,7 @@ import shirt from "../../Images/shirt.png";
 import {NavLink} from 'react-router-dom'
 
 const HomePlayerCard = (props) => {
+    const userId = window.localStorage.getItem("UserId");
     return (
         <div className="homePlayerCard col-lg-3 mb-5">
             <div className="col-lg-12 text-center" style={{ background: "rgba(0,0,0,0.4)",border: "3px solid #45b4b4",borderRadius: "8px" }}>
@@ -18,7 +19,7 @@ const HomePlayerCard = (props) => {
             </div>
             <div className="col-lg-12 row m-0 mt-2 p-3 playerText">
                 <div className="col-7 buyKit playerFont">
-                    <NavLink className="btn" to={`/Product/${props.player.id}`}>Buy Shirt</NavLink>
+                {userId ? <NavLink className="btn" to={`/Product/${props.player.id}`}>Buy Shirt</NavLink> : <NavLink className="btn" to="/Login">Buy Shirt</NavLink>}
                 </div>
                 <div className="col-5 playerNumber playerFont text-danger">
                     {props.player.price} €

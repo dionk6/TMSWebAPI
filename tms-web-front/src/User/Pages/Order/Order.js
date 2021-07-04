@@ -68,7 +68,7 @@ const Order = ({ match }) => {
         setTimeout(() => {
           setSucces(false);
         }, 3000);
-        document.getElementById("#orderForm").reset();
+        document.getElementById("orderForm").reset();
       }
     } catch (err) {
       console.log(err);

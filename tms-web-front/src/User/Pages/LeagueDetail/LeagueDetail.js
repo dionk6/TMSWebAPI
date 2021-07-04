@@ -28,7 +28,7 @@ const LeagueDetail = ({ match }) => {
   };
   useEffect(() => {
     getLeadueData();
-  },[]);
+  }, []);
   return (
     <div className="LeagueDetail">
       <div className="container">
@@ -79,8 +79,18 @@ const LeagueDetail = ({ match }) => {
           <div className="col-12 col-md-12">
             <h1>Teams that are part of {detailData.name}</h1>
             <Swiper
-              slidesPerView={3}
-              loop={true}
+              breakpoints={{
+                // when window width is >= 640px
+                640: {
+                  width: 640,
+                  slidesPerView: 1,
+                },
+                // when window width is >= 768px
+                768: {
+                  width: 768,
+                  slidesPerView: 3,
+                }
+              }}
               navigation={{ clickable: true }}
               autoplay={{
                 delay: 4000,

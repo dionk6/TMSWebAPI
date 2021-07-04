@@ -73,6 +73,13 @@ const GetOrdersHttpRequest = () => {
   });
 };
 
+const GetSubscriptionsHttpRequest = () => {
+  return axios({
+    method: GET,
+    url: EMAILSUBSCRIPTIONS,
+  });
+};
+
 const PostSubscriptionHttpRequest = (data) => {
   return axios({
     method: POST,
@@ -92,5 +99,6 @@ export {
   GetOrderHttpRequest,
   GetOrdersHttpRequest,
   GetAllConfirmOrderHttpRequest,
-  PostSubscriptionHttpRequest
+  PostSubscriptionHttpRequest,
+  GetSubscriptionsHttpRequest
 };

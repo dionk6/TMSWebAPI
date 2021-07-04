@@ -1,5 +1,5 @@
 import "./TeamDetail.css";
-import image from "../../../assets/img/innerpageBg.jpg";
+//import image from "../../../assets/img/innerpageBg.jpg";
 import { useEffect, useState } from "react";
 import SwiperCore, {
   Navigation,
@@ -95,8 +95,18 @@ const TeamDetail = ({ match }) => {
           <div className="col-12 col-md-12">
             <h1>Players that are part of {detailData.name}</h1>
             <Swiper
-              slidesPerView={3}
-              loop={true}
+              breakpoints={{
+                // when window width is >= 640px
+                640: {
+                  width: 640,
+                  slidesPerView: 1,
+                },
+                // when window width is >= 768px
+                768: {
+                  width: 768,
+                  slidesPerView: 3,
+                }
+              }}
               navigation={{ clickable: true }}
               autoplay={{
                 delay: 4000,

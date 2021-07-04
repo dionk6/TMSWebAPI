@@ -49,7 +49,7 @@ aside.active .asideToggleButton{
 }
 aside .asideToggleButton{
   position: absolute;
-  top: 85%;
+  top: 95%;
   left: 50%;
   transform: translate(-50%,-50%);
   width: 30px;
@@ -99,7 +99,7 @@ aside nav ul {
   padding: 0 60px 0 20px;
 }
 aside nav ul li {
-  padding: 20px 0;
+  padding: 10px 0;
 }
 aside nav ul li .statsDropdownMenu,
 aside nav ul li a {

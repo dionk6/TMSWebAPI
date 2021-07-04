@@ -1,0 +1,31 @@
+.ContactPage .tableWrapper {
+    text-align: right;
+}
+.ContactPage .tableWrapper table{
+    vertical-align: middle;
+    text-align: left;
+}
+.ContactPage .tableWrapper .addButton{
+    padding: 10px 40px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    border:none;
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+.ContactPage .tableWrapper .addButton{
+    background-color: #2976bb;
+}
+.ContactPage .tableWrapper .editButton,
+.ContactPage .tableWrapper .deleteButton{
+    background-color: transparent;
+    border: none;
+}
+.ContactPage .tableWrapper .deleteButton{
+    fill: rgb(221, 72, 72);
+}
+
+.ContactPage .tableWrapper .editButton{
+    fill: rgb(228, 166, 51);
+}
