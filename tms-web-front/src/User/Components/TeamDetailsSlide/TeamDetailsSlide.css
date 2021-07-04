@@ -1,0 +1,15 @@
+.TeamDetailsSlide img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+.TeamDetailsSlide h4 {
+  margin-top: 50px;
+}
+.TeamDetailsSlide {
+  text-align: center;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: #45b4b4;
+}

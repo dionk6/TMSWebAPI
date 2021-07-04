@@ -32,7 +32,7 @@ const routes = [
     component: LeagueDetail,
   },
   {
-    path: "/TeamDetails/:id",
+    path: "/Teams/:id",
     component: TeamDetail,
   },
   {

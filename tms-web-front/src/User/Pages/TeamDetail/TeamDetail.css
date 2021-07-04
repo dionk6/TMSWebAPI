@@ -40,3 +40,51 @@
   justify-content: space-between;
   margin-bottom: 50px;
 }
+.stadiumInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.stadiumInfo img {
+  width: 50%;
+  height: 350px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.stadiumContent {
+  display: flex;
+  flex-direction: column;
+}
+.stadiumContent h1 {
+  font-size: 60px;
+  color: #45b4b4;
+  text-align: center;
+}
+@media only screen and (max-width: 600px) {
+  .stadiumContent h1 {
+    font-size: 50px;
+  }
+  .stadiumInfo img {
+    width: 200px;
+    height: 350px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+}
+.stadiumContent p {
+  /* margin: 10px; */
+  font-size: 20px;
+  font-weight: bold;
+}
+.informationS {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.descriptionAboutStadium {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}

@@ -1,4 +1,5 @@
 import "./TeamDetail.css";
+import image from "../../../assets/img/innerpageBg.jpg";
 import { useEffect, useState } from "react";
 import SwiperCore, {
   Navigation,
@@ -13,19 +14,21 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import { GetTeamHttpRequest } from "../../../http/http-requests";
-
+import TeamDetailsSlide from "../../Components/TeamDetailsSlide/TeamDetailsSlide";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 const TeamDetail = ({ match }) => {
   const [detailData, setDetailData] = useState({});
   const [detailDataPlayer, setDetailDataPlayer] = useState([]);
+  const [detailDataStadium, setDetailDataStadium] = useState([]);
 
   const getTeamData = async () => {
     console.log(match.params.id);
     const data = await GetTeamHttpRequest(match.params.id);
     console.log(data.data);
     setDetailData(data.data);
-    setDetailDataPlayer(data.data.player);
+    setDetailDataPlayer(data.data.players);
+    setDetailDataStadium(data.data.stadium);
   };
   useEffect(() => {
     getTeamData();
@@ -37,7 +40,7 @@ const TeamDetail = ({ match }) => {
         <div className="row">
           <div className="col-12 col-md-12">
             <div className="leagueDetailHeader">
-              <h1>{detailData.city}</h1>
+              <h1>{detailData.name}</h1>
               <h4>
                 The current champion of the league is {detailData.foundedYear}{" "}
                 from all trophies {detailData.trophies} teams that play in this
@@ -63,6 +66,19 @@ const TeamDetail = ({ match }) => {
           <div className="col-12 col-md-12">
             <div className="descriptionContent">
               <p>{detailData.description}</p>
+              <div className="stadiumInfo">
+                <img alt="image" src={detailDataStadium.image} />
+                <div className="stadiumContent">
+                  <h1>{detailDataStadium.name}</h1>
+                  <div className="informationS">
+                    <p>Capacity: {detailDataStadium.capacity}</p>
+                    <p>Rank: {detailDataStadium.rank} </p>
+                  </div>
+                  <h2 className="descriptionAboutStadium">
+                    {detailDataStadium.description}
+                  </h2>
+                </div>
+              </div>
               {/* <div className="descriptionContentBeforeInfo">
                 <div className="currentChampion">
                   <h4>Current Champion : {detailData.currentChampion}</h4>
@@ -79,7 +95,7 @@ const TeamDetail = ({ match }) => {
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-12">
-            <h1>Teams that are part of {detailData.name}</h1>
+            <h1>Players that are part of {detailData.name}</h1>
             <Swiper
               slidesPerView={3}
               loop={true}
@@ -89,11 +105,13 @@ const TeamDetail = ({ match }) => {
                 disableOnInteraction: false,
               }}
             >
-              {/* {detailDataPlayer.map((player, i) => {
-                return <SwiperSlide key={i}>
-
-                </SwiperSlide>;
-              })} */}
+              {detailDataPlayer.map((player, i) => {
+                return (
+                  <SwiperSlide key={i}>
+                    <TeamDetailsSlide player={player} />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
         </div>

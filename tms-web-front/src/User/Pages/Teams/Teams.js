@@ -10,9 +10,11 @@ const Teams = () => {
     const allTeams = await TeamsTable();
     setTeams(allTeams.data);
   };
+
   useEffect(() => {
     getTeams();
   }, []);
+
   return (
     <div className="TeamsPage">
       <TeamsBanner />
