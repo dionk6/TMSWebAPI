@@ -26,7 +26,7 @@
   float: right;
 }
 
-.TeamCard .BuyNowWrapper button{
+.TeamCard .BuyNowWrapper a{
   background-color: #45b4b4;
   border: none;
   border-radius: 5px;
@@ -34,7 +34,7 @@
   transition: all .15s linear .15s;
 }
 
-.TeamCard .BuyNowWrapper button:hover{
+.TeamCard .BuyNowWrapper a:hover{
   color: #45b4b4;
   background: black;
 }
