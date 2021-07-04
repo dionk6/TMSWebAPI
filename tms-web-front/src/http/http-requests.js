@@ -18,7 +18,8 @@ import {
   Logout,
   ALLLEAGUEDATA,
   TeamWithPlayers,
-  SendConfirmationEmail
+  SendConfirmationEmail,
+  GetCounters
 } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
@@ -253,6 +254,14 @@ const GetTeamHttpRequest = (id) => {
   });
 };
 
+const getCounters = () => {
+  return axios({
+    method: GET,
+    url: GetCounters,
+  });
+};
+
+
 export {
   LeaugesHttpRequest,
   GetLeaugeHttpRequest,
@@ -285,5 +294,6 @@ export {
   getUser,
   logout,
   GetTeamHttpRequest,
-  sendConfirmationEmail
+  sendConfirmationEmail,
+  getCounters
 };

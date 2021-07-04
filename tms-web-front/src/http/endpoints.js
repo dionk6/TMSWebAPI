@@ -17,6 +17,7 @@ const SignIn = "/api/Account/SignIn";
 const GetUser = "/api/Account/GetUser";
 const Logout = "/api/Account/Logout";
 const TeamWithPlayers = "/api/Teams/GetTeamWithPlayers";
+const GetCounters = "/api/Dashboard/GetCounters";
 
 export {
   LEAGUES,
@@ -37,5 +38,6 @@ export {
   GetUser,
   Logout,
   TeamWithPlayers,
-  SendConfirmationEmail
+  SendConfirmationEmail,
+  GetCounters
 };
