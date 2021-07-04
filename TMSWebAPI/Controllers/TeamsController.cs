@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using TMSWebAPI.Models;
 using TMSWebAPI.ViewModels;
 using TMSWebAPI.ViewModels.Players;
+using TMSWebAPI.ViewModels.Stadiums;
 using TMSWebAPI.ViewModels.Teams;
 
 namespace TMSWebAPI.Controllers
@@ -88,7 +89,19 @@ namespace TMSWebAPI.Controllers
             model.Budget = team.Budget;
             model.LeagueId = team.LeagueId.ToString();
             model.StadiumId = team.StadiumId.ToString();
-            model.Stadium = team.Stadium;
+
+            //model.Stadium = team.Stadium;
+            var stadium = team.Stadium;
+            if (stadium != null)
+            {
+                var stadiumModel = new StadiumsViewModel();
+                stadiumModel.Name = stadium.Name;
+                stadiumModel.Image = stadium.Image;
+                stadiumModel.Capacity = stadium.Capacity.ToString();
+                stadiumModel.Rank = stadium.Rank.ToString();
+                stadiumModel.Description = stadium.Description;
+                model.Stadium = stadiumModel;
+            }
 
             var player = team.Players.Where(t => t.IsDeleted == false).Select(t => new PlayersTable
             {
