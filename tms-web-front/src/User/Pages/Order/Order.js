@@ -10,7 +10,7 @@ const Order = ({ match }) => {
   const [detailData, setDetailData] = useState({});
   const [error, setError] = useState(false);
   const [succes, setSucces] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
 
   const date = new Date();
   const getPlayerData = async () => {
@@ -78,6 +78,161 @@ const Order = ({ match }) => {
   useEffect(() => {
     getPlayerData();
   }, []);
+
+  let errorNameRequired;
+  let noSpaceName;
+  let nameHasNumbers;
+  let errorLastNameRequired;
+  let noSpaceLastName;
+  let lastNameHasNumbers;
+  let errorEmailRequired;
+  let errorEmailInvalid;
+  let errorEmailEmpty;
+  let errorMessageRequired;
+  let errorMessageInvalid;
+  let errorPhoneRequired;
+  let errorPhonePattern;
+  let errorPhoneEmpty;
+  let errorCardNumberRequired;
+  let errorCardNumberPattern;
+  let errorCardNumberEmpty;
+  let errorExpireDateRequired;
+  let errorExpireDatePattern;
+  let errorExpireDateEmpty;
+  let errorCvvRequired;
+  let errorCvvPattern;
+  let errorCvvEmpty;
+  let errorCityRequired;
+  let errorCityPattern;
+  let errorCityEmpty;
+
+  if (errors.firstName?.type === "required") {
+    errorNameRequired = <span className="error-msg text-danger">Please enter Name</span>;
+  }
+  if (errors.firstName?.type == "validate") {
+    noSpaceName = <span className="error-msg text-danger">No empty spaces</span>;
+  }
+  if (errors.firstName?.type === "pattern") {
+    nameHasNumbers = <span className="error-msg text-danger">Name is not valid</span>;
+  }
+  if (errors.lastName?.type === "required") {
+    errorLastNameRequired = (
+      <span className="error-msg text-danger">Please enter Last Name</span>
+    );
+  }
+  if (errors.lastName?.type === "validate") {
+    noSpaceLastName = <span className="error-msg text-danger">No empty spaces</span>;
+  }
+  if (errors.lastName?.type === "pattern") {
+    lastNameHasNumbers = (
+      <span className="error-msg text-danger">Last Name is not valid</span>
+    );
+  }
+  if (errors.email?.type === "required") {
+    errorEmailRequired = <span className="error-msg text-danger">E-Mail is required</span>;
+  }
+  if (errors.email?.type === "validate") {
+    errorEmailEmpty = (
+      <span className="error-msg text-danger">No empty spaces</span>
+    );
+  }
+  if (errors.email?.type === "pattern") {
+    errorEmailInvalid = (
+      <span className="error-msg text-danger">E-Mail Format is not valid</span>
+    );
+  }
+  if (errors.email?.type === "validate") {
+    errorEmailEmpty = (
+      <span className="error-msg text-danger">No empty spaces</span>
+    );
+  }
+  if (errors.pinCode?.type === "required") {
+    errorMessageRequired = (
+      <span className="error-msg text-danger">Please add message</span>
+    );
+  }
+  if (errors.pinCode?.type === "validate") {
+    errorMessageInvalid = (
+      <span className="error-msg text-danger">No empty spaces</span>
+    );
+  }
+  if (errors.phoneNumber?.type === "required") {
+    errorPhoneRequired = (
+      <span className="error-msg text-danger">Required Field</span>
+    );
+  }
+  if (errors.phoneNumber?.type === "pattern") {
+    errorPhonePattern = (
+      <span className="error-msg text-danger">Invalid Phone Number</span>
+    );
+  }
+  if (errors.phoneNumber?.type === "validate") {
+    errorPhoneEmpty = (
+      <span className="error-msg text-danger">No empty spaces</span>
+    );
+  }
+  //CardNumber
+  if (errors.cardNumber?.type === "required") {
+    errorCardNumberRequired = (
+      <span className="error-msg text-danger">Required Field</span>
+    );
+  }
+  if (errors.cardNumber?.type === "pattern") {
+    errorCardNumberPattern = (
+      <span className="error-msg text-danger">Invalid Card Number</span>
+    );
+  }
+  if (errors.cardNumber?.type === "validate") {
+    errorCardNumberEmpty = (
+      <span className="error-msg text-danger">No empty spaces</span>
+    );
+  }
+  if (errors.expireDate?.type === "required") {
+    errorExpireDateRequired = (
+      <span className="error-msg text-danger">Required Field</span>
+    );
+  }
+  if (errors.expireDate?.type === "pattern") {
+    errorExpireDatePattern = (
+      <span className="error-msg text-danger">Invalid Expire Date</span>
+    );
+  }
+  if (errors.expireDate?.type === "validate") {
+    errorExpireDateEmpty = (
+      <span className="error-msg text-danger">No empty spaces</span>
+    );
+  }
+  if (errors.cvv?.type === "required") {
+    errorCvvRequired = (
+      <span className="error-msg text-danger">Required Field</span>
+    );
+  }
+  if (errors.cvv?.type === "pattern") {
+    errorCvvPattern = (
+      <span className="error-msg text-danger">Invalid Cvv</span>
+    );
+  }
+  if (errors.cvv?.type === "validate") {
+    errorCvvEmpty = (
+      <span className="error-msg text-danger">No empty spaces</span>
+    );
+  }
+  if (errors.city?.type === "required") {
+    errorCityRequired = (
+      <span className="error-msg text-danger">Required Field</span>
+    );
+  }
+  if (errors.city?.type === "pattern") {
+    errorCityPattern = (
+      <span className="error-msg text-danger">Invalid City</span>
+    );
+  }
+  if (errors.city?.type === "validate") {
+    errorCityEmpty = (
+      <span className="error-msg text-danger">No empty spaces</span>
+    );
+  }
+  const trapSpacesForRequiredFields = (value) => !!value.trim();
   
   return (
     <div className="OrderPage">
@@ -151,9 +306,17 @@ const Order = ({ match }) => {
                       className="form-control"
                       id="cityInput"
                       name="city"
-                      ref={register({ required: true })}
                       placeholder="City"
+                      ref={register({
+                        required: true,
+                        pattern:
+                        /^[a-zA-Z ]*$/,
+                        validate: trapSpacesForRequiredFields
+                      })}
                     />
+                    {errorCityRequired}
+                    {errorCityPattern}
+                    {errorCityEmpty}
                   </div>
                 </div>
                 <div className="col-lg-4 mb-5">
@@ -177,9 +340,17 @@ const Order = ({ match }) => {
                       className="form-control"
                       id="firstNameInput"
                       name="firstName"
-                      ref={register({ required: true })}
                       placeholder="First Name"
+                      ref={register({
+                        required: true,
+                        pattern:
+                        /^[A-Za-zäöüẞßÄÖÜ]((?:\s?[A-Za-zäöüẞßÄÖÜ]+)*(?:[-])*)*$/,
+                        validate: trapSpacesForRequiredFields
+                      })}
                     />
+                    {errorNameRequired}
+                    {nameHasNumbers}
+                    {noSpaceName}
                   </div>
                 </div>
                 <div className="col-lg-6 mb-5">
@@ -190,9 +361,17 @@ const Order = ({ match }) => {
                       className="form-control"
                       id="lastNameInput"
                       name="lastName"
-                      ref={register({ required: true })}
                       placeholder="Last Name"
+                      ref={register({
+                        required: true,
+                        pattern:
+                        /^[A-Za-zäöüẞßÄÖÜ]((?:\s?[A-Za-zäöüẞßÄÖÜ]+)*(?:[-])*)*$/,
+                        validate: trapSpacesForRequiredFields
+                      })}
                     />
+                    {errorLastNameRequired}
+                    {lastNameHasNumbers}
+                    {noSpaceLastName}
                   </div>
                 </div>
                 <div className="col-lg-6 mb-5">
@@ -203,9 +382,15 @@ const Order = ({ match }) => {
                       className="form-control"
                       id="phoneInput"
                       name="phoneNumber"
-                      ref={register({ required: true })}
+                      ref={register({ required: true,
+                        pattern:
+                        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                        validate: trapSpacesForRequiredFields })}
                       placeholder="Phone Number"
                     />
+                    {errorPhoneEmpty}
+                    {errorPhonePattern}
+                    {errorPhoneRequired}
                   </div>
                 </div>
                 <div className="col-lg-6 mb-5">
@@ -216,9 +401,17 @@ const Order = ({ match }) => {
                       className="form-control"
                       id="emailInput"
                       name="email"
-                      ref={register({ required: true })}
                       placeholder="Email"
+                      ref={register({
+                        required: true,
+                        pattern:
+                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        validate: trapSpacesForRequiredFields
+                      })}
                     />
+                    {errorEmailRequired}
+                    {errorEmailEmpty}
+                    {errorEmailInvalid}
                   </div>
                 </div>
                 <div className="form-group">
@@ -255,9 +448,17 @@ const Order = ({ match }) => {
                       type="text"
                       className="form-control"
                       name="cardNumber"
-                      ref={register({ required: true })}
                       placeholder="Card Number"
+                      ref={register({
+                        required: true,
+                        pattern:
+                        /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
+                        validate: trapSpacesForRequiredFields
+                      })}
                     />
+                    {errorCardNumberRequired}
+                    {errorCardNumberPattern}
+                    {errorCardNumberEmpty}
                   </div>
                 </div>
                 <div className="col-lg-6 mb-5">
@@ -267,9 +468,17 @@ const Order = ({ match }) => {
                       type="text"
                       className="form-control"
                       name="expireDate"
-                      ref={register({ required: true })}
                       placeholder="Expire Date"
+                      ref={register({
+                        required: true,
+                        pattern:
+                        /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/,
+                        validate: trapSpacesForRequiredFields
+                      })}
                     />
+                    {errorExpireDateRequired}
+                    {errorExpireDatePattern}
+                    {errorExpireDateEmpty}
                   </div>
                 </div>
                 <div className="col-lg-6 mb-5">
@@ -279,9 +488,17 @@ const Order = ({ match }) => {
                       type="text"
                       className="form-control"
                       name="cvv"
-                      ref={register({ required: true })}
                       placeholder="CVV"
+                      ref={register({
+                        required: true,
+                        pattern:
+                        /^[0-9]{3,4}$/,
+                        validate: trapSpacesForRequiredFields
+                      })}
                     />
+                    {errorCvvRequired}
+                    {errorCvvPattern}
+                    {errorCvvEmpty}
                   </div>
                 </div>
                 <div className="col-lg-6 mb-5">
@@ -291,9 +508,11 @@ const Order = ({ match }) => {
                       type="text"
                       className="form-control"
                       name="pinCode"
-                      ref={register({ required: true })}
                       placeholder="Comment"
+                      ref={register({ required: true ,validate: trapSpacesForRequiredFields })}
                     />
+                    {errorMessageRequired}
+                    {errorMessageInvalid}
                   </div>
                 </div>
                 <div className="form-group">
