@@ -68,6 +68,7 @@ const Order = ({ match }) => {
         setTimeout(() => {
           setSucces(false);
         }, 3000);
+        document.getElementById("#orderForm").reset();
       }
     } catch (err) {
       console.log(err);
@@ -271,6 +272,7 @@ const Order = ({ match }) => {
           </div>
           <div className="col-lg-10 spaces"></div>
           <form
+            id="orderForm"
             className="col-lg-10 p-0"
             onSubmit={handleSubmit(onSubmitOrder)}
           >

@@ -1,7 +1,47 @@
 import "./Footer.css";
 import TMSLogo from "../../../assets/img/Tms.jpg";
 import { NavLink } from "react-router-dom";
-const Footer = (props) => {
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { PostSubscriptionHttpRequest } from "../../../httpNode/http-requests";
+
+const Footer = () => {
+  const { register, handleSubmit, errors, reset } = useForm();
+  const [succesResponse,setsuccesResponse] = useState(false);
+
+  const onSubmitSubscription = async (data) => {
+    try {
+      const response = await PostSubscriptionHttpRequest(data);
+      if (response.status === 200) {
+        reset();
+        setsuccesResponse(true);
+        setTimeout(() => {
+          setsuccesResponse(false);
+        }, 4000);
+      } else {
+        console.error("POST NOT CREATED SERVER ISSUE !");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  let errorEmailRequired;
+  let errorEmailInvalid;
+  let errorEmailEmpty;
+
+  if (errors.email?.type === "required") {
+    errorEmailRequired = <span className="error-msg">E-Mail is required</span>;
+  }
+  if (errors.email?.type === "validate") {
+    errorEmailEmpty = <span className="error-msg">No empty spaces</span>;
+  }
+  if (errors.email?.type === "pattern") {
+    errorEmailInvalid = (
+      <span className="error-msg">E-Mail Format is not valid</span>
+    );
+  }
+  const trapSpacesForRequiredFields = (value) => !!value.trim();
   return (
     <footer className="footer">
       <div className="container">
@@ -48,6 +88,29 @@ const Footer = (props) => {
                 </svg>
               </li>
             </ul>
+            <form onSubmit={handleSubmit(onSubmitSubscription)}>
+              <label>Email for subscription</label>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="email"
+                  id="subscribeEmail"
+                  placeholder="tms@example.com"
+                  ref={register({
+                    required: true,
+                    pattern:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    validate: trapSpacesForRequiredFields,
+                  })}
+                />
+                <button type="submit">Subscribe</button>
+              </div>
+              {errorEmailRequired}
+              {errorEmailEmpty}
+              {errorEmailInvalid}
+              <span className={`succesResponse ${succesResponse ? "active" : ""}`}>Email Sent Succesfully</span>
+            </form>
           </div>
           <div className="footerInfo col-md-4 col-sm-12">
             <div className="footersLinks">

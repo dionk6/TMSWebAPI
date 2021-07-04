@@ -28,6 +28,67 @@
   justify-content: center;
   flex-direction: column;
 }
+.footer .footerLinks ul {
+  margin-bottom: 20px;
+}
+.footer .footerLinks form{
+  width: 100%;
+}
+.footer .footerLinks form label{
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.footer .footerLinks form .error-msg{
+  display: block;
+  padding-top: 15px;
+  color: #ca2a2a;
+}
+.footer .footerLinks form .succesResponse{
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  padding-top: 0px;
+  color: #45b4b4;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all .15s linear .15s;
+}
+.footer .footerLinks form .succesResponse.active{
+  padding-top: 15px;
+  visibility: visible;
+  opacity: 1;
+}
+.footer .footerLinks input{
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border-radius: 8px;
+  border: 3px solid #45b4b4;
+}
+
+.footer .footerLinks .form-group{
+  position: relative;
+}
+.footer .footerLinks .form-group button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  border: 3px solid #45b4b4;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: bold;
+  transition: all .15s linear .15s;
+  z-index: 1;
+}
+.footer .footerLinks .form-group button:hover{
+  background-color: #ffffff;
+  color: #000000;
+}
 .footerLogo {
   align-items: center;
   display: flex;
