@@ -7,11 +7,15 @@ const Stadiums = lazy(() => import('../Pages/Stadiums/Stadiums'));
 const Players = lazy(() => import('../Pages/Players/Players'));
 const Teams = lazy(() => import('../Pages/Teams/Teams'));
 const Orders = lazy(() => import('../Pages/Orders/Orders'));
-
+const Dashboard = lazy(() => import('../Pages/Dashboard/Dashboard'));
 
 const routes = [
     {
         path: "/Admin",
+        component: Dashboard,
+    },
+    {
+        path: "/Admin/Leagues",
         component: Leagues,
     },
     {
@@ -29,7 +33,7 @@ const routes = [
     {
         path: "/Admin/Orders",
         component: Orders,
-    }
+    },
 ];
 
 const Routes = (props) =>{

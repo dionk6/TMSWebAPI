@@ -60,7 +60,8 @@ const AdminSidebar = (props) =>{
                 <h5 className="text-white p-3">Hi, {email}</h5>
                 <nav>
                     <ul>
-                        <li><NavLink exact to="/Admin">Leagues</NavLink></li>
+                        <li><NavLink exact to="/Admin">Dashboard</NavLink></li>
+                        <li><NavLink exact to="/Admin/Leagues">Leagues</NavLink></li>
                         <li><NavLink to="/Admin/Players">Players</NavLink></li>
                         <li><NavLink to="/Admin/Stadiums">Stadiums</NavLink></li>
                         <li><NavLink to="/Admin/Teams">Teams</NavLink></li>

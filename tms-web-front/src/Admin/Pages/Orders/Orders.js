@@ -17,7 +17,6 @@ const Orders = () => {
     const IsConfirmed = (id) => {
         let res = "No";
         allConfirmedOrders.map((element,index)=>{
-            console.log(element._id,id);
             if(element._id == id && element.confirmedStatus){
                 res = "Yes";
             }
@@ -60,7 +59,7 @@ const Orders = () => {
                                         <td>{element.shirtName+" "+element.shirtType+" ("+element.shirtNo+")"}</td>
                                         <td>{element.shirtPrice}€</td>
                                         <td>{IsConfirmed(element._id)}</td>
-                                        <td>{element.updatedDate.substring(0,10)}</td>
+                                        <td>{element.updatedDate}</td>
                                     </tr>
                                 )
                             })}

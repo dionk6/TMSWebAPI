@@ -70,6 +70,10 @@ const routes = [
     component: Admin,
   },
   {
+    path: "/Admin/Leagues",
+    component: Admin,
+  },
+  {
     path: "/Admin/Stadiums",
     component: Admin,
   },
