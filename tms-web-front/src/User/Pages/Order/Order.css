@@ -63,3 +63,22 @@
     color: white;
     font-size: 25px;
 }
+.OrderPage .errorMessage,
+.OrderPage .succesMessage{
+    display: none;
+    padding: 10px;
+    background-color: #ffffff;
+    font-weight: 600;
+    border-radius: 8px;
+    
+}
+.OrderPage .errorMessage.active,
+.OrderPage .succesMessage.active{
+    display: block;
+}
+.OrderPage .errorMessage{
+    color: #941e1e;
+}
+.OrderPage .succesMessage{
+    color: #0b5f5f;
+}
