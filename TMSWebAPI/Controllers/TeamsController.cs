@@ -78,6 +78,7 @@ namespace TMSWebAPI.Controllers
             var model = new TeamsViewModel();
             model.Id = team.Id.ToString();
             model.City = team.City;
+            model.Name = team.Name;
             model.Logo = team.Logo;
             model.FoundedYear = team.FoundedYear.ToString();
             model.Manager = team.Manager;
