@@ -1,5 +1,5 @@
 import axios from "./axios";
-import { CONTACTS,ORDERS,CONFIRMORDER } from "./endpoints";
+import { CONTACTS,ORDERS,CONFIRMORDER,EMAILSUBSCRIPTIONS } from "./endpoints";
 import { GET, POST, PUT, DELETE } from "./methods";
 
 const GetContactHttpRequest = () => {
@@ -73,6 +73,14 @@ const GetOrdersHttpRequest = () => {
   });
 };
 
+const PostSubscriptionHttpRequest = (data) => {
+  return axios({
+    method: POST,
+    url: EMAILSUBSCRIPTIONS,
+    data:data
+  });
+};
+
 export {
   GetContactHttpRequest,
   PostContactHttpRequest,
@@ -83,5 +91,6 @@ export {
   GetConfirmOrderHttpRequest,
   GetOrderHttpRequest,
   GetOrdersHttpRequest,
-  GetAllConfirmOrderHttpRequest
+  GetAllConfirmOrderHttpRequest,
+  PostSubscriptionHttpRequest
 };

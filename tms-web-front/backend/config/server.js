@@ -7,15 +7,17 @@ const config = require('./dbConnection');
 const contacts = require('../routes/contacts');
 const orders = require('../routes/orders');
 const confirmorder = require('../routes/confirmOrder');
+const emailSubscriptions = require('../routes/emailSubscriptions');
 
 mongoose.Promise = global.Promise; 
 mongoose.connect(config.db);
 const app = express();
 app.use(bodyParser.json());
 app.use(cors()); 
-app.use('/contacts',contacts)
-app.use('/orders',orders)
-app.use('/confirmOrder',confirmorder)
+app.use('/contacts',contacts);
+app.use('/orders',orders);
+app.use('/confirmOrder',confirmorder);
+app.use('/emailSubscriptions',emailSubscriptions);
 
 var port = process.env.PORT || 4000;
 
