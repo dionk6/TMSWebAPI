@@ -7,7 +7,7 @@ const HomePlayerCard = (props) => {
     return (
         <div className="homePlayerCard col-lg-3 mb-5">
             <div className="col-lg-12 text-center" style={{ background: "rgba(0,0,0,0.4)",border: "3px solid #45b4b4",borderRadius: "8px" }}>
-                <img className="img-fluid" src={props.player.photo} />
+                <img className="img-fluid" style={{minHeight: "400px",objectFit: "contain",objectPosition: "bottom"}} src={props.player.photo} />
             </div>
             <div className="col-lg-12 row m-0 mt-2 p-3 playerText">
                 <div className="col-10 text-white playerFont">
